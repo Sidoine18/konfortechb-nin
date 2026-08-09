@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /espace-client
+Disallow: /espace-client/
+Sitemap: https://konfortechbenin.online/sitemap.xml
