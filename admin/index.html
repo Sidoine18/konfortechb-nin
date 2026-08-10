@@ -36,37 +36,80 @@
       </div>
     </div>
   </div>
-
   <script type="module">
     import { requireAdmin } from "./assets/auth-guard.js";
     import { db } from "./assets/firebase-init.js";
     import { collection, query, where, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
-    requireAdmin().then(async () => {
-      const CARDS = [
-        { label: "Demandes de devis (nouvelles)", col: "devis_requests", field: "status", val: "nouveau" },
-        { label: "Messages non lus", col: "messages", field: "status", val: "nouveau" },
-        { label: "Avis en attente", col: "testimonials", field: "approved", val: false },
-        { label: "Réalisations publiées", col: "realisations", field: "published", val: true },
-        { label: "Articles de blog", col: "blog_posts", field: "published", val: true },
-        { label: "Partenaires actifs", col: "partners", field: "active", val: true },
-        { label: "Membres de l'équipe", col: "team_members", field: "active", val: true },
-      ];
-      const grid = document.getElementById("stat-grid");
-      grid.innerHTML = "";
-      for (const c of CARDS) {
-        let count = "—";
-        try {
-          const q = query(collection(db, c.col), where(c.field, "==", c.val));
-          const snap = await getCountFromServer(q);
-          count = snap.data().count;
-        } catch (e) { console.error(c.col, e); }
-        const div = document.createElement("div");
-        div.className = "stat-card";
-        div.innerHTML = `<div class="num">${count}</div><div class="label">${c.label}</div>`;
-        grid.appendChild(div);
-      }
-    });
+    // Menu mobile : fonctionne indépendamment de l'authentification, donc
+    // câblé immédiatement (pas besoin d'attendre requireAdmin()).
+    const navToggle = document.getElementById("mobile-nav-toggle");
+    const sidebar = document.getElementById("admin-sidebar");
+    if (navToggle && sidebar) {
+      navToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
+    }
+
+    const grid = document.getElementById("stat-grid");
+    const whoEl = document.getElementById("admin-who");
+
+    // requireAdmin() peut être rejetée (non connecté, rôle non autorisé...).
+    // Sans .catch, la page restait bloquée sur "Chargement…" sans aucun
+    // retour ni redirection en cas d'échec. On gère explicitement les deux cas.
+    requireAdmin()
+      .then(async (adminUser) => {
+        // adminUser est supposé exposer au minimum { displayName ou email, role }.
+        // Adapter les noms de champs ci-dessous si auth-guard.js renvoie une
+        // structure différente.
+        if (whoEl && adminUser) {
+          const label = adminUser.displayName || adminUser.email || "";
+          const role = adminUser.role ? ` (${adminUser.role})` : "";
+          whoEl.textContent = label + role;
+        }
+
+        const CARDS = [
+          { label: "Demandes de devis (nouvelles)", col: "devis_requests", field: "status", val: "nouveau" },
+          { label: "Messages non lus", col: "messages", field: "status", val: "nouveau" },
+          { label: "Avis en attente", col: "testimonials", field: "approved", val: false },
+          { label: "Réalisations publiées", col: "realisations", field: "published", val: true },
+          { label: "Articles de blog", col: "blog_posts", field: "published", val: true },
+          { label: "Partenaires actifs", col: "partners", field: "active", val: true },
+          { label: "Membres de l'équipe", col: "team_members", field: "active", val: true },
+        ];
+
+        // Les compteurs sont indépendants les uns des autres : on les lance
+        // en parallèle (Promise.all) au lieu de les attendre un par un en
+        // série, ce qui réduisait inutilement le temps de chargement total
+        // à la somme des latences de chaque requête.
+        const results = await Promise.all(
+          CARDS.map(async (c) => {
+            try {
+              const q = query(collection(db, c.col), where(c.field, "==", c.val));
+              const snap = await getCountFromServer(q);
+              return { label: c.label, count: snap.data().count };
+            } catch (e) {
+              console.error(c.col, e);
+              return { label: c.label, count: "—" };
+            }
+          })
+        );
+
+        grid.innerHTML = "";
+        for (const r of results) {
+          const div = document.createElement("div");
+          div.className = "stat-card";
+          div.innerHTML = `<div class="num">${r.count}</div><div class="label">${r.label}</div>`;
+          grid.appendChild(div);
+        }
+      })
+      .catch((err) => {
+        // Accès refusé, session expirée, ou toute autre erreur d'auth :
+        // on ne laisse jamais la page bloquée en silence sur "Chargement…".
+        console.error("requireAdmin() a échoué :", err);
+        grid.innerHTML = `<div class="stat-card"><div class="num">⚠️</div><div class="label">Accès non autorisé, redirection…</div></div>`;
+        window.location.href = "login.html";
+      });
   </script>
 </body>
 </html>
