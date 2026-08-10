@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Demandes de devis — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar"><button id="mobile-nav-toggle">☰</button><strong>KONFORTECH BÉNIN</strong><span></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar"><h1>Demandes de devis</h1><div class="who" id="admin-who"></div></div>
+      <div class="content">
+        <div class="toolbar">
+          <select class="search-input" id="status-filter">
+            <option value="all">Tous les statuts</option>
+            <option value="nouveau">Nouveau</option>
+            <option value="contacte">Contacté</option>
+            <option value="devis_envoye">Devis envoyé</option>
+            <option value="negociation">Négociation</option>
+            <option value="gagne">Projet gagné</option>
+            <option value="perdu">Projet perdu</option>
+            <option value="archive">Archivé</option>
+          </select>
+          <span class="hint-text" id="total-count"></span>
+        </div>
+        <div class="panel" style="padding:0">
+          <table class="data-table">
+            <thead><tr><th>Contact</th><th>Service</th><th>Localisation</th><th>Budget</th><th>Statut</th><th></th></tr></thead>
+            <tbody id="rows"><tr><td class="loading-row" colspan="6">Chargement…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal">
+    <div class="modal-card" id="modal-content"></div>
+  </div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { collection, onSnapshot, orderBy, query, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    const LABELS = { nouveau: "Nouveau", contacte: "Contacté", devis_envoye: "Devis envoyé", negociation: "Négociation", gagne: "Projet gagné", perdu: "Projet perdu", archive: "Archivé" };
+    const BADGES = { nouveau: "badge-new", contacte: "badge-progress", devis_envoye: "badge-progress", negociation: "badge-progress", gagne: "badge-won", perdu: "badge-lost", archive: "badge-draft" };
+
+    let allItems = [];
+
+    function render() {
+      const filter = document.getElementById("status-filter").value;
+      const rows = document.getElementById("rows");
+      const items = filter === "all" ? allItems : allItems.filter((d) => d.status === filter);
+      document.getElementById("total-count").textContent = `${allItems.length} demande(s) au total`;
+      if (items.length === 0) { rows.innerHTML = `<tr><td class="loading-row" colspan="6">Aucune demande pour l'instant.</td></tr>`; return; }
+      rows.innerHTML = items.map((d) => `
+        <tr data-id="${d.id}" style="cursor:pointer">
+          <td><strong>${esc(d.nom)}</strong><br><span style="color:#7A8492;font-size:.78rem">${esc(d.tel || "")} · ${esc(d.email || "")}</span></td>
+          <td>${esc(d.service || "—")}</td>
+          <td>${esc(d.localisation || "—")}</td>
+          <td>${esc(d.budget || "—")}</td>
+          <td><span class="badge ${BADGES[d.status] || "badge-new"}">${LABELS[d.status] || d.status}</span></td>
+          <td><button class="btn btn-outline btn-sm open-btn">Ouvrir</button></td>
+        </tr>`).join("");
+      rows.querySelectorAll("tr").forEach((tr) => tr.addEventListener("click", () => openModal(tr.dataset.id)));
+    }
+
+    function esc(s) { const d = document.createElement("div"); d.textContent = s ?? ""; return d.innerHTML; }
+
+    function openModal(id) {
+      const d = allItems.find((x) => x.id === id);
+      if (!d) return;
+      const content = document.getElementById("modal-content");
+      content.innerHTML = `
+        <h2>${esc(d.nom)}</h2>
+        <p class="hint-text">Reçue le ${d.createdAt?.toDate ? d.createdAt.toDate().toLocaleDateString("fr-FR") : "—"}</p>
+        <div class="form-grid">
+          <div class="field"><label>Entreprise</label><p>${esc(d.entreprise || "—")}</p></div>
+          <div class="field"><label>Téléphone</label><p><a href="tel:${esc(d.tel || "")}">${esc(d.tel || "—")}</a></p></div>
+          <div class="field"><label>Email</label><p><a href="mailto:${esc(d.email || "")}">${esc(d.email || "—")}</a></p></div>
+          <div class="field"><label>Localisation</label><p>${esc(d.localisation || "—")}</p></div>
+          <div class="field"><label>Service</label><p>${esc(d.service || "—")}</p></div>
+          <div class="field"><label>Budget</label><p>${esc(d.budget || "Non défini")}</p></div>
+          <div class="field"><label>Délai</label><p>${esc(d.delai || "Non défini")}</p></div>
+          <div class="field full"><label>Description du besoin</label><p>${esc(d.besoin || "—")}</p></div>
+        </div>
+        <div class="field">
+          <label>Statut</label>
+          <select id="status-select">
+            ${Object.keys(LABELS).map((s) => `<option value="${s}" ${s === d.status ? "selected" : ""}>${LABELS[s]}</option>`).join("")}
+          </select>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
+          <button class="btn btn-danger" id="delete-btn">Supprimer</button>
+          <a class="btn btn-outline" href="https://wa.me/${(d.tel || "").replace(/\D/g, "")}" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+          <button class="btn btn-primary" id="close-btn">Fermer</button>
+        </div>`;
+      document.getElementById("modal").classList.add("open");
+      document.getElementById("status-select").addEventListener("change", async (e) => {
+        await updateDoc(doc(db, "devis_requests", id), { status: e.target.value });
+      });
+      document.getElementById("delete-btn").addEventListener("click", async () => {
+        if (!confirm("Supprimer cette demande ?")) return;
+        await deleteDoc(doc(db, "devis_requests", id));
+        document.getElementById("modal").classList.remove("open");
+      });
+      document.getElementById("close-btn").addEventListener("click", () => document.getElementById("modal").classList.remove("open"));
+    }
+    document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") e.target.classList.remove("open"); });
+
+    requireAdmin().then(() => {
+      const q = query(collection(db, "devis_requests"), orderBy("createdAt", "desc"));
+      onSnapshot(q, (snap) => {
+        allItems = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        render();
+      });
+      document.getElementById("status-filter").addEventListener("change", render);
+    });
+  </script>
+</body>
+</html>
