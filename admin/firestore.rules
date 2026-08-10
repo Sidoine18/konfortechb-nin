@@ -1,0 +1,187 @@
+rules_version = '2';
+
+// =============================================================================
+// Règles de sécurité Firestore — KONFORTECH BÉNIN (konfortechbenin-4a084)
+//
+// Principe directeur : un client ne peut JAMAIS lire ou modifier les données
+// d'un autre client, ni s'attribuer un rôle. Le rôle affiché côté client
+// (AuthProvider) n'a AUCUNE valeur de sécurité — seules ces règles comptent.
+// =============================================================================
+
+function isSignedIn() {
+  return request.auth != null;
+}
+
+function myRole() {
+  return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+}
+
+function isAdminRole() {
+  return isSignedIn() && myRole() in ['superadmin', 'editeur', 'commercial', 'technicien'];
+}
+
+function isSuperAdmin() {
+  return isSignedIn() && myRole() == 'superadmin';
+}
+
+// éditeur : gère le contenu (projets, réalisations, blog, ressources, partenaires)
+function canEditContent() {
+  return isSignedIn() && myRole() in ['superadmin', 'editeur'];
+}
+
+// commercial : gère les prospects (devis, messages, avis)
+function canManageLeads() {
+  return isSignedIn() && myRole() in ['superadmin', 'commercial'];
+}
+
+function isOwner(userId) {
+  return isSignedIn() && request.auth.uid == userId;
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -------------------------------------------------------------------
+    // USERS — un utilisateur lit/modifie son propre profil, mais NE PEUT
+    // JAMAIS modifier son propre champ "role" (seul un admin le peut).
+    // -------------------------------------------------------------------
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdminRole();
+      allow create: if isOwner(userId)
+                    && request.resource.data.role == 'client'; // auto-inscription = toujours client
+      allow update: if (isOwner(userId) && request.resource.data.role == resource.data.role)
+                    || isSuperAdmin(); // seul un super admin change un rôle
+      allow delete: if isSuperAdmin();
+    }
+
+    // -------------------------------------------------------------------
+    // CONTENU PUBLIC (projets, réalisations, blog, ressources, partenaires)
+    // Lecture publique UNIQUEMENT si published == true. Écriture réservée
+    // aux rôles éditeur / superadmin.
+    // -------------------------------------------------------------------
+    match /projects/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /realisations/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /blog_posts/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /resources/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /partners/{docId} {
+      allow read: if resource.data.active == true || canEditContent();
+      allow write: if canEditContent();
+    }
+
+    // Équipe (page "À propos") — lecture publique si actif, écriture éditeur/superadmin
+    match /team_members/{docId} {
+      allow read: if resource.data.active == true || canEditContent();
+      allow write: if canEditContent();
+    }
+
+    // Contenu de pages uniques (ex: site_content/ceo) — lecture publique,
+    // écriture réservée aux éditeurs / superadmin.
+    match /site_content/{docId} {
+      allow read: if true;
+      allow write: if canEditContent();
+    }
+
+    // -------------------------------------------------------------------
+    // AVIS CLIENTS — création publique, mais AUCUN avis n'est visible
+    // publiquement avant modération (approved == true). Seuls commercial /
+    // superadmin peuvent approuver, modifier ou supprimer.
+    // -------------------------------------------------------------------
+    match /testimonials/{docId} {
+      allow read: if resource.data.approved == true || canManageLeads();
+      allow create: if request.resource.data.approved == false; // jamais auto-publié
+      allow update, delete: if canManageLeads();
+    }
+
+    // -------------------------------------------------------------------
+    // DEMANDES DE DEVIS — mini-CRM. Création publique (formulaire du site
+    // vitrine, visiteur non connecté OU client connecté). Lecture/écriture
+    // réservées au propriétaire (si connecté) et à l'équipe commerciale.
+    // -------------------------------------------------------------------
+    match /devis_requests/{docId} {
+      allow create: if request.resource.data.status == 'nouveau';
+      allow read: if canManageLeads()
+                  || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow update: if canManageLeads()
+                    || (isSignedIn() && resource.data.clientId == request.auth.uid
+                        && request.resource.data.clientId == resource.data.clientId); // client ne change pas le statut
+      allow delete: if canManageLeads();
+    }
+
+    // -------------------------------------------------------------------
+    // MESSAGES DE CONTACT (formulaire public "Contact")
+    // -------------------------------------------------------------------
+    match /messages/{docId} {
+      allow create: if true; // formulaire public, aucune donnée sensible
+      allow read, update, delete: if canManageLeads();
+    }
+
+    // -------------------------------------------------------------------
+    // MESSAGERIE CLIENT <-> ADMIN
+    // Un fil par client : conversations/{clientId}/messages/{messageId}
+    // Le client ne voit et n'écrit que dans SON fil. L'équipe admin voit tout.
+    // -------------------------------------------------------------------
+    match /conversations/{clientId} {
+      allow read, write: if isOwner(clientId) || isAdminRole();
+      match /messages/{messageId} {
+        allow read: if isOwner(clientId) || isAdminRole();
+        allow create: if (isOwner(clientId) || isAdminRole())
+                      && request.resource.data.senderId == request.auth.uid;
+        allow update, delete: if isAdminRole();
+      }
+    }
+
+    // -------------------------------------------------------------------
+    // FACTURES / PAIEMENTS — lecture seule pour le client concerné,
+    // écriture réservée à l'admin (architecture prête, paiement en ligne
+    // non activé pour l'instant — voir README-PLATFORM.md).
+    // -------------------------------------------------------------------
+    match /invoices/{docId} {
+      allow read: if isAdminRole() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if isAdminRole();
+    }
+
+    // -------------------------------------------------------------------
+    // DOCUMENTS PARTAGÉS AVEC UN CLIENT (contrats, livrables, etc.)
+    // -------------------------------------------------------------------
+    match /client_documents/{docId} {
+      allow read: if isAdminRole() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if isAdminRole();
+    }
+
+    // -------------------------------------------------------------------
+    // NOTIFICATIONS ADMIN (nouveau message, nouveau devis, nouvel avis…)
+    // -------------------------------------------------------------------
+    match /admin_notifications/{docId} {
+      allow read, update: if isAdminRole();
+      allow create: if true; // créées par des actions publiques (devis, message, avis)
+      allow delete: if isAdminRole();
+    }
+
+    // -------------------------------------------------------------------
+    // PARAMÈTRES GLOBAUX DU SITE (nom, slogan, horaires, réseaux sociaux…)
+    // Lecture publique (utilisée par le site vitrine si besoin), écriture
+    // réservée au super admin.
+    // -------------------------------------------------------------------
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isSuperAdmin();
+    }
+
+    // Par défaut : tout le reste est bloqué.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Réalisations — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar"><button id="mobile-nav-toggle">☰</button><strong>KONFORTECH BÉNIN</strong><span></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar"><h1>Réalisations</h1><div class="who" id="admin-who"></div></div>
+      <div class="content">
+        <div class="toolbar">
+          <div>
+            <button class="btn btn-sm btn-primary" data-filter="all">Toutes</button>
+            <button class="btn btn-sm btn-outline" data-filter="published">Publiées</button>
+            <button class="btn btn-sm btn-outline" data-filter="draft">Brouillons</button>
+          </div>
+          <button class="btn btn-primary" id="new-btn">+ Nouvelle réalisation</button>
+        </div>
+        <div class="panel" style="padding:0">
+          <table class="data-table">
+            <thead><tr><th></th><th>Titre</th><th>Secteur</th><th>Client</th><th>Statut</th><th></th></tr></thead>
+            <tbody id="rows"><tr><td class="loading-row" colspan="6">Chargement…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal"><div class="modal-card" id="modal-content"></div></div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { uploadToCloudinary, cldThumb } from "./assets/cloudinary.js";
+    import { collection, onSnapshot, orderBy, query, doc, addDoc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    const SECTORS = ["hotels", "restaurants", "entreprises", "ecoles", "industries", "commerces", "particuliers"];
+    let allItems = [];
+    let filter = "all";
+    function esc(s) { const d = document.createElement("div"); d.textContent = s ?? ""; return d.innerHTML; }
+    function slugify(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); }
+
+    function renderRows() {
+      const rows = document.getElementById("rows");
+      const items = allItems.filter((p) => filter === "all" ? true : filter === "published" ? p.published : !p.published);
+      if (items.length === 0) { rows.innerHTML = `<tr><td class="loading-row" colspan="6">Aucune réalisation pour l'instant.</td></tr>`; return; }
+      rows.innerHTML = items.map((p) => `
+        <tr>
+          <td>${p.coverImage ? `<img class="thumb-sm" src="${cldThumb(p.coverImage, 88, 88)}" alt="">` : `<div class="thumb-sm"></div>`}</td>
+          <td><strong>${esc(p.title)}</strong><br><span style="color:#7A8492;font-size:.78rem">/realisations/${esc(p.slug)}</span></td>
+          <td>${esc(p.category || "—")}</td>
+          <td>${esc(p.client || "—")}</td>
+          <td><span class="badge ${p.published ? "badge-published" : "badge-draft"}">${p.published ? "Publiée" : "Brouillon"}</span></td>
+          <td style="white-space:nowrap">
+            <button class="btn btn-outline btn-sm" data-edit="${p.id}">Modifier</button>
+            <button class="btn btn-outline btn-sm" data-toggle="${p.id}">${p.published ? "Dépublier" : "Publier"}</button>
+            <button class="btn btn-danger btn-sm" data-del="${p.id}">Suppr.</button>
+          </td>
+        </tr>`).join("");
+      rows.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => openForm(allItems.find((x) => x.id === b.dataset.edit))));
+      rows.querySelectorAll("[data-toggle]").forEach((b) => b.addEventListener("click", () => {
+        const item = allItems.find((x) => x.id === b.dataset.toggle);
+        updateDoc(doc(db, "realisations", item.id), { published: !item.published });
+      }));
+      rows.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => {
+        if (!confirm("Supprimer définitivement cette réalisation ?")) return;
+        deleteDoc(doc(db, "realisations", b.dataset.del));
+      }));
+    }
+
+    document.querySelectorAll("[data-filter]").forEach((btn) => btn.addEventListener("click", (e) => {
+      document.querySelectorAll("[data-filter]").forEach((b) => b.classList.replace("btn-primary", "btn-outline"));
+      e.target.classList.replace("btn-outline", "btn-primary");
+      filter = e.target.dataset.filter;
+      renderRows();
+    }));
+
+    function openForm(item) {
+      const isNew = !item;
+      const f = item ? { ...item } : { title: "", slug: "", category: "", client: "", location: "", description: "", problem: "", solution: "", results: "", coverImage: "", altText: "", gallery: [], date: "", published: false, seoTitle: "", metaDescription: "" };
+      const content = document.getElementById("modal-content");
+      content.innerHTML = `
+        <h2>${isNew ? "Nouvelle réalisation" : "Modifier la réalisation"}</h2>
+        <form id="r-form">
+          <div class="form-grid">
+            <div class="field full"><label>Titre</label><input id="f-title" required value="${esc(f.title)}"></div>
+            <div class="field full"><label>Slug (URL)</label><input id="f-slug" required value="${esc(f.slug)}"><p class="hint-text">/realisations/<span id="slug-preview">${esc(f.slug)}</span></p></div>
+            <div class="field"><label>Secteur</label>
+              <select id="f-category"><option value="">—</option>${SECTORS.map((s) => `<option value="${s}" ${f.category === s ? "selected" : ""}>${s}</option>`).join("")}</select>
+            </div>
+            <div class="field"><label>Client (avec accord)</label><input id="f-client" value="${esc(f.client)}" placeholder="Laisser vide si non autorisé"></div>
+            <div class="field"><label>Localisation</label><input id="f-location" value="${esc(f.location)}"></div>
+            <div class="field"><label>Date</label><input type="date" id="f-date" value="${esc(f.date)}"></div>
+            <div class="field full"><label>Description</label><textarea id="f-description">${esc(f.description)}</textarea></div>
+            <div class="field full"><label>Problème du client</label><textarea id="f-problem">${esc(f.problem)}</textarea></div>
+            <div class="field full"><label>Solution apportée</label><textarea id="f-solution">${esc(f.solution)}</textarea></div>
+            <div class="field full"><label>Résultats</label><textarea id="f-results">${esc(f.results)}</textarea></div>
+            <div class="field full">
+              <label>Image principale</label>
+              <input type="file" id="f-cover" accept="image/*">
+              <p class="hint-text" id="cover-status"></p>
+              <div id="cover-preview">${f.coverImage ? `<img src="${cldThumb(f.coverImage, 200, 120)}" style="border-radius:8px;margin-top:8px">` : ""}</div>
+            </div>
+            <div class="field full"><label>Texte alternatif (ALT)</label><input id="f-alt" value="${esc(f.altText)}"></div>
+            <div class="field full">
+              <label>Galerie (plusieurs photos)</label>
+              <input type="file" id="f-gallery" accept="image/*" multiple>
+              <p class="hint-text" id="gallery-status"></p>
+              <div id="gallery-preview" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+                ${(f.gallery || []).map((url) => `<img data-url="${url}" src="${cldThumb(url, 90, 90)}" style="border-radius:6px">`).join("")}
+              </div>
+            </div>
+            <div class="field full"><hr style="border:none;border-top:1px solid var(--line);margin:6px 0 16px"></div>
+            <div class="field full"><strong style="font-size:.85rem">Référencement (SEO)</strong></div>
+            <div class="field full"><label>Titre SEO</label><input id="f-seo-title" value="${esc(f.seoTitle)}" placeholder="${esc(f.title)}"></div>
+            <div class="field full"><label>Meta description</label><textarea id="f-meta" maxlength="160">${esc(f.metaDescription)}</textarea></div>
+            <div class="field full">
+              <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px">
+                <div style="color:#1a0dab" id="preview-title">${esc(f.seoTitle || f.title || "Titre de la page")}</div>
+                <div style="color:#006621;font-size:.78rem">konfortechbenin.online/realisations/<span id="preview-slug">${esc(f.slug)}</span></div>
+                <div style="color:#545454;font-size:.82rem" id="preview-meta">${esc(f.metaDescription || "Aperçu Google — ajoutez une meta description.")}</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;justify-content:flex-end">
+            <button type="button" class="btn btn-outline" id="cancel-btn">Annuler</button>
+            <button type="submit" class="btn btn-primary" id="save-btn">Enregistrer</button>
+          </div>
+        </form>`;
+      document.getElementById("modal").classList.add("open");
+
+      let coverImage = f.coverImage, gallery = [...(f.gallery || [])];
+
+      if (isNew) {
+        document.getElementById("f-title").addEventListener("input", (e) => {
+          const s = slugify(e.target.value);
+          document.getElementById("f-slug").value = s;
+          document.getElementById("slug-preview").textContent = s;
+          document.getElementById("preview-slug").textContent = s;
+        });
+      }
+      document.getElementById("f-slug").addEventListener("input", (e) => {
+        const s = slugify(e.target.value); e.target.value = s;
+        document.getElementById("slug-preview").textContent = s;
+        document.getElementById("preview-slug").textContent = s;
+      });
+      document.getElementById("f-seo-title").addEventListener("input", (e) => document.getElementById("preview-title").textContent = e.target.value || f.title || "Titre de la page");
+      document.getElementById("f-meta").addEventListener("input", (e) => document.getElementById("preview-meta").textContent = e.target.value || "Aperçu Google — ajoutez une meta description.");
+
+      document.getElementById("f-cover").addEventListener("change", async (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const status = document.getElementById("cover-status");
+        status.textContent = "Upload en cours… 0%";
+        try {
+          coverImage = await uploadToCloudinary(file, "konfortech/realisations", (p) => status.textContent = `Upload en cours… ${p}%`);
+          status.textContent = "";
+          document.getElementById("cover-preview").innerHTML = `<img src="${cldThumb(coverImage, 200, 120)}" style="border-radius:8px;margin-top:8px">`;
+        } catch (err) { status.textContent = "Échec de l'upload : " + err.message; }
+      });
+
+      document.getElementById("f-gallery").addEventListener("change", async (e) => {
+        const files = Array.from(e.target.files || []); if (!files.length) return;
+        const status = document.getElementById("gallery-status");
+        for (let i = 0; i < files.length; i++) {
+          status.textContent = `Upload ${i + 1}/${files.length}…`;
+          try {
+            const url = await uploadToCloudinary(files[i], "konfortech/realisations");
+            gallery.push(url);
+            const img = document.createElement("img");
+            img.src = cldThumb(url, 90, 90); img.style.borderRadius = "6px"; img.dataset.url = url;
+            document.getElementById("gallery-preview").appendChild(img);
+          } catch (err) { status.textContent = "Échec de l'upload : " + err.message; }
+        }
+        status.textContent = "";
+      });
+
+      document.getElementById("cancel-btn").addEventListener("click", () => document.getElementById("modal").classList.remove("open"));
+
+      document.getElementById("r-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const saveBtn = document.getElementById("save-btn");
+        saveBtn.disabled = true; saveBtn.textContent = "Enregistrement…";
+        const payload = {
+          title: document.getElementById("f-title").value,
+          slug: document.getElementById("f-slug").value,
+          category: document.getElementById("f-category").value,
+          client: document.getElementById("f-client").value,
+          location: document.getElementById("f-location").value,
+          date: document.getElementById("f-date").value,
+          description: document.getElementById("f-description").value,
+          problem: document.getElementById("f-problem").value,
+          solution: document.getElementById("f-solution").value,
+          results: document.getElementById("f-results").value,
+          coverImage, altText: document.getElementById("f-alt").value, gallery,
+          seoTitle: document.getElementById("f-seo-title").value,
+          metaDescription: document.getElementById("f-meta").value,
+          published: f.published || false,
+        };
+        try {
+          if (isNew) await addDoc(collection(db, "realisations"), { ...payload, createdAt: serverTimestamp() });
+          else await updateDoc(doc(db, "realisations", item.id), payload);
+          document.getElementById("modal").classList.remove("open");
+        } catch (err) { alert("Erreur d'enregistrement : " + err.message); }
+        saveBtn.disabled = false; saveBtn.textContent = "Enregistrer";
+      });
+    }
+
+    document.getElementById("new-btn").addEventListener("click", () => openForm(null));
+    document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") e.target.classList.remove("open"); });
+
+    requireAdmin().then(() => {
+      const q = query(collection(db, "realisations"), orderBy("createdAt", "desc"));
+      onSnapshot(q, (snap) => { allItems = snap.docs.map((d) => ({ id: d.id, ...d.data() })); renderRows(); });
+    });
+  </script>
+</body>
+</html>
