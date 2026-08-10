@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Connexion — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="login-shell">
+    <div class="login-card">
+      <img src="../assets/img/logo.png" alt="KONFORTECH BÉNIN">
+      <h2>Dashboard administrateur</h2>
+
+      <div class="tab-row">
+        <button id="tab-login" class="active">Connexion</button>
+        <button id="tab-signup">Créer un compte</button>
+      </div>
+
+      <!-- Connexion -->
+      <form id="login-form">
+        <div class="field"><label for="li-email">Email</label><input id="li-email" type="email" required autocomplete="username"></div>
+        <div class="field"><label for="li-pass">Mot de passe</label><input id="li-pass" type="password" required autocomplete="current-password"></div>
+        <p class="error-text" id="login-error"></p>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Se connecter</button>
+        <button type="button" id="forgot-btn" class="hint-text" style="background:none;border:none;margin-top:12px;text-decoration:underline;padding:0;cursor:pointer">Mot de passe oublié ?</button>
+      </form>
+
+      <!-- Création de compte -->
+      <form id="signup-form" style="display:none">
+        <div class="field"><label for="su-name">Nom complet</label><input id="su-name" required></div>
+        <div class="field"><label for="su-email">Email</label><input id="su-email" type="email" required autocomplete="username"></div>
+        <div class="field"><label for="su-pass">Mot de passe</label><input id="su-pass" type="password" required minlength="6" autocomplete="new-password"></div>
+        <p class="hint-text">Un nouveau compte est créé avec le rôle « client » par sécurité. Pour obtenir l'accès au dashboard, un Super Admin doit changer votre rôle directement dans Firestore (collection <code>users</code>, champ <code>role</code> → <code>superadmin</code> / <code>editeur</code> / <code>commercial</code> / <code>technicien</code>).</p>
+        <p class="error-text" id="signup-error"></p>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;margin-top:10px">Créer le compte</button>
+      </form>
+
+      <p class="success-text" id="global-success"></p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { auth, db } from "./assets/firebase-init.js";
+    import { 
+      signInWithEmailAndPassword, 
+      createUserWithEmailAndPassword, 
+      sendPasswordResetEmail, 
+      onAuthStateChanged,
+      signOut 
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import { doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    // Rôles autorisés à accéder au dashboard administrateur
+    const ADMIN_ROLES = ["superadmin", "editeur", "commercial", "technicien"];
+
+    // Drapeaux d'état pour éviter les interceptions intempestives
+    let isSigningUp = false;
+    let isCheckingRole = false;
+
+    // Vérification intelligente à la connexion
+    onAuthStateChanged(auth, async (user) => {
+      if (user && !isSigningUp && !isCheckingRole) {
+        isCheckingRole = true;
+        try {
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists() && ADMIN_ROLES.includes(userDoc.data().role)) {
+            window.location.href = "index.html";
+          } else {
+            // L'utilisateur est connecté mais possède le rôle "client" ou aucun rôle
+            const errorEl = document.getElementById("login-error");
+            if (errorEl) {
+              errorEl.textContent = "Accès refusé : votre compte n'a pas encore les privilèges administrateur.";
+            }
+            await signOut(auth);
+          }
+        } catch (err) {
+          console.error("Erreur de vérification du rôle :", err);
+          await signOut(auth);
+        } finally {
+          isCheckingRole = false;
+        }
+      }
+    });
+
+    // Gestion de la navigation entre onglets Connexion / Inscription
+    const tabLogin = document.getElementById("tab-login");
+    const tabSignup = document.getElementById("tab-signup");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+
+    tabLogin.addEventListener("click", () => { 
+      tabLogin.classList.add("active"); 
+      tabSignup.classList.remove("active"); 
+      loginForm.style.display = ""; 
+      signupForm.style.display = "none"; 
+    });
+
+    tabSignup.addEventListener("click", () => { 
+      tabSignup.classList.add("active"); 
+      tabLogin.classList.remove("active"); 
+      signupForm.style.display = ""; 
+      loginForm.style.display = "none"; 
+    });
+
+    // Formulaire de connexion
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("li-email").value;
+      const pass = document.getElementById("li-pass").value;
+      const errorEl = document.getElementById("login-error");
+      errorEl.textContent = "";
+
+      try {
+        const cred = await signInWithEmailAndPassword(auth, email, pass);
+        const userDoc = await getDoc(doc(db, "users", cred.user.uid));
+
+        if (userDoc.exists() && ADMIN_ROLES.includes(userDoc.data().role)) {
+          window.location.href = "index.html";
+        } else {
+          errorEl.textContent = "Accès refusé : votre compte n'a pas les autorisations nécessaires.";
+          await signOut(auth);
+        }
+      } catch (err) {
+        errorEl.textContent = ["auth/invalid-credential", "auth/wrong-password", "auth/user-not-found"].includes(err.code)
+          ? "Email ou mot de passe incorrect."
+          : "Connexion impossible (" + (err.code || err.message) + ").";
+      }
+    });
+
+    // Réinitialisation de mot de passe
+    document.getElementById("forgot-btn").addEventListener("click", async () => {
+      const email = document.getElementById("li-email").value;
+      const errorEl = document.getElementById("login-error");
+      if (!email) { errorEl.textContent = "Entrez votre email ci-dessus, puis cliquez à nouveau."; return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        document.getElementById("global-success").textContent = "Email de réinitialisation envoyé.";
+        errorEl.textContent = "";
+      } catch {
+        errorEl.textContent = "Impossible d'envoyer l'email de réinitialisation.";
+      }
+    });
+
+    // Formulaire de création de compte
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      isSigningUp = true; // Bloque la redirection automatique pendant le processus
+
+      const name = document.getElementById("su-name").value;
+      const email = document.getElementById("su-email").value;
+      const pass = document.getElementById("su-pass").value;
+      const errorEl = document.getElementById("signup-error");
+      errorEl.textContent = "";
+
+      try {
+        // 1. Création du compte dans Firebase Authentication
+        const cred = await createUserWithEmailAndPassword(auth, email, pass);
+
+        // 2. Écriture synchronisée du document dans Firestore
+        await setDoc(doc(db, "users", cred.user.uid), {
+          displayName: name,
+          email: email,
+          role: "client",
+          createdAt: serverTimestamp()
+        });
+
+        // 3. Déconnexion immédiate
+        await signOut(auth);
+
+        alert("Compte créé avec succès dans Firestore ! Un Super Admin doit maintenant modifier votre rôle en 'superadmin' dans la collection 'users'.");
+        
+        // Basculer sur le formulaire de connexion
+        tabLogin.click();
+      } catch (err) {
+        console.error("Erreur Inscription :", err);
+        errorEl.innerHTML = err.code === "auth/email-already-in-use"
+          ? "Un compte existe déjà avec cet email."
+          : "Erreur lors de la création du compte : <strong>" + (err.code || err.message) + "</strong>";
+      } finally {
+        isSigningUp = false;
+      }
+    });
+  </script>
+</body>
+</html>

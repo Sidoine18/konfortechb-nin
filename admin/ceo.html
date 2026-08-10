@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Page CEO — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar"><button id="mobile-nav-toggle">☰</button><strong>KONFORTECH BÉNIN</strong><span></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar"><h1>Page publique « Le CEO »</h1><div class="who" id="admin-who"></div></div>
+      <div class="content">
+        <p class="hint-text" style="margin-bottom:16px">
+          Visible sur konfortechbenin.online/ceo. N'inventez aucun diplôme, titre ou accomplissement —
+          laissez un champ vide plutôt que d'y mettre une information incertaine.
+        </p>
+        <div class="panel">
+          <form id="ceo-form">
+            <div class="form-grid">
+              <div class="field"><label>Nom complet</label><input id="f-name"></div>
+              <div class="field"><label>Fonction</label><input id="f-title" value="Fondateur / CEO"></div>
+              <div class="field full">
+                <label>Photo professionnelle</label>
+                <input type="file" id="f-photo" accept="image/*">
+                <p class="hint-text" id="photo-status"></p>
+                <div id="photo-preview"></div>
+              </div>
+              <div class="field full"><label>Texte alternatif (ALT) de la photo</label><input id="f-alt"></div>
+              <div class="field full"><label>Présentation</label><textarea id="f-bio"></textarea></div>
+              <div class="field full"><label>Parcours</label><textarea id="f-parcours" placeholder="Uniquement des faits réels et vérifiables."></textarea></div>
+              <div class="field full"><label>Vision</label><textarea id="f-vision"></textarea></div>
+              <div class="field full"><label>Philosophie</label><textarea id="f-philosophie"></textarea></div>
+              <div class="field full"><label>Message aux clients</label><textarea id="f-message-clients"></textarea></div>
+              <div class="field full"><label>Message à l'équipe</label><textarea id="f-message-equipe"></textarea></div>
+              <div class="field full"><label>Profil LinkedIn (facultatif)</label><input id="f-linkedin"></div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:18px;align-items:center">
+              <button type="submit" class="btn btn-primary" id="save-btn">Enregistrer</button>
+              <span class="success-text" id="saved-msg" style="display:none">Page mise à jour ✓</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { uploadToCloudinary, cldThumb } from "./assets/cloudinary.js";
+    import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    let photo = "";
+
+    requireAdmin().then(async () => {
+      const snap = await getDoc(doc(db, "site_content", "ceo"));
+      if (snap.exists()) {
+        const d = snap.data();
+        document.getElementById("f-name").value = d.name || "";
+        document.getElementById("f-title").value = d.title || "Fondateur / CEO";
+        document.getElementById("f-alt").value = d.altText || "";
+        document.getElementById("f-bio").value = d.bio || "";
+        document.getElementById("f-parcours").value = d.parcours || "";
+        document.getElementById("f-vision").value = d.vision || "";
+        document.getElementById("f-philosophie").value = d.philosophie || "";
+        document.getElementById("f-message-clients").value = d.messageClients || "";
+        document.getElementById("f-message-equipe").value = d.messageEquipe || "";
+        document.getElementById("f-linkedin").value = d.linkedin || "";
+        photo = d.photo || "";
+        if (photo) document.getElementById("photo-preview").innerHTML = `<img src="${cldThumb(photo, 160, 160)}" style="margin-top:8px;border-radius:10px;width:100px;height:100px;object-fit:cover">`;
+      }
+    });
+
+    document.getElementById("f-photo").addEventListener("change", async (e) => {
+      const file = e.target.files[0]; if (!file) return;
+      const status = document.getElementById("photo-status");
+      status.textContent = "Upload en cours… 0%";
+      try {
+        photo = await uploadToCloudinary(file, "konfortech/ceo", (p) => status.textContent = `Upload en cours… ${p}%`);
+        status.textContent = "";
+        document.getElementById("photo-preview").innerHTML = `<img src="${cldThumb(photo, 160, 160)}" style="margin-top:8px;border-radius:10px;width:100px;height:100px;object-fit:cover">`;
+      } catch (err) { status.textContent = "Échec de l'upload : " + err.message; }
+    });
+
+    document.getElementById("ceo-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const saveBtn = document.getElementById("save-btn");
+      saveBtn.disabled = true; saveBtn.textContent = "Enregistrement…";
+      const payload = {
+        name: document.getElementById("f-name").value,
+        title: document.getElementById("f-title").value,
+        altText: document.getElementById("f-alt").value,
+        bio: document.getElementById("f-bio").value,
+        parcours: document.getElementById("f-parcours").value,
+        vision: document.getElementById("f-vision").value,
+        philosophie: document.getElementById("f-philosophie").value,
+        messageClients: document.getElementById("f-message-clients").value,
+        messageEquipe: document.getElementById("f-message-equipe").value,
+        linkedin: document.getElementById("f-linkedin").value,
+        photo, updatedAt: serverTimestamp(),
+      };
+      try {
+        await setDoc(doc(db, "site_content", "ceo"), payload);
+        document.getElementById("saved-msg").style.display = "inline";
+        setTimeout(() => document.getElementById("saved-msg").style.display = "none", 2500);
+      } catch (err) { alert("Erreur d'enregistrement : " + err.message); }
+      saveBtn.disabled = false; saveBtn.textContent = "Enregistrer";
+    });
+  </script>
+</body>
+</html>
