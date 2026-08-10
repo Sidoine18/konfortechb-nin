@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Partenaires — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar"><button id="mobile-nav-toggle">☰</button><strong>KONFORTECH BÉNIN</strong><span></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar"><h1>Partenaires</h1><div class="who" id="admin-who"></div></div>
+      <div class="content">
+        <div class="toolbar">
+          <p class="hint-text" style="margin:0">N'ajoutez que des partenariats réels et confirmés.</p>
+          <button class="btn btn-primary" id="new-btn">+ Ajouter un partenaire</button>
+        </div>
+        <div class="panel" style="padding:0">
+          <table class="data-table">
+            <thead><tr><th></th><th>Nom</th><th>Catégorie</th><th>Site web</th><th>Statut</th><th></th></tr></thead>
+            <tbody id="rows"><tr><td class="loading-row" colspan="6">Chargement…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal"><div class="modal-card" id="modal-content"></div></div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { uploadToCloudinary, cldThumb } from "./assets/cloudinary.js";
+    import { collection, onSnapshot, orderBy, query, doc, addDoc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    let allItems = [];
+    function esc(s) { const d = document.createElement("div"); d.textContent = s ?? ""; return d.innerHTML; }
+
+    function renderRows() {
+      const rows = document.getElementById("rows");
+      if (allItems.length === 0) { rows.innerHTML = `<tr><td class="loading-row" colspan="6">Aucun partenaire ajouté.</td></tr>`; return; }
+      rows.innerHTML = allItems.map((p) => `
+        <tr>
+          <td>${p.logo ? `<img class="thumb-sm" src="${cldThumb(p.logo, 88, 88)}" alt="">` : `<div class="thumb-sm"></div>`}</td>
+          <td><strong>${esc(p.name)}</strong></td>
+          <td>${esc(p.category || "—")}</td>
+          <td>${p.website ? `<a href="${esc(p.website)}" target="_blank" rel="noopener">${esc(p.website)}</a>` : "—"}</td>
+          <td><span class="badge ${p.active ? "badge-published" : "badge-draft"}">${p.active ? "Actif" : "Inactif"}</span></td>
+          <td style="white-space:nowrap">
+            <button class="btn btn-outline btn-sm" data-edit="${p.id}">Modifier</button>
+            <button class="btn btn-outline btn-sm" data-toggle="${p.id}">${p.active ? "Désactiver" : "Activer"}</button>
+            <button class="btn btn-danger btn-sm" data-del="${p.id}">Suppr.</button>
+          </td>
+        </tr>`).join("");
+      rows.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => openForm(allItems.find((x) => x.id === b.dataset.edit))));
+      rows.querySelectorAll("[data-toggle]").forEach((b) => b.addEventListener("click", () => {
+        const item = allItems.find((x) => x.id === b.dataset.toggle);
+        updateDoc(doc(db, "partners", item.id), { active: !item.active });
+      }));
+      rows.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => {
+        if (!confirm("Retirer ce partenaire ?")) return;
+        deleteDoc(doc(db, "partners", b.dataset.del));
+      }));
+    }
+
+    function openForm(item) {
+      const isNew = !item;
+      const f = item ? { ...item } : { name: "", logo: "", description: "", website: "", category: "", order: allItems.length, active: true };
+      const content = document.getElementById("modal-content");
+      content.innerHTML = `
+        <h2>${isNew ? "Ajouter un partenaire" : "Modifier le partenaire"}</h2>
+        <form id="p-form">
+          <div class="form-grid">
+            <div class="field full"><label>Nom</label><input id="f-name" required value="${esc(f.name)}"></div>
+            <div class="field full"><label>Description</label><textarea id="f-description">${esc(f.description)}</textarea></div>
+            <div class="field"><label>Site web</label><input id="f-website" value="${esc(f.website)}" placeholder="https://…"></div>
+            <div class="field"><label>Catégorie</label><input id="f-category" value="${esc(f.category)}"></div>
+            <div class="field"><label>Ordre d'affichage</label><input type="number" id="f-order" value="${f.order ?? 0}"></div>
+            <div class="field full">
+              <label>Logo</label>
+              <input type="file" id="f-logo" accept="image/*">
+              <p class="hint-text" id="logo-status"></p>
+              <div id="logo-preview">${f.logo ? `<img src="${cldThumb(f.logo, 140, 90)}" style="margin-top:8px;border-radius:8px">` : ""}</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;justify-content:flex-end">
+            <button type="button" class="btn btn-outline" id="cancel-btn">Annuler</button>
+            <button type="submit" class="btn btn-primary" id="save-btn">Enregistrer</button>
+          </div>
+        </form>`;
+      document.getElementById("modal").classList.add("open");
+      let logo = f.logo;
+
+      document.getElementById("f-logo").addEventListener("change", async (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const status = document.getElementById("logo-status");
+        status.textContent = "Upload en cours… 0%";
+        try {
+          logo = await uploadToCloudinary(file, "konfortech/partenaires", (p) => status.textContent = `Upload en cours… ${p}%`);
+          status.textContent = "";
+          document.getElementById("logo-preview").innerHTML = `<img src="${cldThumb(logo, 140, 90)}" style="margin-top:8px;border-radius:8px">`;
+        } catch (err) { status.textContent = "Échec de l'upload : " + err.message; }
+      });
+
+      document.getElementById("cancel-btn").addEventListener("click", () => document.getElementById("modal").classList.remove("open"));
+
+      document.getElementById("p-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const saveBtn = document.getElementById("save-btn");
+        saveBtn.disabled = true; saveBtn.textContent = "Enregistrement…";
+        const payload = {
+          name: document.getElementById("f-name").value,
+          description: document.getElementById("f-description").value,
+          website: document.getElementById("f-website").value,
+          category: document.getElementById("f-category").value,
+          order: Number(document.getElementById("f-order").value) || 0,
+          logo, active: f.active !== false,
+        };
+        try {
+          if (isNew) await addDoc(collection(db, "partners"), { ...payload, createdAt: serverTimestamp() });
+          else await updateDoc(doc(db, "partners", item.id), payload);
+          document.getElementById("modal").classList.remove("open");
+        } catch (err) { alert("Erreur d'enregistrement : " + err.message); }
+        saveBtn.disabled = false; saveBtn.textContent = "Enregistrer";
+      });
+    }
+
+    document.getElementById("new-btn").addEventListener("click", () => openForm(null));
+    document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") e.target.classList.remove("open"); });
+
+    requireAdmin().then(() => {
+      const q = query(collection(db, "partners"), orderBy("order", "asc"));
+      onSnapshot(q, (snap) => { allItems = snap.docs.map((d) => ({ id: d.id, ...d.data() })); renderRows(); }, (err) => {
+        console.error(err);
+        document.getElementById("rows").innerHTML = `<tr><td colspan="6" class="loading-row" style="color:var(--danger)">Erreur de chargement : ${esc(err.code || err.message)}<br><span class="hint-text">Vérifiez votre rôle admin et les règles Firestore (README-ADMIN.md § Dépannage).</span></td></tr>`;
+      });
+    });
+  </script>
+</body>
+</html>
