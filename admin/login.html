@@ -44,16 +44,22 @@
 
   <script type="module">
     import { auth, db } from "./assets/firebase-init.js";
-    import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
-    import { doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
-    // Si déjà connecté, ne pas rester bloqué sur l'écran de connexion.
-    onAuthStateChanged(auth, (user) => { if (user) window.location.href = "index.html"; });
+    // Variable temporaire pour suspendre la redirection automatique pendant la création de compte
+    let isSigningUp = false;
+
+    // Redirection si déjà connecté
+    onAuthStateChanged(auth, (user) => { 
+      if (user && !isSigningUp) window.location.href = "index.html"; 
+    });
 
     const tabLogin = document.getElementById("tab-login");
     const tabSignup = document.getElementById("tab-signup");
     const loginForm = document.getElementById("login-form");
     const signupForm = document.getElementById("signup-form");
+
     tabLogin.addEventListener("click", () => { tabLogin.classList.add("active"); tabSignup.classList.remove("active"); loginForm.style.display = ""; signupForm.style.display = "none"; });
     tabSignup.addEventListener("click", () => { tabSignup.classList.add("active"); tabLogin.classList.remove("active"); signupForm.style.display = ""; loginForm.style.display = "none"; });
 
@@ -86,24 +92,37 @@
 
     signupForm.addEventListener("submit", async (e) => {
       e.preventDefault();
+      isSigningUp = true; // Bloque la redirection automatique d'onAuthStateChanged
+
       const name = document.getElementById("su-name").value;
       const email = document.getElementById("su-email").value;
       const pass = document.getElementById("su-pass").value;
       const errorEl = document.getElementById("signup-error");
       errorEl.textContent = "";
+
       try {
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
-        // Rôle "client" par défaut — jamais choisi par l'utilisateur lui-même,
-        // conformément à firestore.rules (users.create doit avoir role == 'client').
+        
+        // Écriture du profil utilisateur dans Firestore
         await setDoc(doc(db, "users", cred.user.uid), {
-          displayName: name, email, role: "client", createdAt: serverTimestamp(),
+          displayName: name, 
+          email: email, 
+          role: "client", 
+          createdAt: serverTimestamp()
         });
-        alert("Compte créé. Un Super Admin doit maintenant vous donner l'accès au dashboard depuis Firestore (voir la note ci-dessus). Vous allez être redirigé.");
-        window.location.href = "login.html";
+
+        // Déconnexion de l'utilisateur pour qu'il ne reste pas connecté en 'client'
+        await signOut(auth);
+
+        alert("Compte créé avec succès ! Un Super Admin doit vous attribuer un rôle avant de pouvoir vous connecter au dashboard.");
+        window.location.reload();
       } catch (err) {
+        console.error("Erreur Firestore/Auth :", err);
         errorEl.textContent = err.code === "auth/email-already-in-use"
           ? "Un compte existe déjà avec cet email."
-          : "Impossible de créer le compte (mot de passe trop court ou email invalide).";
+          : "Impossible de créer le compte : " + err.message;
+      } finally {
+        isSigningUp = false;
       }
     });
   </script>
