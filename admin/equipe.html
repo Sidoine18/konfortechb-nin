@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Notre équipe — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar"><button id="mobile-nav-toggle">☰</button><strong>KONFORTECH BÉNIN</strong><span></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar"><h1>Notre équipe</h1><div class="who" id="admin-who"></div></div>
+      <div class="content">
+        <div class="toolbar">
+          <p class="hint-text" style="margin:0">Affiché sur la page publique « À propos ». N'ajoutez que des membres réels.</p>
+          <button class="btn btn-primary" id="new-btn">+ Ajouter un membre</button>
+        </div>
+        <div class="stat-grid" id="grid"><p class="loading-row">Chargement…</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal"><div class="modal-card" id="modal-content"></div></div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { uploadToCloudinary, cldThumb } from "./assets/cloudinary.js";
+    import { collection, onSnapshot, orderBy, query, doc, addDoc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    let allItems = [];
+    function esc(s) { const d = document.createElement("div"); d.textContent = s ?? ""; return d.innerHTML; }
+
+    function render() {
+      const grid = document.getElementById("grid");
+      if (allItems.length === 0) { grid.innerHTML = `<div class="empty-module"><h3>Aucun membre ajouté</h3></div>`; return; }
+      grid.innerHTML = allItems.map((m) => `
+        <div class="stat-card" style="text-align:center">
+          ${m.photo ? `<img src="${cldThumb(m.photo, 160, 160)}" alt="" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px">` : `<div class="thumb-sm" style="width:80px;height:80px;border-radius:50%;margin:0 auto 10px"></div>`}
+          <strong>${esc(m.name)}</strong>
+          <div class="hint-text">${esc(m.role)}</div>
+          <div style="margin-top:8px"><span class="badge ${m.active ? "badge-published" : "badge-draft"}">${m.active ? "Visible" : "Masqué"}</span></div>
+          <div style="margin-top:10px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-outline btn-sm" data-edit="${m.id}">Modifier</button>
+            <button class="btn btn-outline btn-sm" data-toggle="${m.id}">${m.active ? "Masquer" : "Afficher"}</button>
+            <button class="btn btn-danger btn-sm" data-del="${m.id}">Suppr.</button>
+          </div>
+        </div>`).join("");
+      grid.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => openForm(allItems.find((x) => x.id === b.dataset.edit))));
+      grid.querySelectorAll("[data-toggle]").forEach((b) => b.addEventListener("click", () => {
+        const item = allItems.find((x) => x.id === b.dataset.toggle);
+        updateDoc(doc(db, "team_members", item.id), { active: !item.active });
+      }));
+      grid.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => {
+        if (!confirm("Retirer ce membre de l'équipe ?")) return;
+        deleteDoc(doc(db, "team_members", b.dataset.del));
+      }));
+    }
+
+    function openForm(item) {
+      const isNew = !item;
+      const f = item ? { ...item } : { name: "", role: "", bio: "", photo: "", email: "", linkedin: "", order: allItems.length, active: true };
+      const content = document.getElementById("modal-content");
+      content.innerHTML = `
+        <h2>${isNew ? "Ajouter un membre" : "Modifier le membre"}</h2>
+        <form id="m-form">
+          <div class="form-grid">
+            <div class="field"><label>Nom complet</label><input id="f-name" required value="${esc(f.name)}"></div>
+            <div class="field"><label>Fonction</label><input id="f-role" required value="${esc(f.role)}" placeholder="Ex : Chef de projet technique"></div>
+            <div class="field full"><label>Courte présentation</label><textarea id="f-bio">${esc(f.bio)}</textarea></div>
+            <div class="field"><label>Email (facultatif)</label><input type="email" id="f-email" value="${esc(f.email)}"></div>
+            <div class="field"><label>LinkedIn (facultatif)</label><input id="f-linkedin" value="${esc(f.linkedin)}"></div>
+            <div class="field"><label>Ordre d'affichage</label><input type="number" id="f-order" value="${f.order ?? 0}"></div>
+            <div class="field full">
+              <label>Photo</label>
+              <input type="file" id="f-photo" accept="image/*">
+              <p class="hint-text" id="photo-status"></p>
+              <div id="photo-preview">${f.photo ? `<img src="${cldThumb(f.photo, 120, 120)}" style="margin-top:8px;border-radius:50%;width:70px;height:70px;object-fit:cover">` : ""}</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;justify-content:flex-end">
+            <button type="button" class="btn btn-outline" id="cancel-btn">Annuler</button>
+            <button type="submit" class="btn btn-primary" id="save-btn">Enregistrer</button>
+          </div>
+        </form>`;
+      document.getElementById("modal").classList.add("open");
+      let photo = f.photo;
+
+      document.getElementById("f-photo").addEventListener("change", async (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const status = document.getElementById("photo-status");
+        status.textContent = "Upload en cours… 0%";
+        try {
+          photo = await uploadToCloudinary(file, "konfortech/equipe", (p) => status.textContent = `Upload en cours… ${p}%`);
+          status.textContent = "";
+          document.getElementById("photo-preview").innerHTML = `<img src="${cldThumb(photo, 120, 120)}" style="margin-top:8px;border-radius:50%;width:70px;height:70px;object-fit:cover">`;
+        } catch (err) { status.textContent = "Échec de l'upload : " + err.message; }
+      });
+
+      document.getElementById("cancel-btn").addEventListener("click", () => document.getElementById("modal").classList.remove("open"));
+
+      document.getElementById("m-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const saveBtn = document.getElementById("save-btn");
+        saveBtn.disabled = true; saveBtn.textContent = "Enregistrement…";
+        const payload = {
+          name: document.getElementById("f-name").value,
+          role: document.getElementById("f-role").value,
+          bio: document.getElementById("f-bio").value,
+          email: document.getElementById("f-email").value,
+          linkedin: document.getElementById("f-linkedin").value,
+          order: Number(document.getElementById("f-order").value) || 0,
+          photo, active: f.active !== false,
+        };
+        try {
+          if (isNew) await addDoc(collection(db, "team_members"), { ...payload, createdAt: serverTimestamp() });
+          else await updateDoc(doc(db, "team_members", item.id), payload);
+          document.getElementById("modal").classList.remove("open");
+        } catch (err) { alert("Erreur d'enregistrement : " + err.message); }
+        saveBtn.disabled = false; saveBtn.textContent = "Enregistrer";
+      });
+    }
+
+    document.getElementById("new-btn").addEventListener("click", () => openForm(null));
+    document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") e.target.classList.remove("open"); });
+
+    requireAdmin().then(() => {
+      const q = query(collection(db, "team_members"), orderBy("order", "asc"));
+      onSnapshot(q, (snap) => { allItems = snap.docs.map((d) => ({ id: d.id, ...d.data() })); render(); }, (err) => {
+        console.error(err);
+        document.getElementById("grid").innerHTML = `<div class="empty-module"><h3>Erreur de chargement</h3><p>${esc((err.code || 'erreur') + (err.message ? ' — ' + err.message : ''))}</p><p class="hint-text">Vérifiez votre rôle admin et les règles Firestore (README-ADMIN.md § Dépannage).</p></div>`;
+      });
+    });
+  </script>
+</body>
+</html>

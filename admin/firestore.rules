@@ -1,0 +1,131 @@
+rules_version = '2';
+
+// =============================================================================
+// Règles de sécurité Firestore — KONFORTECH BÉNIN (konfortechbenin-4a084)
+// =============================================================================
+
+function isSignedIn() {
+  return request.auth != null;
+}
+
+// Pattern officiel Firebase : on vérifie TOUJOURS exists() avant get(),
+// pour ne jamais appeler get() sur un document qui pourrait ne pas exister
+// (cela déclenche une erreur "internal", pas un simple refus propre).
+function myRole() {
+  return isSignedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+    ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role
+    : null;
+}
+
+function isAdminRole() {
+  return myRole() in ['superadmin', 'editeur', 'commercial', 'technicien'];
+}
+
+function isSuperAdmin() {
+  return myRole() == 'superadmin';
+}
+
+function canEditContent() {
+  return myRole() in ['superadmin', 'editeur'];
+}
+
+function canManageLeads() {
+  return myRole() in ['superadmin', 'commercial'];
+}
+
+function isOwner(userId) {
+  return isSignedIn() && request.auth.uid == userId;
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdminRole();
+      allow create: if isOwner(userId) && request.resource.data.role == 'client';
+      allow update: if (isOwner(userId) && request.resource.data.role == resource.data.role) || isSuperAdmin();
+      allow delete: if isSuperAdmin();
+    }
+
+    match /projects/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /realisations/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /blog_posts/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /resources/{docId} {
+      allow read: if resource.data.published == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /partners/{docId} {
+      allow read: if resource.data.active == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /team_members/{docId} {
+      allow read: if resource.data.active == true || canEditContent();
+      allow write: if canEditContent();
+    }
+    match /site_content/{docId} {
+      allow read: if true;
+      allow write: if canEditContent();
+    }
+
+    match /testimonials/{docId} {
+      allow read: if resource.data.approved == true || canManageLeads();
+      allow create: if request.resource.data.approved == false;
+      allow update, delete: if canManageLeads();
+    }
+
+    match /devis_requests/{docId} {
+      allow create: if request.resource.data.status == 'nouveau';
+      allow read: if isAdminRole() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow update: if isAdminRole() || (isSignedIn() && resource.data.clientId == request.auth.uid && request.resource.data.clientId == resource.data.clientId);
+      allow delete: if isAdminRole();
+    }
+
+    match /messages/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isAdminRole();
+    }
+
+    match /conversations/{clientId} {
+      allow read, write: if isOwner(clientId) || isAdminRole();
+      match /messages/{messageId} {
+        allow read: if isOwner(clientId) || isAdminRole();
+        allow create: if (isOwner(clientId) || isAdminRole()) && request.resource.data.senderId == request.auth.uid;
+        allow update, delete: if isAdminRole();
+      }
+    }
+
+    match /invoices/{docId} {
+      allow read: if isAdminRole() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if isAdminRole();
+    }
+
+    match /client_documents/{docId} {
+      allow read: if isAdminRole() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if isAdminRole();
+    }
+
+    match /admin_notifications/{docId} {
+      allow read, update: if isAdminRole();
+      allow create: if true;
+      allow delete: if isAdminRole();
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isSuperAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Messages — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar"><button id="mobile-nav-toggle">☰</button><strong>KONFORTECH BÉNIN</strong><span></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar"><h1>Messages</h1><div class="who" id="admin-who"></div></div>
+      <div class="content">
+        <p class="hint-text" style="margin-bottom:14px">Messages reçus depuis le formulaire de contact du site public.</p>
+        <div id="list" style="display:grid;gap:12px"><p class="loading-row">Chargement…</p></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { collection, onSnapshot, orderBy, query, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    const STATUSES = ["nouveau", "lu", "en_cours", "traite", "archive"];
+    const LABELS = { nouveau: "Nouveau", lu: "Lu", en_cours: "En cours", traite: "Traité", archive: "Archivé" };
+    const BADGES = { nouveau: "badge-new", lu: "badge-progress", en_cours: "badge-progress", traite: "badge-won", archive: "badge-draft" };
+    function esc(s) { const d = document.createElement("div"); d.textContent = s ?? ""; return d.innerHTML; }
+
+    function render(items) {
+      const list = document.getElementById("list");
+      if (items.length === 0) {
+        list.innerHTML = `<div class="empty-module"><h3>Boîte de réception vide</h3><p>Les messages envoyés depuis konfortechbenin.online/contact apparaîtront ici.</p></div>`;
+        return;
+      }
+      list.innerHTML = items.map((m) => `
+        <div class="panel" style="margin-bottom:0" data-id="${m.id}">
+          <div style="display:flex;justify-content:space-between">
+            <strong>${esc(m.nom)} <span style="color:#7A8492;font-weight:400">· ${esc(m.email || "")}</span></strong>
+            <span class="badge ${BADGES[m.status] || "badge-new"}">${LABELS[m.status] || m.status}</span>
+          </div>
+          <p style="margin:8px 0">${esc(m.message)}</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            ${STATUSES.map((s) => `<button class="btn btn-sm ${m.status === s ? "btn-primary" : "btn-outline"}" data-status="${s}">${LABELS[s]}</button>`).join("")}
+            <button class="btn btn-danger btn-sm" data-action="delete">Supprimer</button>
+          </div>
+        </div>`).join("");
+
+      list.querySelectorAll("[data-status]").forEach((btn) => btn.addEventListener("click", async (e) => {
+        const id = e.target.closest("[data-id]").dataset.id;
+        await updateDoc(doc(db, "messages", id), { status: e.target.dataset.status });
+      }));
+      list.querySelectorAll("[data-action='delete']").forEach((btn) => btn.addEventListener("click", async (e) => {
+        if (!confirm("Supprimer ce message ?")) return;
+        const id = e.target.closest("[data-id]").dataset.id;
+        await deleteDoc(doc(db, "messages", id));
+      }));
+    }
+
+    requireAdmin().then(() => {
+      const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+      onSnapshot(q, (snap) => render(snap.docs.map((d) => ({ id: d.id, ...d.data() }))), (err) => {
+        console.error(err);
+        document.getElementById("list").innerHTML = `<div class="empty-module"><h3>Erreur de chargement</h3><p>${esc((err.code || 'erreur') + (err.message ? ' — ' + err.message : ''))}</p><p class="hint-text">Vérifiez votre rôle admin et les règles Firestore (README-ADMIN.md § Dépannage).</p></div>`;
+      });
+    });
+  </script>
+</body>
+</html>

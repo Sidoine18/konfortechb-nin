@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Tableau de bord — Dashboard KONFORTECH BÉNIN</title>
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <div class="mobile-topbar">
+    <button id="mobile-nav-toggle" aria-label="Menu">☰</button>
+    <strong>KONFORTECH BÉNIN</strong>
+    <span></span>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="admin-sidebar"></aside>
+    <div>
+      <div class="topbar">
+        <h1>Tableau de bord</h1>
+        <div class="who" id="admin-who"></div>
+      </div>
+      <div class="content">
+        <div class="stat-grid" id="stat-grid">
+          <div class="stat-card"><div class="num">…</div><div class="label">Chargement…</div></div>
+        </div>
+        <div class="panel">
+          <h2>Bienvenue sur le dashboard KONFORTECH BÉNIN</h2>
+          <p style="color:#5A6570;font-size:.9rem">
+            Ce tableau de bord reflète en temps réel le contenu de votre base Firestore. Commencez par
+            <a href="devis.html" style="color:var(--blue);font-weight:600">Demandes de devis</a> pour traiter les nouveaux prospects,
+            ou <a href="realisations.html" style="color:var(--blue);font-weight:600">Réalisations</a> pour publier un projet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAdmin } from "./assets/auth-guard.js";
+    import { db } from "./assets/firebase-init.js";
+    import { collection, query, where, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    requireAdmin().then(async () => {
+      const CARDS = [
+        { label: "Demandes de devis (nouvelles)", col: "devis_requests", field: "status", val: "nouveau" },
+        { label: "Messages non lus", col: "messages", field: "status", val: "nouveau" },
+        { label: "Avis en attente", col: "testimonials", field: "approved", val: false },
+        { label: "Réalisations publiées", col: "realisations", field: "published", val: true },
+        { label: "Articles de blog", col: "blog_posts", field: "published", val: true },
+        { label: "Partenaires actifs", col: "partners", field: "active", val: true },
+        { label: "Membres de l'équipe", col: "team_members", field: "active", val: true },
+      ];
+      const grid = document.getElementById("stat-grid");
+      grid.innerHTML = "";
+      for (const c of CARDS) {
+        let count = "—";
+        try {
+          const q = query(collection(db, c.col), where(c.field, "==", c.val));
+          const snap = await getCountFromServer(q);
+          count = snap.data().count;
+        } catch (e) { console.error(c.col, e); }
+        const div = document.createElement("div");
+        div.className = "stat-card";
+        div.innerHTML = `<div class="num">${count}</div><div class="label">${c.label}</div>`;
+        grid.appendChild(div);
+      }
+    });
+  </script>
+</body>
+</html>
