@@ -107,7 +107,7 @@
     </section><nav class="breadcrumbs"><div class="container"><a href="index.html">Accueil</a> <span>/</span><span aria-current="page">Réalisations</span></div></nav><section><div class="container">
       <div id="realisations-filters" class="filters reveal" style="display:none"></div>
       <div id="realisations-grid" class="grid grid-3"></div>
-      <div id="realisations-empty" class="empty-state reveal">
+      <div id="realisations-empty" class="empty-state reveal" style="display:none">
         <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg>
         <p><strong>Le portfolio de KONFORTECH BÉNIN est en cours de constitution.</strong></p>
         <p>Conformément à notre engagement de transparence, nous ne publions ici que des projets réellement réalisés — avec titre, client, localisation, problème, solution et résultats vérifiables. Les premières réalisations seront ajoutées dès qu'elles seront prêtes à être partagées.</p>
@@ -140,9 +140,16 @@
     const filtersEl = document.getElementById("realisations-filters");
     let items = [];
     try {
-      const q = query(collection(db, "realisations"), where("published", "==", true), orderBy("createdAt", "desc"));
+      // Pas de orderBy ici : évite d'exiger un index composite Firestore.
+      // Le tri par date se fait ci-dessous, côté client.
+      const q = query(collection(db, "realisations"), where("published", "==", true));
       const snap = await getDocs(q);
       items = snap.docs.map((d) => d.data());
+      items.sort((a, b) => {
+        const ta = a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
+        const tb = b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
+        return tb - ta;
+      });
     } catch (e) { console.error(e); }
 
     if (items.length === 0) { emptyEl.style.display = ""; return; }
