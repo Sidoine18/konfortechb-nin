@@ -20,7 +20,119 @@
 <meta name="twitter:description" content="Sidoine Ahizigbe, fondateur et CEO de KONFORTECH BÉNIN, entreprise béninoise de solutions techniques et digitales.">
 <meta name="twitter:image" content="https://konfortechbenin.online/assets/img/logo.png">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "KONFORTECH BÉNIN", "url": "https://konfortechbenin.online", "logo": "https://konfortechbenin.online/assets/img/logo.png", "description": "KONFORTECH BÉNIN conçoit des solutions techniques modernes : développement web, applications, SEO, froid et climatisation, électricité, énergie solaire, maintenance industrielle.", "email": "konfortechbenin@gmail.com", "telephone": "+22954163067", "address": {"@type": "PostalAddress", "addressRegion": "Zou", "addressLocality": "Abomey", "addressCountry": "BJ"}, "sameAs": ["https://www.facebook.com/profile.php?id=61592735126888", "https://www.linkedin.com/company/konfortech-b%C3%A9nin/"]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Sidoine Ahizigbe", "jobTitle": "Fondateur & CEO", "worksFor": {"@type": "Organization", "name": "KONFORTECH BÉNIN", "url": "https://konfortechbenin.online"}, "url": "https://konfortechbenin.online/ceo.html"}</script>
+<style>
+  #main .ceo-serif { font-family: 'Fraunces', Georgia, serif; }
+
+  .ceo-hero {
+    position: relative;
+    background: #0E141B;
+    color: #fff;
+    overflow: hidden;
+    padding: 0;
+  }
+  .ceo-hero .container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+    padding: 84px 24px 72px;
+    position: relative;
+    z-index: 1;
+  }
+  .ceo-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+    color: #FF7A00; font-weight: 600; margin-bottom: 18px;
+  }
+  .ceo-hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: #FF7A00; }
+  .ceo-hero h1 {
+    font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+    line-height: 1.04; font-weight: 500; margin: 0 0 6px;
+  }
+  .ceo-hero .ceo-role {
+    font-size: 1.05rem; color: #9FB0C3; margin: 0 0 28px; font-weight: 400;
+  }
+  .ceo-hero .ceo-facts {
+    display: flex; flex-wrap: wrap; gap: 10px 28px; margin-bottom: 30px;
+    border-top: 1px solid rgba(255,255,255,.14); padding-top: 20px;
+  }
+  .ceo-hero .ceo-facts div { font-size: .82rem; color: #B7C2CF; }
+  .ceo-hero .ceo-facts b { display: block; color: #fff; font-size: .95rem; font-weight: 600; margin-bottom: 2px; }
+
+  .ceo-portrait-wrap { position: relative; display: flex; justify-content: center; }
+  .ceo-portrait-ring {
+    position: absolute; inset: -18px;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg, #3D9BFF, #0066CC, transparent 65%);
+    opacity: .55; filter: blur(1px);
+  }
+  .ceo-portrait {
+    position: relative; width: 100%; max-width: 320px; aspect-ratio: 1/1;
+    border-radius: 50%; overflow: hidden;
+    background: linear-gradient(155deg, #16202B, #0A0F15);
+    border: 1px solid rgba(255,255,255,.12);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ceo-portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .ceo-portrait .ceo-monogram {
+    font-family: 'Fraunces', Georgia, serif; font-size: 4.4rem; font-weight: 500;
+    color: rgba(255,255,255,.85); letter-spacing: .02em;
+  }
+  .ceo-portrait-circuit { position: absolute; inset: -40px; z-index: -1; opacity: .5; pointer-events: none; }
+
+  .ceo-quote-band { background: #0066CC; color: #fff; position: relative; overflow: hidden; }
+  .ceo-quote-band .container { position: relative; padding: 68px 24px; max-width: 880px; }
+  .ceo-quote-mark {
+    font-family: 'Fraunces', Georgia, serif; font-size: 7rem; line-height: 1;
+    position: absolute; top: 8px; left: 12px; color: rgba(255,255,255,.16);
+    pointer-events: none; user-select: none;
+  }
+  .ceo-quote-band blockquote {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem); line-height: 1.42;
+    margin: 0 0 18px; position: relative; z-index: 1;
+  }
+  .ceo-quote-band cite {
+    font-style: normal; font-size: .85rem; opacity: .85; letter-spacing: .03em;
+  }
+
+  .ceo-bio-section .container { max-width: 880px; }
+  .ceo-bio-section h2 { font-size: 1.9rem; margin-bottom: 18px; }
+  .ceo-bio-section p { font-size: 1.05rem; line-height: 1.75; color: #4A5568; }
+  .ceo-bio-section p + p { margin-top: 16px; }
+
+  .ceo-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid #E4E7EC; border-bottom: 1px solid #E4E7EC; }
+  .ceo-pillar { padding: 40px 32px; border-left: 1px solid #E4E7EC; }
+  .ceo-pillar:first-child { border-left: none; }
+  .ceo-pillar .ceo-pillar-label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: #FF7A00; font-weight: 700; margin-bottom: 14px; display: block; }
+  .ceo-pillar h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 0 0 10px; }
+  .ceo-pillar p { color: #5B6472; font-size: .95rem; line-height: 1.6; margin: 0; }
+
+  .ceo-messages-section { background: #0E141B; color: #fff; }
+  .ceo-messages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.12); border-radius: 14px; overflow: hidden; }
+  .ceo-message-panel { background: #131B24; padding: 38px 34px; }
+  .ceo-message-panel .ceo-msg-label { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: #FF7A00; font-weight: 700; margin-bottom: 14px; display: block; }
+  .ceo-message-panel p { font-size: 1rem; line-height: 1.7; color: #D5DCE3; margin: 0; }
+
+  @media (max-width: 860px) {
+    .ceo-hero .container { grid-template-columns: 1fr; padding: 56px 20px 48px; text-align: center; }
+    .ceo-hero .ceo-facts { justify-content: center; }
+    .ceo-portrait-wrap { order: -1; }
+    .ceo-portrait { max-width: 220px; }
+    .ceo-pillars { grid-template-columns: 1fr; }
+    .ceo-pillar { border-left: none; border-top: 1px solid #E4E7EC; }
+    .ceo-pillar:first-child { border-top: none; }
+    .ceo-messages-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ceo-portrait-ring { filter: none; }
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
@@ -81,67 +193,113 @@
   <a class="btn btn-ghost btn-block" style="margin-top:10px" href="tel:+22954163067"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h3.6l1.2 5-2.6 1.7a12.4 12.4 0 0 0 6.1 6.1l1.7-2.6 5 1.2V19a2 2 0 0 1-2.2 2C10.4 20.6 3.4 13.6 3 5.2A2 2 0 0 1 5 3z"/></svg> Appeler +229 54 16 30 67</a>
 </div>
 <main id="main">
-<section class="page-hero">
-      <div class="frost-bg"><svg viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.4">
-        <line x1="120" y1="60" x2="120" y2="440"/>
-        <line x1="60" y1="140" x2="180" y2="360"/>
-        <line x1="180" y1="140" x2="60" y2="360"/>
-        <line x1="120" y1="60" x2="90" y2="20"/><line x1="120" y1="60" x2="150" y2="20"/>
-        <line x1="120" y1="440" x2="90" y2="480"/><line x1="120" y1="440" x2="150" y2="480"/>
-        <path d="M420 250 L520 250 L560 210 L680 210 L720 170" />
-        <path d="M420 300 L560 300 L600 340 L700 340 L740 380"/>
-        <path d="M420 200 L500 200 L540 160 L640 160"/>
-        <circle cx="720" cy="170" r="7" stroke="rgba(255,122,0,.55)"/>
-        <circle cx="740" cy="380" r="7" stroke="rgba(255,122,0,.55)"/>
-        <circle cx="640" cy="160" r="7"/>
-        <circle cx="420" cy="250" r="4" fill="rgba(255,122,0,.55)" stroke="none" class="pulse-dot"/>
-        <circle cx="420" cy="300" r="4" fill="rgba(255,122,0,.55)" stroke="none" class="pulse-dot" style="animation-delay:.8s"/>
-      </g>
-    </svg></div>
-      <div class="container">
-        <span class="eyebrow on-dark">Direction</span>
-        <h1>Le mot du fondateur de KONFORTECH BÉNIN.</h1>
-        <p class="lede">Une entreprise se juge autant à sa vision qu'à ses réalisations.</p>
-      </div>
-    </section><nav class="breadcrumbs"><div class="container"><a href="index.html">Accueil</a> <span>/</span><span aria-current="page">Le CEO</span></div></nav><section>
-      <div class="container-narrow reveal">
-        <div id="ceo-profile">
-          <div id="ceo-photo"></div>
-          <h2 id="ceo-name">Sidoine Ahizigbe</h2>
-          <p class="lede" id="ceo-title">Fondateur &amp; CEO de KONFORTECH BÉNIN</p>
-          <div id="ceo-bio"></div>
-          <div id="ceo-parcours"></div>
-          <div id="ceo-messages"></div>
+
+  <section class="ceo-hero">
+    <div class="container">
+      <div>
+        <span class="ceo-hero-eyebrow">Direction</span>
+        <h1 class="ceo-serif" id="ceo-name">Sidoine Ahizigbe</h1>
+        <p class="ceo-role" id="ceo-title">Fondateur &amp; CEO de KONFORTECH BÉNIN</p>
+        <div class="ceo-facts">
+          <div><b>KONFORTECH BÉNIN</b>Entreprise fondée et dirigée</div>
+          <div><b>Abomey, Zou</b>Siège &amp; ancrage local</div>
+          <div><b>Deux pôles</b>Digital &amp; solutions techniques</div>
         </div>
       </div>
-    </section>
-    <section class="bg-fog">
-      <div class="container">
-        <div class="grid grid-3">
-          <div class="card reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 9 13.2 13.2 9 15 10.8 10.8 15 9"/></svg></div><h3>Vision</h3><p class="muted" id="ceo-vision-text">Faire de KONFORTECH BÉNIN une référence béninoise où technologie et solutions techniques se rejoignent au service des clients.</p></div>
-          <div class="card reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg></div><h3>Philosophie</h3><p class="muted" id="ceo-philo-text">Comprendre avant de proposer, installer avec rigueur, rester disponible dans la durée.</p></div>
-          <div class="card reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/></svg></div><h3>Engagement</h3><p class="muted">Ne jamais sacrifier la qualité technique à la rapidité d'exécution.</p></div>
-        </div>
-      </div>
-    </section><section>
-  <div class="container">
-    <div class="cta-band reveal">
-      <div class="container-flex">
-        <div>
-          <h2>Envie d'échanger directement avec notre équipe ?</h2>
-          <p style="max-width:480px">Contactez KONFORTECH BÉNIN pour discuter de votre projet.</p>
-        </div>
-        <div class="cta-row" style="margin-top:0">
-          <a class="btn btn-primary" href="devis.html">Demander un devis</a>
-          
+      <div class="ceo-portrait-wrap">
+        <svg class="ceo-portrait-circuit" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="rgba(61,155,255,.35)" stroke-width="1.3">
+            <circle cx="200" cy="200" r="185"/>
+            <path d="M200 15 L200 60"/><path d="M200 340 L200 385"/>
+            <path d="M15 200 L60 200"/><path d="M340 200 L385 200"/>
+            <circle cx="200" cy="15" r="4" fill="rgba(255,122,0,.7)" stroke="none"/>
+            <circle cx="385" cy="200" r="4" fill="rgba(255,122,0,.7)" stroke="none"/>
+          </g>
+        </svg>
+        <div class="ceo-portrait-ring"></div>
+        <div class="ceo-portrait" id="ceo-photo">
+          <span class="ceo-monogram">SA</span>
         </div>
       </div>
     </div>
-  </div>
-</section><script type="module">
+  </section>
+
+  <nav class="breadcrumbs"><div class="container"><a href="index.html">Accueil</a> <span>/</span><span aria-current="page">Le CEO</span></div></nav>
+
+  <section class="ceo-bio-section" style="padding:64px 0 8px">
+    <div class="container">
+      <h2 class="ceo-serif">Parcours</h2>
+      <div id="ceo-bio">
+        <p>La biographie complète de Sidoine Ahizigbe est en cours de mise à jour sur cette page.</p>
+      </div>
+      <div id="ceo-parcours"></div>
+    </div>
+  </section>
+
+  <section class="ceo-quote-band">
+    <div class="container">
+      <span class="ceo-quote-mark" aria-hidden="true">"</span>
+      <blockquote id="ceo-quote">Comprendre avant de proposer, installer avec rigueur, rester disponible dans la durée — c'est cette exigence qui définit chaque projet que nous menons.</blockquote>
+      <cite>— Sidoine Ahizigbe, Fondateur &amp; CEO</cite>
+    </div>
+  </section>
+
+  <section style="padding:70px 0">
+    <div class="container">
+      <div class="ceo-pillars">
+        <div class="ceo-pillar">
+          <span class="ceo-pillar-label">Vision</span>
+          <h3 class="ceo-serif">Une référence béninoise</h3>
+          <p id="ceo-vision-text">Faire de KONFORTECH BÉNIN une référence où technologie et solutions techniques se rejoignent au service des clients.</p>
+        </div>
+        <div class="ceo-pillar">
+          <span class="ceo-pillar-label">Philosophie</span>
+          <h3 class="ceo-serif">Comprendre avant d'agir</h3>
+          <p id="ceo-philo-text">Comprendre avant de proposer, installer avec rigueur, rester disponible dans la durée.</p>
+        </div>
+        <div class="ceo-pillar">
+          <span class="ceo-pillar-label">Engagement</span>
+          <h3 class="ceo-serif">Jamais de compromis</h3>
+          <p>Ne jamais sacrifier la qualité technique à la rapidité d'exécution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ceo-messages-section" style="padding:70px 0" id="ceo-messages-section">
+    <div class="container">
+      <div class="ceo-messages-grid" id="ceo-messages-grid">
+        <div class="ceo-message-panel">
+          <span class="ceo-msg-label">Message aux clients</span>
+          <p id="ceo-msg-clients">Chaque client mérite une solution pensée pour sa réalité, pas une réponse générique. C'est l'engagement que je porte personnellement sur chaque projet KONFORTECH BÉNIN.</p>
+        </div>
+        <div class="ceo-message-panel">
+          <span class="ceo-msg-label">Message à l'équipe</span>
+          <p id="ceo-msg-equipe">Notre exigence technique est ce qui nous distingue. Continuons à construire, ensemble, une entreprise dont le Bénin peut être fier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-band reveal">
+        <div class="container-flex">
+          <div>
+            <h2>Envie d'échanger directement avec notre équipe ?</h2>
+            <p style="max-width:480px">Contactez KONFORTECH BÉNIN pour discuter de votre projet.</p>
+          </div>
+          <div class="cta-row" style="margin-top:0">
+            <a class="btn btn-primary" href="devis.html">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { getFirestore, collection, query, where, orderBy, limit, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
   const app = initializeApp({
       apiKey: "AIzaSyCxmG5nTKQlqOOQgp0x03ylkXsuP5W6IhA",
       authDomain: "konfortechbenin-4a084.firebaseapp.com",
@@ -157,29 +315,28 @@
     return url.replace('/upload/', `/upload/w_${w},h_${h},c_fill,f_auto,q_auto/`);
   }
   function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
-  
+
   (async function () {
     try {
       const snap = await getDoc(doc(db, "site_content", "ceo"));
       if (!snap.exists()) return;
       const d = snap.data();
 
-      // Le nom/titre par défaut ("Sidoine Ahizigbe — Fondateur & CEO") sont déjà dans le HTML.
-      // Firestore vient ici les compléter ou les affiner si renseigné, sans jamais afficher de message "à venir".
-      if (d.photo) document.getElementById("ceo-photo").innerHTML = `<img src="${cldThumb(d.photo, 240, 240)}" alt="${esc(d.altText || d.name || 'Sidoine Ahizigbe')}" style="width:140px;height:140px;border-radius:16px;object-fit:cover;margin-bottom:20px">`;
+      if (d.photo) {
+        document.getElementById("ceo-photo").innerHTML =
+          `<img src="${cldThumb(d.photo, 400, 400)}" alt="${esc(d.altText || d.name || 'Sidoine Ahizigbe')}">`;
+      }
       if (d.name) document.getElementById("ceo-name").textContent = d.name;
       if (d.title) document.getElementById("ceo-title").textContent = d.title;
-      if (d.bio) document.getElementById("ceo-bio").innerHTML = `<p class="muted">${esc(d.bio)}</p>`;
-      if (d.parcours) document.getElementById("ceo-parcours").innerHTML = `<h3>Parcours</h3><p class="muted">${esc(d.parcours)}</p>`;
-      let msgs = "";
-      if (d.messageClients) msgs += `<h3>Message aux clients</h3><p class="muted">${esc(d.messageClients)}</p>`;
-      if (d.messageEquipe) msgs += `<h3>Message à l'équipe</h3><p class="muted">${esc(d.messageEquipe)}</p>`;
-      document.getElementById("ceo-messages").innerHTML = msgs;
+      if (d.bio) document.getElementById("ceo-bio").innerHTML = `<p>${esc(d.bio)}</p>`;
+      if (d.parcours) document.getElementById("ceo-parcours").innerHTML = `<p>${esc(d.parcours)}</p>`;
+      if (d.citation) document.getElementById("ceo-quote").textContent = d.citation;
+      if (d.messageClients) document.getElementById("ceo-msg-clients").textContent = d.messageClients;
+      if (d.messageEquipe) document.getElementById("ceo-msg-equipe").textContent = d.messageEquipe;
       if (d.vision) document.getElementById("ceo-vision-text").textContent = d.vision;
       if (d.philosophie) document.getElementById("ceo-philo-text").textContent = d.philosophie;
     } catch (e) { console.error(e); }
   })();
-
 </script>
 </main>
 <footer class="site-footer">
