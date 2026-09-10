@@ -104,7 +104,7 @@
         <h1>Les partenaires de KONFORTECH BÉNIN.</h1>
         <p class="lede">Cette page présente exclusivement des partenariats réels — aucun logo ni nom n'est publié sans confirmation.</p>
       </div>
-    </section><nav class="breadcrumbs"><div class="container"><a href="index.html">Accueil</a> <span>/</span><span aria-current="page">Partenaires</span></div></nav><section><div class="container"><div class="grid grid-3" id="partners-grid"></div><div class="empty-state reveal" id="partners-empty">
+    </section><nav class="breadcrumbs"><div class="container"><a href="index.html">Accueil</a> <span>/</span><span aria-current="page">Partenaires</span></div></nav><section><div class="container"><div class="grid grid-3" id="partners-grid"></div><div class="empty-state reveal" id="partners-empty" style="display:none">
       <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg>
       <p><strong>Nos partenariats officiels seront présentés ici prochainement.</strong></p>
       <p style="margin:0">Vous êtes fournisseur, distributeur ou souhaitez devenir partenaire de KONFORTECH BÉNIN&nbsp;? Contactez-nous.</p>
@@ -129,20 +129,41 @@
   function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
   
   (async function () {
+    const emptyEl = document.getElementById("partners-empty");
+    const grid = document.getElementById("partners-grid");
     try {
-      const q = query(collection(db, "partners"), where("active", "==", true), orderBy("order", "asc"));
+      // Pas de orderBy ici : évite d'exiger un index composite Firestore.
+      const q = query(collection(db, "partners"), where("active", "==", true));
       const snap = await getDocs(q);
       const items = snap.docs.map((d) => d.data());
-      if (items.length === 0) return;
-      document.getElementById("partners-empty").style.display = "none";
-      document.getElementById("partners-grid").innerHTML = items.map((p) => `
+      items.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+      if (items.length === 0) { emptyEl.style.display = ""; return; }
+      emptyEl.style.display = "none";
+      grid.innerHTML = items.map((p) => `
         <div class="card reveal" style="text-align:center">
           ${p.logo ? `<img src="${cldThumb(p.logo, 200, 120)}" alt="${esc(p.name)}" style="max-height:60px;width:auto;margin:0 auto 14px;object-fit:contain">` : ""}
           <h3 style="font-size:1rem">${esc(p.name)}</h3>
           ${p.description ? `<p class="muted" style="font-size:.85rem">${esc(p.description)}</p>` : ""}
           ${p.website ? `<a class="btn btn-outline btn-sm" href="${esc(p.website)}" target="_blank" rel="noopener noreferrer" style="margin-top:8px">Visiter le site</a>` : ""}
         </div>`).join("");
-    } catch (e) { console.error(e); }
+
+      // Réactive l'animation "reveal" sur les cartes injectées dynamiquement
+      var newReveals = grid.querySelectorAll('.reveal:not(.in)');
+      if ('IntersectionObserver' in window) {
+        var io2 = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io2.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        newReveals.forEach(function (el) { io2.observe(el); });
+      } else {
+        newReveals.forEach(function (el) { el.classList.add('in'); });
+      }
+    } catch (e) { console.error(e); emptyEl.style.display = ""; }
   })();
 
 </script>
