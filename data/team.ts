@@ -1,21 +1,3 @@
-/**
- * ÉQUIPE — source unique de vérité.
- *
- * ▶ POUR AJOUTER UN MEMBRE :
- *   1. Déposez sa photo dans  public/gallery/team/
- *      → format CARRÉ recommandé (ex. 800 × 800 px), nom de fichier en
- *        minuscules sans accent : prenom-nom.jpg
- *   2. Copiez un bloc ci-dessous et modifiez-le.
- *   3. Sauvegardez : le membre apparaît automatiquement sur /equipe
- *      (et sur /direction s'il a `isDirector: true`).
- *
- * ⚠️ RÈGLE ABSOLUE : n'inscrivez que des personnes réelles et des
- *   informations exactes. Ne jamais inventer de diplôme, de titre,
- *   d'années d'expérience ou de certification.
- *   Un champ que vous n'avez pas ? Laissez-le absent — la section
- *   correspondante ne s'affichera simplement pas.
- */
-
 export type TeamMember = {
   /** Identifiant unique en minuscules, sans accent ni espace */
   slug: string;
@@ -48,11 +30,24 @@ export const team: TeamMember[] = [
     role: 'Fondateur / Direction',
     photo: '/gallery/team/sidoine-ahizigbe.jpg',
     photoAlt: 'Sidoine Ahizigbe, fondateur et dirigeant de KONFORTECH BÉNIN',
+    email: 'sidoineah964@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/sidoine-ahizigbe-34846a35',
     isDirector: true,
     order: 1,
-    // bio, expertise, email et linkedin volontairement absents :
-    // à compléter uniquement avec des informations réelles et vérifiées.
   },
+
+  {
+    slug: 'gloria-tossou',
+    name: 'Gloria Tossou',
+    role: 'Directrice Commerciale',
+    photo: '/gallery/team/gloria-tossou.jpg',
+    photoAlt: 'Gloria Tossou, directrice commerciale chez KONFORTECH BÉNIN',
+    //bio: "Une ou deux phrases factuelles sur son rôle dans l'entreprise.",
+    expertise: 'Aquisition client',
+    email: 'tossouseminvo@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/gloria-tossou-654483384',
+    order: 2,
+ },
 
   /* ------------------------------------------------------------------
    * EXEMPLE — copiez ce bloc, retirez les /* *\/ autour, puis modifiez :
