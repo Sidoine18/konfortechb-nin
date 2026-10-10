@@ -31,7 +31,7 @@ export const team: TeamMember[] = [
     photo: '/gallery/team/sidoine-ahizigbe.jpg',
     photoAlt: 'Sidoine Ahizigbe, fondateur et dirigeant de KONFORTECH BÉNIN',
     email: 'sidoineah964@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/sidoine-ahizigbe-34846a35',
+    linkedin: 'https://www.linkedin.com/in/sidoine-ahizigbe-34846a335/?isSelfProfile=true',
     isDirector: true,
     order: 1,
   },
