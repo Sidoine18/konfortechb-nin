@@ -39,9 +39,9 @@ export const team: TeamMember[] = [
   {
     slug: 'gloria-tossou',
     name: 'Gloria Tossou',
-    role: 'Directrice Commerciale',
+    role: 'Responsable Commerciale',
     photo: '/gallery/team/gloria-tossou.jpg',
-    photoAlt: 'Gloria Tossou, directrice commerciale chez KONFORTECH BÉNIN',
+    photoAlt: 'Gloria Tossou, responsable commerciale chez KONFORTECH BÉNIN',
     //bio: "Une ou deux phrases factuelles sur son rôle dans l'entreprise.",
     expertise: ['Aquisition client'],
     email: 'tossouseminvo@gmail.com',
