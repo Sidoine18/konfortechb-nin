@@ -43,7 +43,7 @@ export const team: TeamMember[] = [
     photo: '/gallery/team/gloria-tossou.jpg',
     photoAlt: 'Gloria Tossou, directrice commerciale chez KONFORTECH BÉNIN',
     //bio: "Une ou deux phrases factuelles sur son rôle dans l'entreprise.",
-    expertise: 'Aquisition client',
+    expertise: ['Aquisition client'],
     email: 'tossouseminvo@gmail.com',
     linkedin: 'https://www.linkedin.com/in/gloria-tossou-654483384',
     order: 2,
