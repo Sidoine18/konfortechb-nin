@@ -2691,6 +2691,855 @@ export const articles: Article[] = [
       },
     ],
   },
+
+  /* ───────── LOT 4 · MAINTENANCE & PLOMBERIE ───────── */
+
+  {
+    slug: "plan-maintenance-preventive-installations-techniques",
+    title: "Comment mettre en place un plan de maintenance préventive : méthode pour entreprises et bâtiments",
+    seoTitle: "Plan de maintenance préventive : méthode complète en 8 étapes",
+    seoDescription:
+      "Inventaire, criticité, fréquences, planning, pièces de rechange, sécurité, indicateurs : la méthode complète pour mettre en place un plan de maintenance préventive.",
+    excerpt:
+      "Réparer après la panne coûte cher et arrive au pire moment. Une méthode en étapes pour organiser l'entretien de vos équipements avant qu'ils ne cèdent.",
+    category: "Maintenance & installations techniques",
+    tags: ["maintenance préventive", "plan de maintenance", "maintenance industrielle", "gestion des équipements", "GMAO"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 14,
+    relatedServices: ["maintenance-industrielle", "froid-climatisation"],
+    content: [
+      {
+        type: 'p',
+        text: "Dans beaucoup d'entreprises, la maintenance se résume à une phrase : « on répare quand ça casse ». Tant que tout fonctionne, personne n'y pense ; quand la climatisation de la salle serveur s'arrête, que la chambre froide dérive en température un samedi ou que le groupe électrogène refuse de démarrer pendant une coupure, la panne arrive toujours au pire moment, coûte plus cher qu'une intervention planifiée et entraîne souvent des pertes bien supérieures au prix de la réparation : marchandises perdues, activité interrompue, clients mécontents. Un plan de maintenance préventive consiste à organiser à l'avance les contrôles, nettoyages, réglages et remplacements qui évitent ou retardent les défaillances. Ce guide propose une méthode en huit étapes, utilisable par une PME, un hôtel, un restaurant, un établissement de santé, une administration ou un atelier, sans logiciel coûteux au départ.",
+      },
+      {
+        type: 'h2',
+        text: "Les grands types de maintenance : un vocabulaire commun",
+      },
+      {
+        type: 'p',
+        text: "Pour parler de maintenance, il est utile d'employer les mêmes mots. La norme européenne EN 13306 (Maintenance — Terminologie de la maintenance) fixe un vocabulaire que l'on retrouve dans l'industrie. D'après sa table des matières, que nous avons consultée, elle distingue notamment la maintenance préventive, la maintenance corrective, et plusieurs sous-catégories. Nous n'avons pas pu consulter le texte intégral de la norme : les définitions ci-dessous reprennent les distinctions généralement admises dans la profession.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Maintenance corrective : elle intervient après la détection d'une panne, pour remettre l'équipement en état de remplir sa fonction. Elle peut être immédiate (on intervient tout de suite) ou différée (on planifie l'intervention). On distingue aussi le dépannage provisoire, dit palliatif, de la réparation définitive, dite curative.",
+          "Maintenance préventive : elle vise à réduire la probabilité de défaillance ou la dégradation d'un équipement, avant qu'il tombe en panne.",
+          "Maintenance systématique : une forme de préventif réalisée à intervalles fixés (en temps, en heures de fonctionnement ou en nombre d'utilisations), sans contrôle préalable de l'état.",
+          "Maintenance conditionnelle : le préventif déclenché par l'état réel de l'équipement, observé par des contrôles ou des mesures (vibrations, température, intensité absorbée, niveau d'encrassement).",
+          "Maintenance prévisionnelle : une extension de la maintenance conditionnelle, où l'on prévoit l'évolution de l'état pour estimer le moment de l'intervention.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Pourquoi planifier plutôt que subir, et dans quelles limites",
+      },
+      {
+        type: 'p',
+        text: "Le préventif présente plusieurs avantages : moins de pannes imprévues, moins d'arrêts d'activité, des équipements qui durent plus longtemps, une consommation d'énergie mieux maîtrisée car un appareil propre et réglé consomme moins, une meilleure sécurité des personnes et des biens, et un budget plus prévisible. Mais il ne faut pas en faire un dogme. Il n'est pas rentable de planifier l'entretien de tous les équipements : un petit appareil sans importance, peu coûteux et facile à remplacer peut très bien être exploité jusqu'à sa défaillance. C'est la raison pour laquelle on commence par hiérarchiser ses équipements avant de décider de la stratégie à adopter pour chacun.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 1 : faire l'inventaire de vos équipements",
+      },
+      {
+        type: 'p',
+        text: "On ne peut pas entretenir ce que l'on n'a pas recensé. Dressez la liste de tous les équipements techniques de votre site : climatisation, chambres froides, groupes électrogènes, onduleurs et batteries, pompes, chauffe-eau, ascenseurs, portails automatiques, systèmes de sécurité incendie, tableaux électriques, compresseurs, machines de production. Pour chacun, créez une fiche qui contient :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Un identifiant unique et un nom clair (par exemple « Climatiseur salle de réunion 1 »).",
+          "La localisation précise.",
+          "La marque, le modèle et le numéro de série.",
+          "La date de mise en service et, le cas échéant, la fin de garantie.",
+          "Les caractéristiques principales (puissance, tension, type de fluide, capacité).",
+          "Le fournisseur ou l'installateur et le contact du service après-vente.",
+          "La documentation disponible : notice, schémas, certificats.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Un tableur partagé suffit pour commencer. Prenez des photos de la plaque signalétique de chaque appareil : elle contient l'essentiel des informations et la retrouver plus tard n'est pas toujours possible.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 2 : évaluer la criticité de chaque équipement",
+      },
+      {
+        type: 'p',
+        text: "Tous les équipements ne méritent pas le même niveau d'attention. L'analyse de criticité classe les équipements selon les conséquences d'une panne. Pour chacun, posez quelques questions simples :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Sécurité : une panne peut-elle mettre en danger des personnes, déclencher un incendie, polluer ou provoquer une fuite dangereuse ?",
+          "Activité : une panne arrête-t-elle l'activité ou une partie importante de celle-ci ?",
+          "Pertes : une panne entraîne-t-elle des pertes de marchandises, de données ou de clients ?",
+          "Remplacement : combien de temps faut-il pour réparer ou remplacer l'équipement, et les pièces sont-elles disponibles localement ?",
+          "Redondance : existe-t-il un équipement de secours qui prend le relais ?",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Attribuez ensuite une note ou une catégorie : par exemple A pour les équipements critiques, B pour les importants et C pour les secondaires. Les équipements A reçoivent un plan de maintenance préventive détaillé, un stock de pièces critiques et un contrat d'intervention rapide ; les B un plan plus léger ; les C peuvent être laissés en maintenance corrective si leur défaillance n'a que peu de conséquences.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 3 : partir des recommandations du constructeur",
+      },
+      {
+        type: 'p',
+        text: "La notice de chaque équipement indique les opérations d'entretien à réaliser et leur fréquence, ainsi que celles que l'utilisateur peut faire lui-même et celles qui sont réservées à un professionnel. C'est la base de votre plan, et c'est aussi une condition fréquente de validité de la garantie. Rassemblez ces notices, classez-les, et notez les opérations et fréquences prescrites. Si une notice est perdue, demandez-la au fabricant ou au revendeur ; ne la remplacez pas par une fréquence inventée. Nous ne donnons donc pas ici de calendrier universel : il dépend du matériel.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 4 : définir les tâches et adapter les fréquences",
+      },
+      {
+        type: 'p',
+        text: "À partir des notices, listez les tâches de chaque équipement et classez-les par nature :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Inspection visuelle : état général, fuites, traces de corrosion, câbles abîmés, fixations desserrées.",
+          "Nettoyage : filtres, échangeurs, grilles de ventilation, bacs d'évacuation.",
+          "Lubrification et réglages : graissage des paliers, tension des courroies, alignements.",
+          "Contrôles et mesures : température, pression, intensité absorbée, niveau, tension, vibrations.",
+          "Essais de fonctionnement : démarrage du groupe électrogène, test des alarmes, bascule de l'onduleur.",
+          "Remplacements périodiques : filtres, courroies, joints, consommables, batteries en fin de vie.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Adaptez ensuite les fréquences aux conditions réelles. Un équipement utilisé en continu, dans un local chaud et poussiéreux, vieillit plus vite que celui d'un bureau climatisé : sa fréquence d'entretien doit être plus rapprochée que le minimum de la notice. L'historique des pannes d'un équipement est aussi un indicateur : si un composant revient en panne régulièrement, il faut en rechercher la cause, plutôt que de se contenter de le remplacer.",
+      },
+      {
+        type: 'h2',
+        text: "Quelques exemples de tâches types (à valider avec les notices)",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Climatisation : nettoyage des filtres, contrôle de l'évacuation des condensats, nettoyage des échangeurs, contrôle des connexions électriques et de l'intensité, recherche de fuite de fluide par un technicien qualifié.",
+          "Chambre froide : contrôle de la température et de l'enregistreur, état des joints de porte, dégivrage, nettoyage du condenseur, vérification de l'écoulement des condensats.",
+          "Groupe électrogène : niveaux d'huile et de liquide de refroidissement, filtres, état de la batterie de démarrage, carburant, essai périodique, de préférence en charge.",
+          "Onduleur et batteries : état des connexions, température ambiante, alarmes, essai d'autonomie, contrôle de l'âge des batteries.",
+          "Pompes : bruit, vibrations, étanchéité, pression, état de la crépine ou du filtre, protection contre la marche à sec.",
+          "Installation électrique : examen visuel des tableaux, serrage des connexions, état des protections, contrôle par une personne habilitée.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 5 : planifier, affecter et choisir qui fait quoi",
+      },
+      {
+        type: 'p',
+        text: "Un plan qui n'est pas planifié n'existe pas. Transformez la liste de tâches en calendrier : quotidien, hebdomadaire, mensuel, trimestriel, semestriel, annuel. Pour chaque tâche, désignez un responsable et la durée prévue. Répartissez raisonnablement les tâches entre ce que votre équipe peut faire (inspections visuelles, nettoyage des filtres, relevés) et ce que doivent faire des prestataires qualifiés (circuit frigorifique, électricité interne, équipements sous pression, levage). Prévoyez les fenêtres d'intervention aux moments où l'activité est la plus faible, pour limiter la gêne.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 6 : documenter et garder l'historique",
+      },
+      {
+        type: 'p',
+        text: "La mémoire de la maintenance est essentielle. Utilisez des fiches d'intervention ou des check-lists, avec la date, le nom de l'intervenant, les opérations réalisées, les mesures relevées, les anomalies et les pièces remplacées. Conservez ces fiches dans un dossier par équipement, sur papier ou en version numérique. Un tableur partagé peut suffire pour une petite structure ; à partir d'une certaine taille, un logiciel de gestion de maintenance assistée par ordinateur (GMAO) devient utile pour générer automatiquement les ordres de travail et suivre les indicateurs. Quel que soit l'outil, la règle est la même : ce qui n'est pas écrit n'a pas été fait.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 7 : constituer un stock de pièces critiques",
+      },
+      {
+        type: 'p',
+        text: "Une panne bénigne devient longue si la pièce de rechange n'est pas disponible. Pour les équipements critiques, repérez les pièces qui tombent le plus souvent en panne ou dont le délai d'approvisionnement est long, et constituez un petit stock : filtres, courroies, fusibles, contacteurs, condensateurs, joints, sondes de température. Mettez en balance le coût du stockage et celui d'un arrêt prolongé. Au Bénin comme ailleurs, la disponibilité locale de certaines pièces peut être limitée : renseignez-vous auprès des fournisseurs et notez les délais réels.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 8 : intégrer la sécurité dans chaque intervention",
+      },
+      {
+        type: 'p',
+        text: "La maintenance expose à des risques qu'il faut maîtriser. Quelques principes de base :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Avant toute intervention sur un équipement électrique ou mécanique, mettre l'équipement hors énergie, le consigner (verrouiller et étiqueter le point de coupure) et vérifier l'absence de tension.",
+          "Réserver les interventions électriques aux personnes formées et habilitées, et les interventions sur les circuits frigorifiques à des techniciens qualifiés.",
+          "Utiliser les équipements de protection adaptés : gants, lunettes, chaussures de sécurité, protection auditive, casque, harnais pour le travail en hauteur.",
+          "Prévoir une signalisation et empêcher l'accès aux zones d'intervention.",
+          "Ne jamais court-circuiter une sécurité pour gagner du temps.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Ces règles sont des principes généraux. La réglementation applicable à votre activité et à votre pays, notamment en matière d'habilitations, d'inspections obligatoires ou d'équipements sous pression, doit être vérifiée auprès des organismes compétents : nous ne la détaillons pas ici faute de source vérifiée.",
+      },
+      {
+        type: 'h2',
+        text: "Mesurer l'efficacité de votre maintenance",
+      },
+      {
+        type: 'p',
+        text: "Un plan se pilote avec quelques indicateurs simples. Il existe une famille de normes consacrée aux indicateurs de performance de la maintenance (la norme EN 15341), mais vous pouvez commencer par des mesures élémentaires :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Nombre de pannes par équipement et par période.",
+          "Taux de réalisation du planning préventif : tâches faites divisées par tâches prévues.",
+          "Durée moyenne de fonctionnement entre deux pannes (MTBF) : temps de fonctionnement divisé par le nombre de pannes.",
+          "Durée moyenne de réparation (MTTR) : temps total de réparation divisé par le nombre de pannes.",
+          "Disponibilité : la part du temps pendant laquelle l'équipement est en état de fonctionner, qui se calcule approximativement par MTBF ÷ (MTBF + MTTR).",
+          "Coût de maintenance par équipement, avec la répartition entre préventif et correctif.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "L'objectif n'est pas d'obtenir de beaux tableaux, mais de repérer les équipements qui posent problème et de décider : améliorer l'entretien, remplacer, modifier l'usage ou renforcer le stock de pièces.",
+      },
+      {
+        type: 'h2',
+        text: "Un exemple de plan simplifié (hypothétique) : un petit hôtel",
+      },
+      {
+        type: 'p',
+        text: "Imaginons un petit hôtel de vingt chambres. L'inventaire recense une vingtaine de climatiseurs, deux chambres froides de cuisine, un groupe électrogène, une pompe et un surpresseur, un chauffe-eau et un tableau électrique général. L'analyse de criticité classe en A les chambres froides, le groupe électrogène et la pompe, qui conditionnent la conservation des aliments, la continuité de l'alimentation et l'eau des clients ; en B les climatiseurs des parties communes ; en C ceux des chambres, remplaçables un à un.",
+      },
+      {
+        type: 'p',
+        text: "Le plan prévoit un nettoyage mensuel des filtres de climatiseurs par le personnel, un contrôle professionnel semestriel avant les périodes de forte occupation, un relevé quotidien de la température des chambres froides, un essai mensuel du groupe électrogène, un contrôle trimestriel de la pompe et du vase d'expansion, et un contrôle annuel du tableau électrique par une personne habilitée. Le tout est consigné dans un tableur partagé. Cet exemple est hypothétique : les fréquences réelles doivent être fixées à partir des notices et du contexte du site.",
+      },
+      {
+        type: 'h2',
+        text: "Mise en œuvre progressive : par où commencer",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Semaines 1 à 2 : inventorier les équipements et rassembler les notices.",
+          "Semaines 3 à 4 : noter la criticité et choisir cinq à dix équipements critiques pour démarrer.",
+          "Mois 2 : rédiger les check-lists et le calendrier pour ces équipements, former les personnes concernées et choisir les prestataires.",
+          "Mois 3 : lancer le plan sur le périmètre pilote, consigner chaque intervention et suivre les premiers indicateurs.",
+          "Ensuite : étendre aux autres équipements et ajuster les fréquences en fonction des observations.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Le contexte local : chaleur, poussière, humidité et réseau électrique",
+      },
+      {
+        type: 'p',
+        text: "Un plan de maintenance doit refléter les contraintes du terrain. La chaleur et l'humidité accélèrent la corrosion, favorisent les moisissures et font vieillir plus vite les composants électroniques et les batteries. La poussière encrasse filtres et échangeurs. Les variations de tension et les coupures du réseau sollicitent les équipements et peuvent justifier des protections adaptées (parafoudres, stabilisateurs, onduleurs). La disponibilité des techniciens et des pièces peut être inégale selon les régions. Tenir compte de ces facteurs conduit souvent à rapprocher certaines fréquences d'entretien et à renforcer le stock de pièces critiques.",
+      },
+      {
+        type: 'h2',
+        text: "Externaliser tout ou partie de la maintenance",
+      },
+      {
+        type: 'p',
+        text: "Beaucoup de structures n'ont pas de service de maintenance interne et confient tout ou partie des interventions à un prestataire. Le contrat doit préciser clairement la liste des équipements couverts, la nature et la fréquence des visites, les opérations incluses, le délai d'intervention en cas de panne, la remise d'un compte rendu écrit après chaque visite, le traitement des pièces remplacées, les exclusions et les conditions de renouvellement. Comparez les offres sur ces éléments, pas seulement sur le prix annuel, et vérifiez les références du prestataire. Même en externalisant, gardez la responsabilité du suivi : l'inventaire, la criticité et les indicateurs restent les vôtres.",
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Appliquer la même fréquence à tous les équipements sans tenir compte de leur criticité.",
+          "Inventer des fréquences au lieu de partir des notices du constructeur.",
+          "Ne pas écrire ce qui a été fait, ce qui rend le suivi impossible.",
+          "Oublier de former les personnes qui réalisent les tâches de premier niveau.",
+          "Négliger les pièces de rechange des équipements critiques.",
+          "Confier des interventions dangereuses à des personnes non qualifiées.",
+          "Ne pas analyser les pannes répétitives, qui reviennent tant que la cause n'est pas traitée.",
+          "Sous-estimer l'effet du contexte local (chaleur, poussière, réseau) sur les fréquences d'entretien.",
+          "Considérer le plan comme figé : il doit être ajusté au vu de l'expérience.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "La maintenance préventive coûte-t-elle plus cher que la maintenance corrective ? À court terme, elle représente une dépense planifiée. À moyen terme, elle réduit souvent les pannes imprévues et leurs conséquences. Le bilan dépend de la criticité de l'équipement : un équipement critique justifie un plan solide, un équipement secondaire peut être exploité jusqu'à la panne.",
+      },
+      {
+        type: 'p',
+        text: "À quelle fréquence faut-il entretenir un équipement ? Reportez-vous d'abord à la notice du constructeur, puis adaptez selon l'intensité d'usage et l'environnement. Il n'existe pas de fréquence universelle.",
+      },
+      {
+        type: 'p',
+        text: "Faut-il un logiciel de GMAO ? Pas pour démarrer. Un tableur bien tenu suffit pour une petite structure. Un logiciel devient utile quand le nombre d'équipements et d'interventions rend le suivi manuel difficile.",
+      },
+      {
+        type: 'p',
+        text: "Peut-on faire la maintenance en interne sans technicien ? Oui pour les contrôles visuels, les nettoyages simples et les relevés autorisés par la notice. Les interventions électriques, frigorifiques ou sur équipements sous pression relèvent de professionnels qualifiés.",
+      },
+      {
+        type: 'p',
+        text: "Comment convaincre la direction d'investir dans le préventif ? En chiffrant le coût d'une panne passée (arrêt, pertes, intervention en urgence) et en le comparant à celui d'un entretien planifié. Les indicateurs de votre plan fourniront ensuite des preuves.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Un plan de maintenance préventive se construit en étapes : inventaire, criticité, recommandations du constructeur, tâches et fréquences adaptées, planification, documentation, pièces critiques et sécurité, puis indicateurs pour s'améliorer. Il ne s'agit pas de tout entretenir de la même manière, mais de concentrer l'effort là où une panne coûte le plus cher. Si vous souhaitez organiser la maintenance de vos installations, KONFORTECH BÉNIN peut vous accompagner : contactez-nous via la page de contact du site pour planifier un diagnostic. Les exemples de cet article sont pédagogiques et ne constituent pas un devis.",
+      },
+    ],
+  },
+  {
+    slug: "detecter-fuite-eau-batiment-methodes",
+    title: "Comment détecter une fuite d’eau dans un bâtiment : signes, tests simples et méthodes professionnelles",
+    seoTitle: "Détecter une fuite d’eau : signes, test du compteur et méthodes professionnelles",
+    seoDescription:
+      "Facture qui grimpe, humidité, compteur qui tourne : les signes d'une fuite d'eau, le test du compteur étape par étape et les méthodes professionnelles de détection.",
+    excerpt:
+      "Une petite fuite cachée peut gaspiller énormément d'eau et abîmer un bâtiment. Comment la repérer, que faire tout de suite et quand appeler un plombier.",
+    category: "Plomberie & installations techniques",
+    tags: ["plomberie", "fuite d’eau", "détection de fuite", "maintenance bâtiment", "économie d’eau"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 13,
+    relatedServices: ["maintenance-industrielle"],
+    content: [
+      {
+        type: 'p',
+        text: "Une fuite d'eau ne se manifeste pas toujours par une flaque. Les plus dangereuses sont celles que l'on ne voit pas : un tuyau encastré dans un mur, une canalisation enterrée dans la cour, une chasse d'eau qui coule en silence, un réservoir qui se vide lentement. Elles gaspillent de l'eau jour et nuit, font grimper la facture, favorisent les moisissures et peuvent fragiliser un sol, des fondations ou des revêtements. Les repérer tôt évite des dégâts coûteux. Ce guide explique comment reconnaître les signes d'une fuite, comment la confirmer avec des tests simples à la portée de tout occupant, que faire dans l'urgence et dans quels cas il faut faire appel à un professionnel équipé pour la localiser.",
+      },
+      {
+        type: 'h2',
+        text: "Les différents types de fuites",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Fuite visible : un robinet qui goutte, un joint qui suinte, un flexible fendu. Elle se voit et se répare souvent facilement.",
+          "Fuite sur un appareil : chasse d'eau qui coule, chauffe-eau, groupe de sécurité, machine à laver, pompe, surpresseur.",
+          "Fuite cachée sur le réseau d'alimentation : un tuyau sous pression, encastré dans un mur, une dalle ou un faux plafond.",
+          "Fuite sur le réseau d'évacuation : des eaux usées qui s'échappent d'une canalisation, d'un siphon ou d'une jonction, avec des odeurs et de l'humidité.",
+          "Fuite enterrée : une canalisation extérieure ou un branchement entre le compteur et le bâtiment.",
+          "Fuite de réservoir : une citerne, une bâche ou un château d'eau qui perd de l'eau par sa paroi, un raccord ou un trop-plein.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Précision utile : toute humidité n'est pas une fuite de plomberie. Une infiltration par la toiture, la condensation, la remontée d'humidité par le sol ou une fuite de climatiseur peuvent produire des signes comparables. Le diagnostic consiste à éliminer les causes les unes après les autres.",
+      },
+      {
+        type: 'h2',
+        text: "Les signes qui doivent vous alerter",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Une facture d'eau en hausse sans changement d'usage.",
+          "Un compteur qui continue de tourner alors que tous les robinets sont fermés.",
+          "Des taches d'humidité, des auréoles, de la peinture qui cloque ou des enduits qui se décollent sur un mur ou un plafond.",
+          "Une odeur de moisi ou de renfermé dans une pièce, sans raison apparente.",
+          "Un sol qui reste humide, des carrelages qui se soulèvent ou des joints qui noircissent.",
+          "Un bruit d'écoulement ou de sifflement quand personne n'utilise d'eau.",
+          "Une baisse de la pression d'eau à certains robinets.",
+          "Une pompe ou un surpresseur qui démarre sans arrêt alors qu'aucun robinet n'est ouvert.",
+          "Une zone de jardin ou de cour anormalement humide, une végétation plus verte à un endroit précis, un affaissement du sol.",
+          "Un niveau de citerne ou de bâche qui baisse sans consommation.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Combien d'eau une petite fuite fait-elle perdre ? (exemples hypothétiques)",
+      },
+      {
+        type: 'p',
+        text: "On sous-estime souvent l'ampleur des pertes. Prenons deux cas simples, avec des valeurs choisies pour l'illustration. Une goutte d'environ 0,05 mL qui tombe chaque seconde représente 0,05 mL × 86 400 secondes, soit environ 4,3 litres par jour. Un filet très fin qui débite 1 litre par minute, par exemple une chasse d'eau qui s'écoule en continu, représente 1 440 litres par jour. Ces chiffres sont des ordres de grandeur pédagogiques et ne proviennent d'aucune mesure sur site ; ils montrent qu'une fuite apparemment anodine peut représenter un volume important sur un mois, à multiplier par le prix de l'eau pour estimer le surcoût.",
+      },
+      {
+        type: 'h2',
+        text: "Test n° 1 : le test du compteur d'eau",
+      },
+      {
+        type: 'p',
+        text: "C'est le test de référence pour confirmer une fuite sur le réseau d'alimentation, simple et gratuit. Il se fait avec le compteur d'eau de votre branchement, généralement situé à l'entrée de la propriété ou dans un regard.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Étape 1 — Fermez tous les robinets et arrêtez tous les appareils qui consomment de l'eau : machine à laver, lave-vaisselle, arrosage, chasse d'eau, remplissage de réservoir. Vérifiez qu'aucune pompe ne fonctionne.",
+          "Étape 2 — Repérez le compteur et notez l'index complet, y compris les chiffres des petits cadrans, avec l'heure. Prenez une photo.",
+          "Étape 3 — Attendez au moins une heure, sans utiliser d'eau. Pour une fuite faible, un test plus long, par exemple pendant la nuit, est plus sensible.",
+          "Étape 4 — Relevez de nouveau l'index. S'il a augmenté, de l'eau s'écoule quelque part : il y a une fuite.",
+          "Remarque — Beaucoup de compteurs possèdent un petit indicateur de fuite (disque, étoile ou aiguille) qui tourne dès qu'il y a un passage d'eau, même très faible. S'il tourne alors que tout est fermé, c'est un signe de fuite.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Précaution : si votre bâtiment a un réservoir à flotteur, une bâche ou un chauffe-eau qui se remplit automatiquement, le compteur peut bouger sans fuite ; isolez ces éléments pendant le test, ou fermez leur vanne d'arrivée.",
+      },
+      {
+        type: 'h2',
+        text: "Test n° 2 : isoler la fuite zone par zone",
+      },
+      {
+        type: 'p',
+        text: "Si le compteur tourne, il faut déterminer où se trouve la fuite. La démarche d'élimination est la suivante : fermez la vanne d'arrêt générale du bâtiment, située après le compteur. Si le compteur s'arrête, la fuite est à l'intérieur du bâtiment ; s'il continue de tourner, elle se situe entre le compteur et la vanne, c'est-à-dire sur la canalisation enterrée ou dans le branchement. Si la fuite est à l'intérieur, rouvrez la vanne générale puis fermez successivement les vannes d'arrêt des différentes zones ou des appareils (salle de bain, cuisine, chauffe-eau, jardin) en observant le compteur après chaque manœuvre. Quand le compteur s'arrête, vous avez identifié la zone concernée.",
+      },
+      {
+        type: 'h2',
+        text: "Test n° 3 : la chasse d'eau",
+      },
+      {
+        type: 'p',
+        text: "Les chasses d'eau sont l'une des premières causes de fuites domestiques, car l'écoulement dans la cuvette est silencieux. Pour le vérifier, versez quelques gouttes de colorant alimentaire dans le réservoir sans actionner la chasse. Attendez une quinzaine de minutes : si la couleur apparaît dans la cuvette, le clapet ou le joint fuit. Vérifiez aussi le flotteur et le niveau d'eau, qui ne doit pas atteindre le trop-plein. Dans la plupart des cas, le remplacement du joint, du clapet ou du mécanisme est une opération simple, avec des pièces courantes.",
+      },
+      {
+        type: 'h2',
+        text: "Autres vérifications utiles",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Robinets, mitigeurs et flexibles : examinez les raccords, sous les éviers et lavabos, avec un papier absorbant sec pour détecter les suintements.",
+          "Chauffe-eau : cherchez des traces d'eau au sol, de la corrosion et un écoulement continu au groupe de sécurité.",
+          "Pompe et surpresseur : regardez les raccords, le pressostat et le vase d'expansion ; un démarrage fréquent sans consommation est suspect.",
+          "Citerne, bâche, château d'eau : relevez le niveau à heure fixe pendant une période sans consommation ; observez le trop-plein et les raccords.",
+          "Arrosage et robinets extérieurs : vérifiez les raccords, les tuyaux et les vannes de jardin.",
+          "Climatiseurs : une fuite d'eau près d'une unité intérieure vient souvent de l'évacuation des condensats, pas du réseau de plomberie.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les fuites enterrées et encastrées : comment les repérer",
+      },
+      {
+        type: 'p',
+        text: "Quand le compteur tourne mais que rien de visible n'apparaît, il s'agit probablement d'une fuite sur une canalisation encastrée dans un mur ou une dalle, ou enterrée. Des indices extérieurs peuvent aider : une zone du sol toujours humide ou boueuse, une végétation qui reste verte en saison sèche à un endroit précis, un affaissement du revêtement, un bruit d'écoulement dans le sol. Mais ces indices ne suffisent pas à localiser précisément la fuite, et creuser au hasard coûte cher et abîme les revêtements.",
+      },
+      {
+        type: 'p',
+        text: "Les professionnels disposent de plusieurs méthodes, qu'il faut choisir selon le matériau et la situation :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "L'écoute acoustique : des micros et des capteurs détectent le bruit que produit l'eau qui s'échappe d'une canalisation sous pression.",
+          "L'inspection thermique par caméra infrarouge : elle révèle des différences de température liées à l'humidité ou à l'eau chaude qui s'échappe, dans un mur ou un sol.",
+          "Le test de mise en pression : on isole un tronçon, on le met sous pression et on observe la chute de pression.",
+          "Le gaz traceur : un gaz inoffensif injecté dans le réseau vidé d'eau et détecté en surface à l'endroit où il s'échappe.",
+          "La caméra d'inspection pour les canalisations d'évacuation : elle permet de voir l'intérieur d'un tuyau.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Demandez au professionnel la méthode utilisée, un compte rendu écrit avec la localisation de la fuite et, si possible, des photos. Cela facilite la réparation et, le cas échéant, les échanges avec votre assureur.",
+      },
+      {
+        type: 'h2',
+        text: "Que faire immédiatement en cas de fuite importante",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Fermez la vanne d'arrêt de l'eau, au niveau de la zone concernée ou à l'arrivée générale.",
+          "Si de l'eau se répand près de prises, de tableaux électriques ou d'appareils branchés, coupez l'électricité au disjoncteur général seulement si vous pouvez le faire sans marcher dans l'eau ni toucher d'équipement mouillé. En cas de doute, ne vous exposez pas : appelez un professionnel ou les secours.",
+          "Éloignez les objets sensibles et évacuez l'eau avec un balai, une serpillière ou une pompe de relevage.",
+          "Ouvrez les fenêtres pour aérer et accélérer le séchage.",
+          "Photographiez les dégâts et notez l'heure : ces éléments serviront pour l'assurance et pour le plombier.",
+          "Appelez un plombier qualifié si la source n'est pas évidente ou si la réparation dépasse un geste simple.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Eau et électricité ne font pas bon ménage. Ne touchez jamais à un appareil électrique sous tension en ayant les pieds dans l'eau ou les mains mouillées.",
+      },
+      {
+        type: 'h2',
+        text: "Ce que vous pouvez réparer vous-même, et ce qui exige un professionnel",
+      },
+      {
+        type: 'p',
+        text: "Remplacer un joint de robinet, un flexible de raccordement ou le mécanisme d'une chasse d'eau, resserrer un raccord ou changer un flotteur sont des opérations à la portée d'un bricoleur soigneux, à condition de couper l'eau avant. Il vaut mieux faire appel à un plombier dans les cas suivants : fuite sur une canalisation encastrée ou enterrée, réseau en matériau vieillissant ou corrodé, soudure ou assemblage sous pression, intervention sur un chauffe-eau, un surpresseur ou un réservoir, fuite répétée au même endroit, ou si vous n'êtes pas certain de la cause.",
+      },
+      {
+        type: 'h2',
+        text: "Pourquoi les fuites apparaissent : les causes fréquentes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Le vieillissement des joints, des clapets et des flexibles.",
+          "La corrosion des canalisations métalliques, notamment dans les installations anciennes ou dans une eau agressive.",
+          "Une pression d'eau trop élevée, qui fatigue les raccords et les appareils et favorise les coups de bélier.",
+          "Les coups de bélier, c'est-à-dire des surpressions brusques à la fermeture rapide d'un robinet ou d'une électrovanne.",
+          "Les défauts de pose : raccords mal serrés, collage ou soudure défectueux, pentes inadaptées.",
+          "Les mouvements du bâtiment : fissures, tassements et vibrations qui sollicitent les tuyaux.",
+          "L'exposition au soleil de tuyaux en plastique non protégés, qui vieillissent et se fragilisent.",
+          "Les racines et les travaux : un chantier ou une plantation qui endommage une canalisation enterrée.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Prévenir plutôt que réparer",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Relevez l'index du compteur à intervalles réguliers, par exemple chaque mois, et comparez avec la consommation habituelle.",
+          "Repérez et manœuvrez régulièrement les vannes d'arrêt pour qu'elles ne se bloquent pas ; une vanne grippée est inutile en cas d'urgence.",
+          "Mesurez la pression avec un manomètre et installez un réducteur de pression si elle est excessive.",
+          "Remplacez à titre préventif les flexibles et joints anciens, et protégez les tuyaux en plastique du soleil.",
+          "Dressez et conservez un plan des canalisations : on retrouve plus vite une fuite si l'on sait où passent les tuyaux.",
+          "Inspectez au moins une fois par an les installations de pompage, les réservoirs et les chauffe-eau.",
+          "Envisagez, pour les bâtiments sensibles, un dispositif de détection d'eau ou un contrôle de consommation qui alerte en cas d'écoulement anormal.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Humidité et santé du bâtiment : ne négligez pas les suites d'une fuite",
+      },
+      {
+        type: 'p',
+        text: "Après une fuite, l'eau qui reste piégée dans les murs, les sols et les plafonds entretient l'humidité et favorise les moisissures, qui dégradent les revêtements et peuvent gêner la respiration. Après avoir stoppé la fuite, faites sécher complètement les zones touchées : aération, déshumidification, retrait des matériaux détrempés qui ne sèchent pas. Ne recouvrez pas un mur humide de peinture ou de carrelage avant son séchage : l'humidité réapparaîtrait. En cas d'humidité étendue ou persistante, demandez un avis de professionnel.",
+      },
+      {
+        type: 'h2',
+        text: "Assurance et traces : conservez les preuves",
+      },
+      {
+        type: 'p',
+        text: "En cas de dégâts, signalez rapidement le sinistre à votre assureur, en suivant les délais indiqués dans votre contrat, que nous ne pouvons pas connaître. Conservez les photos, les factures de réparation, le compte rendu de détection et les relevés de compteur. Vérifiez ce que couvre votre contrat avant tout sinistre : les conditions varient d'un assureur à l'autre.",
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Ignorer une facture d'eau en hausse en espérant qu'elle redescende.",
+          "Boucher une fissure ou repeindre une tache d'humidité sans chercher l'origine du problème.",
+          "Faire des saignées dans un mur au hasard, sans localisation préalable.",
+          "Oublier d'isoler les réservoirs à flotteur et les chauffe-eau pendant le test du compteur.",
+          "Utiliser des colles ou des rubans inadaptés pour réparer provisoirement une canalisation sous pression, sans prévoir de réparation définitive.",
+          "Intervenir près de l'électricité avec les mains ou les pieds mouillés.",
+          "Reporter la réparation d'une fuite qui revient régulièrement.",
+          "Ne pas conserver de preuves en vue d'une déclaration d'assurance.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Comment savoir si la fuite vient de chez moi ou du réseau public ? Le compteur est le point de repère. Si le compteur tourne alors que vous avez fermé la vanne générale située après lui, la fuite se trouve entre le compteur et cette vanne. Selon l'organisation de votre branchement, le gestionnaire du réseau est responsable de la partie en amont du compteur : renseignez-vous auprès de lui sur les règles applicables, que nous ne pouvons pas détailler ici.",
+      },
+      {
+        type: 'p',
+        text: "Le test du compteur est-il fiable ? Oui pour confirmer l'existence d'une fuite sur le réseau sous pression, à condition de bien fermer tous les points de consommation et d'isoler les réservoirs automatiques. Il ne localise pas la fuite ; il en prouve seulement l'existence.",
+      },
+      {
+        type: 'p',
+        text: "Une petite fuite est-elle grave ? Elle peut l'être. Même faible, elle représente un volume important sur la durée, et l'humidité qu'elle entretient dégrade progressivement le bâtiment.",
+      },
+      {
+        type: 'p',
+        text: "Combien coûte la recherche de fuite ? Le prix dépend de la méthode, de la difficulté d'accès et du prestataire. Nous n'avons pas de données fiables à citer ; demandez un devis qui précise la méthode et le compte rendu fourni.",
+      },
+      {
+        type: 'p',
+        text: "Puis-je utiliser un produit d'étanchéité à injecter dans les canalisations ? Ce type de produit est parfois présenté comme une solution miracle. Son efficacité dépend du matériau et de la nature de la fuite, et il peut obstruer des canalisations ou des appareils. Demandez l'avis d'un plombier avant de l'utiliser.",
+      },
+      {
+        type: 'p',
+        text: "Que faire si la fuite vient de la toiture ? Ce n'est pas un problème de plomberie mais d'étanchéité ; faites intervenir un professionnel de la toiture ou de l'étanchéité après avoir mis à l'abri les équipements et les installations électriques.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Détecter une fuite d'eau commence par l'observation des signes (facture, humidité, bruits, pression), se confirme par le test du compteur et se précise par élimination zone par zone. Les fuites encastrées ou enterrées demandent un professionnel équipé, mais le diagnostic de base est à la portée de chacun. Dans l'urgence, coupez l'eau et soyez très prudent près de l'électricité. Si vous suspectez une fuite dans votre bâtiment, KONFORTECH BÉNIN peut vous aider à établir un diagnostic : contactez-nous via la page de contact du site. Les valeurs de cet article sont des exemples pédagogiques et ne constituent pas un devis.",
+      },
+    ],
+  },
+  {
+    slug: "choisir-pompe-eau-batiment-debit-pression",
+    title: "Comment choisir une pompe à eau pour un bâtiment : débit, hauteur, pression et pièges à éviter",
+    seoTitle: "Choisir une pompe à eau : débit, hauteur manométrique, pression et installation",
+    seoDescription:
+      "Débit, hauteur manométrique, aspiration, pression, protection contre la marche à sec : la méthode pour choisir et installer une pompe à eau adaptée à votre bâtiment.",
+    excerpt:
+      "Pression instable, pompe qui démarre sans arrêt, moteur qui chauffe : la plupart des problèmes viennent d'un mauvais choix de départ. La méthode pour bien dimensionner.",
+    category: "Plomberie & installations techniques",
+    tags: ["pompe à eau", "surpresseur", "pression d’eau", "plomberie", "dimensionnement"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 14,
+    relatedServices: ["maintenance-industrielle"],
+    content: [
+      {
+        type: 'p',
+        text: "Une pompe à eau est un équipement discret que l'on remarque seulement quand elle se plaint : pression qui varie quand on ouvre un deuxième robinet, démarrages incessants, bruit de cailloux dans le corps de pompe, moteur brûlant, eau qui n'arrive plus au dernier étage. Dans la majorité des cas, la cause ne se trouve pas dans la pompe elle-même mais dans le choix de départ : un débit mal estimé, une hauteur de refoulement sous-évaluée, une aspiration mal conçue, une alimentation électrique inadaptée. Ce guide présente les notions de base, une méthode de dimensionnement avec un exemple chiffré hypothétique, les critères de choix, les règles d'installation et les erreurs à éviter, pour que vous puissiez discuter avec un installateur en connaissance de cause.",
+      },
+      {
+        type: 'h2',
+        text: "Quand a-t-on besoin d'une pompe ?",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Alimentation depuis un puits, un forage ou une source, où l'eau doit être remontée et mise en pression.",
+          "Alimentation depuis une citerne, une bâche ou un réservoir enterré, dont l'eau doit être distribuée dans le bâtiment.",
+          "Pression insuffisante au réseau public, notamment aux étages élevés ou en bout de réseau.",
+          "Immeubles à plusieurs niveaux, où la pression doit être maintenue à tous les étages.",
+          "Arrosage et irrigation, avec des débits importants.",
+          "Évacuation d'eaux claires ou chargées depuis un point bas, comme une fosse ou un sous-sol (pompes de relevage).",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les principaux types de pompes et de groupes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Pompe de surface centrifuge : installée hors de l'eau, elle aspire l'eau d'une citerne ou d'un puits peu profond. Certaines sont auto-amorçantes, d'autres doivent être remplies d'eau avant la mise en route.",
+          "Pompe immergée ou de forage : placée dans l'eau, elle pousse l'eau vers la surface. Elle convient aux puits profonds et aux forages, car elle ne dépend pas de la hauteur d'aspiration.",
+          "Surpresseur ou groupe de surpression : un ensemble comprenant une ou plusieurs pompes, un réservoir à vessie (vase d'expansion) et un pressostat, qui maintient la pression dans le réseau du bâtiment.",
+          "Pompe à vitesse variable : un variateur de fréquence ajuste la vitesse du moteur pour maintenir une pression constante, avec moins de démarrages et souvent une pression plus stable.",
+          "Pompe de relevage ou vide-cave : conçue pour évacuer des eaux claires ou légèrement chargées. Les eaux usées chargées demandent des pompes spécifiques, de type dilacérateur ou à roue vortex.",
+          "Pompe alimentée par énergie solaire : adaptée aux sites non raccordés, avec un dimensionnement spécifique des panneaux ; elle fait appel aux notions de puissance et d'énergie abordées dans nos guides sur l'énergie solaire.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les trois notions à maîtriser : débit, hauteur et pression",
+      },
+      {
+        type: 'p',
+        text: "Le débit est le volume d'eau fourni par unité de temps. Il s'exprime en litres par minute (L/min) ou en mètres cubes par heure (m³/h). Il détermine combien de points d'eau peuvent fonctionner en même temps.",
+      },
+      {
+        type: 'p',
+        text: "La hauteur manométrique totale (HMT) est l'énergie que la pompe doit donner à l'eau, exprimée en mètres de colonne d'eau. Elle regroupe la hauteur géométrique à franchir (du niveau d'eau dans le puits ou la citerne jusqu'au point de distribution le plus haut), les pertes de charge dans les tuyaux, les coudes, les vannes et les filtres, ainsi que la pression que l'on souhaite avoir au robinet.",
+      },
+      {
+        type: 'p',
+        text: "La pression se mesure en bars. À titre de repère physique, environ 10 mètres de colonne d'eau correspondent à 1 bar. Une pression de service de 2 bars au robinet équivaut donc à environ 20 mètres de HMT à ajouter à la hauteur géométrique et aux pertes de charge. Les pressions recommandées pour les appareils (chauffe-eau, machines, robinetterie) figurent dans leurs notices : vérifiez-les, car une pression trop faible gêne le fonctionnement de certains appareils et une pression trop forte les use.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 1 : estimer le débit nécessaire",
+      },
+      {
+        type: 'p',
+        text: "Listez les points d'eau (douches, lavabos, cuisine, WC, machines, robinets de jardin) et notez le débit de chacun d'après la fiche technique ou le tarif de la robinetterie. Additionnez ensuite les débits des points qui peuvent fonctionner en même temps. On n'ajoute pas tous les débits, car ils ne fonctionnent pas simultanément : on applique un coefficient de simultanéité, d'autant plus faible que le nombre de points est élevé. Les installateurs utilisent des tables ou des méthodes de calcul adaptées au type de bâtiment ; un bureau d'études ou un plombier expérimenté sait l'appliquer.",
+      },
+      {
+        type: 'h2',
+        text: "Un exemple de dimensionnement (hypothétique)",
+      },
+      {
+        type: 'p',
+        text: "Prenons une maison alimentée par un forage, avec un réservoir ou un réseau intérieur. Supposons, pour illustrer, les débits suivants, à remplacer par ceux de votre robinetterie : une douche à 9 L/min, un robinet de cuisine à 8 L/min, un lavabo à 6 L/min et un robinet de jardin à 12 L/min. Si ces quatre points peuvent fonctionner ensemble, le débit de pointe est de 9 + 8 + 6 + 12 = 35 L/min, soit 2,1 m³/h. Une pompe choisie avec un débit à son point de fonctionnement de l'ordre de 2 à 2,5 m³/h répondrait à ce cas.",
+      },
+      {
+        type: 'p',
+        text: "Calculons ensuite la HMT : on suppose un niveau d'eau en fonctionnement à 8 m sous le sol, un point de distribution le plus haut à 6 m au-dessus du sol, des pertes de charge de 3 m dans les tuyaux et accessoires, et une pression résiduelle souhaitée de 2 bars, soit 20 m. HMT = 8 + 6 + 3 + 20 = 37 m. Il faut donc une pompe capable de délivrer environ 2 m³/h sous une hauteur d'environ 37 m. Ces chiffres sont des hypothèses pédagogiques : pour un projet réel, il faut mesurer le niveau d'eau dynamique du forage, la hauteur et la longueur des tuyaux, et vérifier les caractéristiques de la pompe.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 2 : lire la courbe de la pompe et trouver le point de fonctionnement",
+      },
+      {
+        type: 'p',
+        text: "Chaque pompe a une courbe caractéristique fournie par le fabricant : elle indique la hauteur que la pompe peut donner à chaque débit. Plus le débit augmente, plus la hauteur diminue. Le réseau, lui, a sa propre courbe : plus le débit est élevé, plus les pertes de charge augmentent. Le point de fonctionnement est l'intersection des deux courbes. Il doit se situer dans la zone de meilleur rendement de la pompe, indiquée sur la fiche. Une pompe qui travaille loin de cette zone consomme plus, chauffe et s'use vite.",
+      },
+      {
+        type: 'p',
+        text: "Autrement dit, ne choisissez pas la pompe « la plus puissante » : une pompe surdimensionnée démarre et s'arrête trop souvent, provoque des surpressions et consomme inutilement. Choisissez celle dont la courbe passe correctement par le couple débit-hauteur calculé.",
+      },
+      {
+        type: 'h2',
+        text: "Puissance hydraulique et puissance électrique",
+      },
+      {
+        type: 'p',
+        text: "Pour comprendre la consommation, retenez que la puissance hydraulique, c'est-à-dire la puissance utile transmise à l'eau, vaut approximativement 9 810 × débit en m³/s × hauteur en mètres, en watts. Pour l'exemple précédent, 2 m³/h équivalent à environ 0,00056 m³/s, et pour 37 m de HMT on obtient 9 810 × 0,00056 × 37, soit environ 200 W de puissance hydraulique. La puissance électrique absorbée est supérieure, car le rendement global de l'ensemble moteur-pompe est inférieur à 1 : il faut diviser par ce rendement, donné ou estimé d'après la fiche technique. La puissance nominale du moteur indiquée sur la plaque sert à dimensionner l'alimentation électrique, les protections et, le cas échéant, l'onduleur ou le système solaire.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 3 : soigner l'aspiration, première cause de problèmes",
+      },
+      {
+        type: 'p',
+        text: "Une pompe de surface ne tire pas l'eau : elle crée une dépression et c'est la pression atmosphérique qui pousse l'eau vers elle. Cela limite la hauteur d'aspiration. En théorie, la limite est d'environ 10 mètres au niveau de la mer, mais en pratique elle est nettement inférieure à cause des pertes dans la conduite d'aspiration et des caractéristiques de la pompe : la fiche technique indique la hauteur d'aspiration maximale, qu'il ne faut pas pousser. Quelques règles :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Placez la pompe le plus près possible de la source d'eau et le plus bas possible.",
+          "Utilisez une conduite d'aspiration de diamètre au moins égal à celui de l'orifice de la pompe, la plus courte et la plus directe possible, avec une pente montante régulière pour éviter les poches d'air.",
+          "Assurez une parfaite étanchéité à l'air des raccords : une prise d'air minuscule suffit à faire décrocher la pompe.",
+          "Installez un clapet anti-retour et une crépine d'aspiration, immergée à une profondeur suffisante et à distance du fond.",
+          "Amorcez la pompe selon la notice avant la première mise en route.",
+          "Évitez la cavitation, c'est-à-dire la formation de bulles de vapeur dans l'eau lorsque l'aspiration est trop forte : elle fait un bruit de graviers et détruit les roues de la pompe.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Pour les puits profonds et les forages, la pompe immergée évite le problème de l'aspiration, puisque l'eau est poussée plutôt qu'aspirée.",
+      },
+      {
+        type: 'h2',
+        text: "La qualité de l'eau : sable, impuretés et corrosion",
+      },
+      {
+        type: 'p',
+        text: "Une eau chargée en sable ou en particules, fréquente dans certains forages, use rapidement les pompes non prévues pour cet usage. Informez-vous sur la qualité de l'eau avant l'achat. Il peut être nécessaire de choisir une pompe adaptée aux eaux chargées, d'installer un filtre ou un dessableur en amont, et de choisir des matériaux résistants à la corrosion si l'eau est agressive. Une analyse de l'eau, réalisée par un laboratoire compétent, aide à décider. Pour l'eau destinée à la consommation, la qualité sanitaire relève d'une démarche distincte, qui dépasse le choix de la pompe.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 4 : l'alimentation électrique et les protections",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Tension et phases : une pompe est conçue pour une alimentation monophasée ou triphasée précise ; vérifiez la plaque signalétique.",
+          "Courant de démarrage : les moteurs appellent un courant plus élevé au démarrage ; il faut dimensionner le câble, le disjoncteur et, si besoin, l'onduleur en conséquence (voir notre guide sur les erreurs de choix d'un onduleur).",
+          "Protection contre la marche à sec : une pompe sans eau chauffe et se détruit en quelques minutes. Utilisez une protection adaptée : pressostat de sécurité, sonde de niveau, interrupteur à flotteur ou relais de protection.",
+          "Protection thermique et différentielle : elles protègent le moteur et les personnes.",
+          "Mise à la terre et protection contre les surtensions : indispensables, surtout sur les installations en extérieur et sur les réseaux instables.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Les raccordements électriques d'une pompe, surtout en zone humide ou immergée, doivent être réalisés par un électricien qualifié.",
+      },
+      {
+        type: 'h2',
+        text: "Le réservoir à vessie, le pressostat et les démarrages fréquents",
+      },
+      {
+        type: 'p',
+        text: "Dans un surpresseur classique, le pressostat démarre la pompe quand la pression descend sous un seuil et l'arrête quand elle atteint un seuil haut. Le réservoir à vessie, ou vase d'expansion, stocke un volume d'eau sous pression et limite le nombre de démarrages. Si le vase est trop petit, mal gonflé ou défaillant, la pompe démarre et s'arrête sans cesse : c'est ce qu'on appelle le cyclage rapide, qui use le moteur et le pressostat. Le gonflage préalable du vase (mesuré sans eau dans le réservoir) doit correspondre à la pression de démarrage de la pompe, selon la notice. Un vase affaissé ou une vessie percée est une panne courante qui produit ce symptôme.",
+      },
+      {
+        type: 'h2',
+        text: "La pression d'eau : trop faible ou trop forte",
+      },
+      {
+        type: 'p',
+        text: "Une pression trop faible peut venir d'une pompe sous-dimensionnée, d'un filtre ou d'une crépine colmatés, d'une vanne partiellement fermée, de tuyaux trop fins ou entartrés, d'une fuite ou d'une prise d'air. Mesurez la pression avec un manomètre, à l'arrêt et en fonctionnement, pour localiser la cause.",
+      },
+      {
+        type: 'p',
+        text: "Une pression trop forte est un problème tout aussi réel : bruit, usure prématurée des robinets et des appareils, coups de bélier, fuites aux raccords, éclatement de flexibles. Un réducteur de pression, réglé sur la valeur recommandée par les fabricants des appareils, protège l'installation. Pour atténuer les coups de bélier, on utilise des vannes à fermeture lente, des amortisseurs et un dimensionnement correct des tuyaux.",
+      },
+      {
+        type: 'h2',
+        text: "Installation : les règles à respecter",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Installez la pompe dans un local sec, ventilé, à l'abri de la pluie, du soleil direct et des inondations, avec un accès facile pour l'entretien.",
+          "Fixez la pompe sur un support stable et utilisez des raccords souples ou des supports anti-vibrations pour limiter le bruit transmis au bâtiment.",
+          "Prévoyez des vannes d'isolement de chaque côté de la pompe et un point de purge ou de vidange.",
+          "Installez un manomètre pour contrôler la pression.",
+          "Respectez le sens de l'écoulement et les diamètres préconisés.",
+          "Évitez les coudes serrés et les rétrécissements inutiles qui augmentent les pertes de charge.",
+          "Pour une pompe immergée, respectez la profondeur d'immersion, utilisez un câble adapté et une corde ou un câble de sécurité pour la suspension.",
+          "Faites réaliser la mise en service par un professionnel : réglage du pressostat, contrôle des intensités, vérification des protections.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Entretien de la pompe et du groupe de surpression",
+      },
+      {
+        type: 'p',
+        text: "Un entretien régulier prolonge la vie de la pompe. À défaut d'un calendrier propre à votre équipement, appliquez les prescriptions de la notice, et ajoutez des contrôles simples : écouter les bruits inhabituels, vérifier l'absence de fuites, nettoyer le préfiltre ou la crépine, contrôler la pression du vase d'expansion, examiner l'état des câbles et des raccords, surveiller l'échauffement du moteur et noter les valeurs de pression et d'intensité de fonctionnement. Intégrez ces contrôles à votre plan de maintenance préventive (voir notre guide à ce sujet). Les interventions électriques ou le démontage de la pompe relèvent de professionnels.",
+      },
+      {
+        type: 'h2',
+        text: "Les pannes courantes et leurs causes probables",
+      },
+      {
+        type: 'ul',
+        items: [
+          "La pompe ne démarre pas : absence de courant, protection déclenchée, pressostat défaillant, condensateur de démarrage faible, moteur bloqué.",
+          "La pompe tourne mais ne débite pas : défaut d'amorçage, prise d'air, crépine colmatée, clapet bloqué, niveau d'eau trop bas.",
+          "La pompe démarre et s'arrête sans cesse : vase d'expansion affaissé ou mal gonflé, pressostat mal réglé, fuite sur le réseau.",
+          "Le débit est faible : tuyaux entartrés, filtre colmaté, roue usée, aspiration limitée.",
+          "Bruit de graviers ou de claquement : cavitation, corps étranger, roulement fatigué.",
+          "Le moteur chauffe : marche à sec, tension inadaptée, ventilation insuffisante, frottement mécanique.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes à éviter",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Choisir une pompe sur sa puissance électrique plutôt que sur son point de fonctionnement débit-hauteur.",
+          "Oublier les pertes de charge et la pression résiduelle dans le calcul de la HMT.",
+          "Sous-estimer la hauteur d'aspiration et placer la pompe trop haut ou trop loin de l'eau.",
+          "Ignorer la protection contre la marche à sec.",
+          "Négliger le réglage du pressostat et l'état du vase d'expansion.",
+          "Installer la pompe dans un local fermé, chaud ou inondable.",
+          "Utiliser une pompe d'eaux claires pour une eau chargée de sable.",
+          "Négliger le dimensionnement de l'alimentation électrique et des protections.",
+          "Surdimensionner la pompe par précaution excessive.",
+          "Négliger l'entretien et les contrôles de pression.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Quelle puissance de pompe faut-il pour une maison ? Il n'existe pas de réponse unique : cela dépend du débit nécessaire, de la hauteur manométrique et de la source d'eau. Le raisonnement correct part du débit et de la HMT, comme dans l'exemple ci-dessus, et non d'une puissance affichée.",
+      },
+      {
+        type: 'p',
+        text: "Pompe de surface ou pompe immergée ? Pour un puits profond ou un forage, la pompe immergée est généralement mieux adaptée car elle évite les limites de l'aspiration. Pour une citerne ou un puits peu profond, une pompe de surface bien installée peut convenir.",
+      },
+      {
+        type: 'p',
+        text: "Pourquoi ma pompe démarre-t-elle toutes les quelques secondes ? Le plus souvent, le vase d'expansion est affaissé ou mal gonflé, ou bien le pressostat est mal réglé. Une petite fuite sur le réseau peut aussi provoquer ce comportement.",
+      },
+      {
+        type: 'p',
+        text: "Peut-on faire fonctionner une pompe sur panneaux solaires ? Oui, avec un dimensionnement adapté des panneaux et un contrôleur ou un variateur approprié, en tenant compte de l'énergie nécessaire et des appels de courant. Consultez nos guides sur le dimensionnement solaire et le choix d'un onduleur.",
+      },
+      {
+        type: 'p',
+        text: "Faut-il un variateur de vitesse ? Il peut améliorer la stabilité de la pression et réduire les démarrages, mais il ajoute de l'électronique et un coût. Il est surtout intéressant pour les immeubles et les installations à demande variable.",
+      },
+      {
+        type: 'p',
+        text: "À quelle fréquence faut-il entretenir une pompe ? Suivez la notice du fabricant et adaptez selon l'usage et la qualité de l'eau : une eau chargée en sable demande des contrôles plus rapprochés.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Bien choisir une pompe, c'est partir du besoin réel : débit simultané, hauteur manométrique totale, source d'eau, qualité de l'eau et alimentation électrique. On lit ensuite la courbe de la pompe pour trouver un point de fonctionnement proche du meilleur rendement, on soigne l'aspiration, les protections et le réglage du groupe, et on entretient l'ensemble. Les exemples de cet article sont hypothétiques et servent à illustrer la méthode. Pour étudier un projet de pompage ou de surpression, KONFORTECH BÉNIN peut vous conseiller : contactez-nous via la page de contact du site. Aucun chiffre ici ne constitue un devis.",
+      },
+    ],
+  },
 ];
 
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
