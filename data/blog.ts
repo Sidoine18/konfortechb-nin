@@ -922,6 +922,838 @@ export const articles: Article[] = [
       },
     ],
   },
+
+  /* ───────── LOT 2 · ÉNERGIE SOLAIRE & ÉLECTRICITÉ ───────── */
+
+  {
+    slug: "dimensionner-installation-solaire-besoins",
+    title: "Comment dimensionner une installation solaire selon vos besoins : méthode complète",
+    seoTitle: "Dimensionner une installation solaire : méthode pas à pas (panneaux, batterie, onduleur)",
+    seoDescription:
+      "Bilan de consommation, panneaux, batterie, onduleur : la méthode complète pour dimensionner une installation solaire photovoltaïque adaptée à vos besoins, avec exemples chiffrés.",
+    excerpt:
+      "Ni trop petite ni surdimensionnée : une méthode en étapes pour calculer les panneaux, la batterie et l'onduleur dont vous avez réellement besoin.",
+    category: "Énergie solaire & électricité",
+    tags: ["solaire", "photovoltaïque", "dimensionnement", "batterie", "autonomie énergétique"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 14,
+    relatedServices: ["maintenance-industrielle"],
+    content: [
+      {
+        type: 'p',
+        text: "Beaucoup d'installations solaires déçoivent pour la même raison : elles ont été achetées « au kit », sans avoir calculé ce qu'elles devaient alimenter. Résultat : une batterie qui se vide avant la fin de la soirée, un onduleur qui disjoncte quand le réfrigérateur démarre, ou à l'inverse un équipement coûteux dont la moitié ne servira jamais. Dimensionner une installation, c'est répondre dans l'ordre à quatre questions : de quelle énergie ai-je besoin chaque jour, avec quelle puissance simultanée, pendant combien de temps sans soleil, et avec quelles pertes à prévoir ? Cet article propose une méthode complète, avec des exemples chiffrés signalés comme hypothétiques, pour comprendre ce que fait un installateur sérieux et discuter avec lui en connaissance de cause.",
+      },
+      {
+        type: 'p',
+        text: "Il s'adresse aux particuliers, aux commerces et aux PME qui envisagent un système avec batteries, hybride ou de secours. Il ne remplace pas une étude sur site : l'installation, le raccordement et les protections relèvent d'un professionnel qualifié, car on y manipule du courant continu à fort ampérage et des batteries.",
+      },
+      {
+        type: 'h2',
+        text: "Rappel essentiel : puissance, énergie et capacité ne sont pas la même chose",
+      },
+      {
+        type: 'p',
+        text: "Trois grandeurs reviennent dans tout dimensionnement. La puissance, en watts (W) ou kilowatts (kW), est ce que consomme ou délivre un appareil à un instant donné : elle détermine la taille de l'onduleur et des câbles. L'énergie, en wattheures (Wh) ou kilowattheures (kWh), est la puissance multipliée par la durée : elle détermine la production nécessaire et la taille de la batterie. La capacité d'une batterie, exprimée en ampères-heures (Ah) à une tension donnée, se convertit en énergie : Wh = V × Ah. Confondre ces notions est la source de la plupart des erreurs. Un autre article de ce blog les détaille ; retenez ici que la puissance se « dépense » à chaque instant, tandis que l'énergie se « stocke » et se « consomme » dans la durée.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 1 : établir le bilan de consommation",
+      },
+      {
+        type: 'p',
+        text: "Tout commence par une liste. Pour chaque appareil, notez sa puissance en watts (sur la plaque signalétique ou la notice), le nombre d'heures d'utilisation par jour et le nombre d'appareils. L'énergie quotidienne de l'appareil est : puissance (W) × heures par jour × nombre d'appareils, en Wh par jour. La somme de toutes les lignes donne votre consommation journalière.",
+      },
+      {
+        type: 'p',
+        text: "Deux précautions importantes. D'abord, les appareils à compresseur, comme un réfrigérateur ou un congélateur, ne fonctionnent pas en permanence : leur consommation journalière se lit plus fiablement sur l'étiquette énergie ou la fiche du fabricant que par un simple calcul puissance × 24 h. Ensuite, séparez les charges essentielles (éclairage, réfrigération, communication, ordinateurs) des charges de confort (climatisation, chauffe-eau électrique, fer à repasser, appareils de cuisson) : ces dernières pèsent lourd et décident à elles seules de la taille du système.",
+      },
+      {
+        type: 'h2',
+        text: "Un exemple de bilan (hypothétique)",
+      },
+      {
+        type: 'p',
+        text: "Prenons un petit logement avec des valeurs choisies pour l'exemple, qui ne proviennent d'aucune mesure sur site :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "6 lampes LED de 8 W, 5 heures par jour : environ 240 Wh/jour.",
+          "2 ventilateurs de 50 W, 8 heures par jour : 800 Wh/jour.",
+          "1 réfrigérateur, consommation lue sur l'étiquette : environ 1 000 Wh/jour (hypothèse).",
+          "1 téléviseur de 80 W, 4 heures par jour : 320 Wh/jour.",
+          "1 ordinateur portable de 60 W, 6 heures par jour : 360 Wh/jour.",
+          "1 box internet de 12 W, 24 heures par jour : environ 288 Wh/jour.",
+          "Chargeurs de téléphones : environ 100 Wh/jour.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Total : environ 3 108 Wh par jour, soit 3,1 kWh. Calculons aussi la puissance simultanée maximale, c'est-à-dire ce qui peut fonctionner en même temps : lampes 48 W + ventilateurs 100 W + réfrigérateur 150 W + téléviseur 80 W + ordinateur 60 W + box 12 W + chargeurs 20 W, soit environ 470 W. Cette valeur, avec une marge, servira à choisir l'onduleur ; l'énergie quotidienne servira à dimensionner les panneaux et la batterie. Ajouter un climatiseur de quelques centaines de watts à ce bilan le bouleverserait : c'est pourquoi un climatiseur doit être traité à part et dimensionné avec soin.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 2 : choisir l'architecture selon votre objectif",
+      },
+      {
+        type: 'p',
+        text: "Avant de calculer, précisez ce que vous attendez de l'installation, car l'architecture change tout :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Réduire la facture en journée, sans batterie : des panneaux raccordés au réseau via un onduleur dédié. Simple et économique, mais l'installation s'arrête en cas de coupure du réseau, par sécurité.",
+          "Disposer d'un secours pendant les coupures : un système hybride avec batterie, qui alimente les charges essentielles quand le réseau est absent.",
+          "Alimenter un site non raccordé : un système autonome (hors réseau) avec batteries, dimensionné pour couvrir toute la consommation, y compris les jours peu ensoleillés.",
+          "Compléter un groupe électrogène : un système hybride panneaux, batterie et groupe, pour réduire les heures de fonctionnement du groupe.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Les règles de raccordement au réseau et d'injection dépendent de la réglementation et du distributeur d'électricité de votre pays. Renseignez-vous auprès des organismes compétents avant tout projet de raccordement, et ne présumez pas des conditions locales : nous ne les détaillons pas ici faute de source vérifiée.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 3 : dimensionner le champ de panneaux photovoltaïques",
+      },
+      {
+        type: 'p',
+        text: "La puissance crête des panneaux, notée Wc (watt-crête), est la puissance qu'ils délivrent dans des conditions de test standardisées. Pour la calculer, on utilise la relation suivante : puissance crête nécessaire (Wc) = énergie quotidienne à produire (Wh/jour) ÷ (heures de plein soleil équivalentes × rendement global).",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Les heures de plein soleil équivalentes représentent l'énergie solaire reçue en une journée, exprimée comme un nombre d'heures à 1 000 W/m². Elles varient selon le lieu, la saison, l'inclinaison et l'orientation des panneaux. Ne les devinez pas : relevez-les pour votre site avec un outil de référence (voir plus bas).",
+          "Le rendement global regroupe les pertes : échauffement des panneaux, câbles, poussière, rendement de l'onduleur et du chargeur, cycle de charge et de décharge de la batterie. Une valeur de l'ordre de 0,65 à 0,8 est souvent retenue en première approche ; elle dépend de la qualité des composants et des conditions d'installation.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Pour obtenir les données d'ensoleillement de votre localité, le service PVGIS du Centre commun de recherche de la Commission européenne fournit gratuitement des données de rayonnement solaire et des estimations de production photovoltaïque pour n'importe quel point du globe, sans inscription, avec une interface disponible en français (source : joint-research-centre.ec.europa.eu, page « Photovoltaic Geographical Information System »). Il suffit de placer votre localité sur la carte et de saisir les caractéristiques de votre champ de panneaux.",
+      },
+      {
+        type: 'h2',
+        text: "Application à l'exemple (valeurs hypothétiques)",
+      },
+      {
+        type: 'p',
+        text: "Reprenons les 3,1 kWh par jour de l'exemple. Supposons, pour illustrer, 5 heures de plein soleil équivalentes et un rendement global de 0,7. Puissance crête nécessaire = 3 108 ÷ (5 × 0,7) ≈ 888 Wc. Avec des panneaux d'environ 450 Wc, deux panneaux (900 Wc) couvrent le besoin moyen. Mais ces 5 heures sont une hypothèse de calcul et non une donnée mesurée pour le Bénin : vous devrez les remplacer par la valeur de votre site, et la valeur de la saison la plus défavorable si vous voulez un système fiable toute l'année.",
+      },
+      {
+        type: 'h2',
+        text: "Orientation, inclinaison, ombrage et chaleur",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Orientation : dans l'hémisphère nord, donc au Bénin, les panneaux sont généralement orientés vers le sud. Un écart modéré reste acceptable et peut même être utile pour mieux répartir la production sur la journée.",
+          "Inclinaison : à faible latitude, l'inclinaison optimale est faible. On garde toutefois une inclinaison minimale, souvent d'une dizaine de degrés ou plus, pour que la pluie évacue la poussière et que l'eau ne stagne pas.",
+          "Ombrage : une ombre partielle, même petite (antenne, arbre, cheminée), peut réduire sensiblement la production d'une série de panneaux. Repérez-la à différentes heures de la journée avant de fixer l'emplacement.",
+          "Chaleur : un panneau chaud produit moins. Laissez une lame d'air derrière les panneaux et évitez de les plaquer contre une toiture sans ventilation.",
+          "Poussière : en saison sèche, le dépôt de poussière réduit la production. Prévoyez un accès sûr pour un nettoyage doux, à l'eau claire, tôt le matin ou en soirée.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 4 : dimensionner la batterie",
+      },
+      {
+        type: 'p',
+        text: "La batterie couvre la consommation quand les panneaux ne produisent pas assez : la nuit, par temps couvert, ou pendant une coupure. Deux décisions pilotent son dimensionnement : l'énergie que vous voulez pouvoir stocker, et la profondeur de décharge autorisée. La formule courante est : capacité nominale (Wh) = énergie à stocker (Wh) ÷ (profondeur de décharge × rendement).",
+      },
+      {
+        type: 'ul',
+        items: [
+          "L'énergie à stocker dépend de l'usage. Un secours pour les charges essentielles pendant quelques heures est bien plus petit qu'une autonomie d'une journée entière sans soleil.",
+          "La profondeur de décharge est la part de la capacité que l'on accepte d'utiliser sans abréger la vie de la batterie. Elle dépend de la technologie et du fabricant : suivez la fiche technique, car une batterie régulièrement trop déchargée vieillit prématurément.",
+          "Le rendement tient compte des pertes de la chaîne de conversion et de la batterie.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Exemple hypothétique : on souhaite stocker 3,1 kWh, soit une journée de consommation, avec une profondeur de décharge de 80 % et un rendement de 0,9. Capacité nominale = 3 108 ÷ (0,8 × 0,9) ≈ 4 317 Wh, soit environ 4,3 kWh. À une tension de 48 V, cela représente environ 90 Ah. Ce calcul est une base : le fabricant précise la capacité utilisable réelle, la profondeur de décharge recommandée et le courant de décharge maximal. Pour la chaleur, sachez que le vieillissement des batteries s'accélère à haute température : placez-les dans un local ventilé et abrité du soleil.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 5 : choisir l'onduleur et le régulateur",
+      },
+      {
+        type: 'p',
+        text: "L'onduleur transforme le courant continu des panneaux et de la batterie en courant alternatif utilisable par vos appareils. Sa puissance continue doit dépasser la puissance simultanée de vos charges, avec une marge, et son régime de pointe doit tolérer les appels de courant des appareils à moteur ou à compresseur, qui peuvent consommer plusieurs fois leur puissance nominale pendant quelques secondes au démarrage. Dans l'exemple, la puissance simultanée de 470 W, plus une marge, conduit à envisager un onduleur d'environ 800 à 1 000 W en sinus pur, à confirmer avec l'appel de courant du réfrigérateur.",
+      },
+      {
+        type: 'p',
+        text: "Le régulateur de charge, souvent intégré à l'onduleur hybride, gère la charge de la batterie à partir des panneaux. Les régulateurs de type MPPT extraient mieux l'énergie des panneaux que les régulateurs plus simples, mais ils doivent être compatibles avec la tension et le courant du champ photovoltaïque. Vérifiez la tension maximale d'entrée et le courant maximal dans la fiche technique : un champ dont la tension dépasse la limite peut détruire l'appareil. Notre guide sur les erreurs à éviter lors du choix d'un onduleur détaille ces points.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 6 : câbles, protections et mise à la terre",
+      },
+      {
+        type: 'p',
+        text: "C'est la partie la moins visible et celle qui conditionne la sécurité. Sur le côté courant continu, les courants peuvent être élevés, surtout avec une batterie de faible tension, et un arc électrique en courant continu ne s'éteint pas spontanément comme en alternatif. Il faut donc des câbles de section adaptée à l'intensité et à la longueur, des connecteurs appropriés, des fusibles ou disjoncteurs spécialement prévus pour le courant continu, un sectionneur permettant d'isoler le champ de panneaux, une mise à la terre correcte des structures et des appareils, et une protection contre les surtensions adaptée au site.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Ne jamais utiliser de câbles sous-dimensionnés ou de rallonges domestiques pour des liaisons de batterie.",
+          "Ne jamais court-circuiter les bornes d'une batterie : le courant de court-circuit peut provoquer brûlures et incendie.",
+          "Placer les batteries à l'écart de toute matière inflammable, dans un local ventilé, hors de portée des enfants.",
+          "Confier l'installation et la mise en service à un électricien ou installateur qualifié, qui vérifiera aussi la conformité de l'installation électrique existante.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les pertes qu'on oublie souvent",
+      },
+      {
+        type: 'p',
+        text: "Un bon dimensionnement anticipe les pertes plutôt que de les subir. Les principales sont l'échauffement des panneaux, qui diminue leur rendement sous forte chaleur, les chutes de tension dans les câbles, le rendement de l'onduleur, plus faible à très basse charge, la consommation à vide de l'onduleur, qui fonctionne en permanence, et le vieillissement progressif des panneaux et des batteries. Prévoyez aussi une réserve : un système juste calculé pour la moyenne annuelle manquera d'énergie lors des périodes les moins ensoleillées, par exemple en saison des pluies. Certains choisissent d'ajouter un groupe électrogène d'appoint, d'autres de dimensionner sur la saison défavorable.",
+      },
+      {
+        type: 'h2',
+        text: "Cas types : logement, commerce, bureau",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Logement : l'enjeu principal est de couvrir la réfrigération, l'éclairage, la ventilation et l'électronique. La climatisation, si elle est ajoutée, demande à elle seule un système bien plus important.",
+          "Commerce avec réfrigérateur ou congélateur : la continuité de la chaîne du froid prime. On dimensionne d'abord la réfrigération, avec une batterie capable de la soutenir toute la nuit et les jours couverts.",
+          "Bureau ou PME : les ordinateurs, serveurs et équipements réseau sont sensibles. On privilégie un onduleur sinus pur, une autonomie suffisante pour une extinction propre ou une poursuite du travail, et une séparation des charges critiques.",
+          "Climatisation : un climatiseur est une charge forte et fréquente. Un modèle à vitesse variable, mieux géré au démarrage, est plus adapté à un système solaire ; l'estimation de sa consommation réelle doit venir de la fiche technique et de l'usage prévu (voir notre guide sur le choix de la puissance et sur inverter ou non-inverter).",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Coût, durée de vie et rentabilité : poser les bonnes questions",
+      },
+      {
+        type: 'p',
+        text: "Nous ne publions pas de prix, car ils varient fortement selon les marques, la taille et le contexte, et nous n'avons pas de relevé fiable à citer. En revanche, la façon de raisonner est stable. Le coût total comprend les panneaux, les structures, l'onduleur, la batterie, les câbles et protections, la pose et la mise en service. La batterie est souvent l'élément dont la durée de vie est la plus courte : prévoyez son remplacement dans votre calcul de rentabilité. Comparez enfin le coût du kilowattheure solaire sur la durée de vie de l'installation à votre coût actuel, qu'il vienne du réseau ou d'un groupe électrogène, carburant et maintenance compris. Un devis détaillé, par poste, permet cette comparaison ; un prix global sans détail ne le permet pas.",
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes à éviter",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Acheter un kit sans avoir fait de bilan de consommation.",
+          "Ignorer les appels de courant au démarrage des appareils à moteur.",
+          "Choisir la batterie sur son prix ou son affichage en Ah sans regarder la tension, la profondeur de décharge et le courant maximal.",
+          "Dimensionner sur la moyenne annuelle en ignorant la saison la moins ensoleillée.",
+          "Oublier les pertes de la chaîne de conversion.",
+          "Installer les panneaux à l'ombre d'un arbre ou d'une cheminée sans l'avoir vérifié.",
+          "Poser les batteries dans un local fermé, chaud et non ventilé.",
+          "Mélanger des batteries d'âges ou de types différents.",
+          "Sous-dimensionner câbles et protections côté courant continu.",
+          "Faire installer sans qualification, ou sans mise à la terre ni protection contre les surtensions.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les documents à demander à l'installateur",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Le détail du bilan de consommation retenu, appareil par appareil.",
+          "Le calcul de dimensionnement : heures de plein soleil, rendement, autonomie et profondeur de décharge retenus.",
+          "Les fiches techniques de chaque composant principal.",
+          "Un schéma électrique avec les protections.",
+          "Les garanties sur les panneaux, la batterie, l'onduleur et la pose, avec leurs conditions.",
+          "Les modalités d'entretien et de dépannage, et le délai d'intervention.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Combien de panneaux faut-il pour alimenter une maison ? Cela dépend entièrement de la consommation journalière, de l'ensoleillement du site et des pertes. Il n'existe pas de réponse générale : on calcule à partir du bilan de consommation, comme dans l'exemple ci-dessus.",
+      },
+      {
+        type: 'p',
+        text: "Peut-on alimenter un climatiseur avec le solaire ? Oui, mais cela demande un système sensiblement plus important qu'un simple éclairage ou une réfrigération. Il faut estimer la consommation réelle du climatiseur, tenir compte de son courant de démarrage et vérifier la compatibilité de l'onduleur.",
+      },
+      {
+        type: 'p',
+        text: "Les panneaux fonctionnent-ils par temps nuageux ? Oui, mais avec une production réduite. C'est pourquoi on dimensionne la batterie et, si besoin, un appoint pour les périodes peu ensoleillées.",
+      },
+      {
+        type: 'p',
+        text: "Faut-il nettoyer les panneaux ? La poussière réduit la production, surtout en saison sèche. Un nettoyage doux, à l'eau claire, sans produit abrasif et en sécurité, est conseillé selon l'empoussièrement du site.",
+      },
+      {
+        type: 'p',
+        text: "Quelle est la durée de vie d'une installation solaire ? Les composants n'ont pas la même durée : les panneaux ont généralement la durée de vie la plus longue, l'onduleur et la batterie sont plus fragiles. Reportez-vous aux garanties et aux fiches techniques de chaque composant.",
+      },
+      {
+        type: 'p',
+        text: "Puis-je agrandir l'installation plus tard ? Oui, si l'onduleur, le régulateur et la batterie ont été choisis pour le permettre. Demandez à l'installateur la capacité d'extension dès le départ.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Dimensionner une installation solaire, c'est enchaîner des étapes logiques : mesurer la consommation, choisir l'architecture, calculer les panneaux à partir de l'ensoleillement réel du site, dimensionner la batterie selon l'autonomie voulue, choisir un onduleur capable de démarrer vos appareils, puis sécuriser l'ensemble. Chaque étape repose sur des hypothèses que vous devez connaître et contester. Si vous souhaitez faire étudier vos besoins énergétiques, KONFORTECH BÉNIN peut vous accompagner : passez par la page de contact du site pour demander une étude adaptée à votre situation. Les estimations de cet article sont pédagogiques et ne constituent pas un devis.",
+      },
+    ],
+  },
+  {
+    slug: "puissance-energie-capacite-batterie-difference",
+    title: "Puissance, énergie et capacité d’une batterie : comprendre W, kWh et Ah sans se tromper",
+    seoTitle: "Puissance, énergie, capacité de batterie : différence entre W, Wh, Ah et kWh",
+    seoDescription:
+      "W, kW, Wh, kWh, Ah, V : comprenez la différence entre puissance, énergie et capacité d'une batterie, avec des calculs d'autonomie et les erreurs à éviter.",
+    excerpt:
+      "Un onduleur de 1 000 W avec une batterie de 100 Ah dure combien de temps ? Les notions et les formules pour ne plus jamais confondre ces unités.",
+    category: "Énergie solaire & électricité",
+    tags: ["batterie", "puissance", "énergie", "autonomie", "solaire"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 14,
+    relatedServices: ["maintenance-industrielle"],
+    content: [
+      {
+        type: 'p',
+        text: "Quand on achète un onduleur, une batterie ou un kit solaire, trois mots reviennent sans cesse : puissance, énergie et capacité. Dans la conversation courante, on les emploie presque comme des synonymes. En électricité, ils désignent pourtant des choses différentes, mesurées avec des unités différentes, et les confondre conduit à des achats mal dimensionnés : une batterie qui ne tient que deux heures au lieu de huit, un onduleur qui s'arrête dès qu'on branche un appareil, une facture d'électricité mal interprétée. Cet article pose les définitions, les formules et plusieurs exemples de calcul que vous pourrez refaire vous-même.",
+      },
+      {
+        type: 'h2',
+        text: "Une image pour comprendre : le robinet et le réservoir",
+      },
+      {
+        type: 'p',
+        text: "Imaginez un réservoir d'eau muni d'un robinet. La quantité d'eau que le réservoir peut contenir correspond à l'énergie stockée, en litres. Le débit du robinet, c'est-à-dire la quantité d'eau qui sort à chaque seconde, correspond à la puissance, en litres par seconde. Un petit débit pendant longtemps ou un gros débit pendant peu de temps peuvent vider le même volume. De la même façon, une batterie contient une certaine énergie, et un appareil la consomme avec une certaine puissance. La durée de fonctionnement est le rapport entre les deux.",
+      },
+      {
+        type: 'h2',
+        text: "La puissance : ce que consomme ou délivre un appareil à un instant donné",
+      },
+      {
+        type: 'p',
+        text: "La puissance s'exprime en watts (W). Mille watts font un kilowatt (kW). Une lampe LED de 10 W consomme 10 W lorsqu'elle est allumée, un ventilateur de 50 W consomme 50 W lorsqu'il tourne, un four électrique peut demander plusieurs milliers de watts. La puissance est une grandeur instantanée : elle n'indique pas combien d'électricité sera consommée au total, seulement à quel rythme.",
+      },
+      {
+        type: 'p',
+        text: "La puissance sert à dimensionner ce qui doit supporter ce rythme : l'onduleur, les câbles, les disjoncteurs, le groupe électrogène. Si la somme des puissances des appareils allumés en même temps dépasse la puissance de l'onduleur, celui-ci se met en protection ou s'arrête.",
+      },
+      {
+        type: 'h2',
+        text: "Watts, voltampères et facteur de puissance",
+      },
+      {
+        type: 'p',
+        text: "Sur les fiches techniques d'onduleurs, vous verrez aussi des voltampères (VA). La puissance apparente, en VA, est le produit de la tension par le courant. La puissance active, en W, est celle qui produit réellement du travail, de la chaleur ou de la lumière. Le rapport entre les deux est le facteur de puissance, un nombre compris entre 0 et 1 qui dépend du type d'appareil. Un onduleur de 1 000 VA ne délivre donc pas forcément 1 000 W : selon son facteur de puissance, il peut délivrer par exemple 800 W. Lisez toujours la puissance en watts sur la fiche, pas seulement celle en VA.",
+      },
+      {
+        type: 'h2',
+        text: "L'énergie : la puissance multipliée par la durée",
+      },
+      {
+        type: 'p',
+        text: "L'énergie, c'est ce que l'on consomme ou stocke au total. Elle s'exprime en wattheures (Wh) ou en kilowattheures (kWh), avec 1 kWh = 1 000 Wh. La relation fondamentale est : énergie (Wh) = puissance (W) × durée (h). C'est cette grandeur que mesure votre compteur et que facture votre fournisseur d'électricité.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Une lampe de 10 W allumée 5 heures consomme 10 × 5 = 50 Wh.",
+          "Un ventilateur de 50 W qui tourne 8 heures consomme 50 × 8 = 400 Wh, soit 0,4 kWh.",
+          "Un appareil de 1 000 W qui fonctionne 3 heures consomme 3 000 Wh, soit 3 kWh.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Remarquez qu'un petit appareil allumé longtemps peut consommer plus d'énergie qu'un gros appareil allumé brièvement. C'est ce qui rend utile le bilan de consommation : ce n'est pas la puissance seule qui pèse sur la facture ou sur la taille de la batterie, mais la puissance multipliée par le temps.",
+      },
+      {
+        type: 'h2',
+        text: "La capacité d'une batterie : ampères-heures, volts et wattheures",
+      },
+      {
+        type: 'p',
+        text: "Les batteries sont souvent présentées par une capacité en ampères-heures (Ah) et une tension en volts (V). Les ampères-heures mesurent une quantité de charge électrique, pas une énergie. Pour obtenir l'énergie, il faut multiplier par la tension : énergie (Wh) = tension (V) × capacité (Ah). C'est la raison pour laquelle comparer deux batteries uniquement avec leurs Ah est trompeur.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Une batterie de 12 V et 100 Ah stocke 12 × 100 = 1 200 Wh, soit 1,2 kWh.",
+          "Une batterie de 48 V et 100 Ah stocke 48 × 100 = 4 800 Wh, soit 4,8 kWh, quatre fois plus que la précédente, à nombre d'Ah identique.",
+          "Une batterie de 24 V et 200 Ah stocke 24 × 200 = 4 800 Wh : mêmes wattheures que la précédente, avec un courant différent.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Quand un vendeur annonce « 100 Ah » sans préciser la tension, la comparaison n'a donc aucun sens. Demandez toujours l'énergie en Wh ou en kWh, ou calculez-la vous-même.",
+      },
+      {
+        type: 'h2',
+        text: "Capacité nominale et capacité utilisable : la différence qui coûte cher",
+      },
+      {
+        type: 'p',
+        text: "La capacité indiquée sur une batterie est sa capacité nominale. Elle n'est pas entièrement exploitable. Plusieurs facteurs la réduisent :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "La profondeur de décharge : pour préserver la durée de vie, le fabricant recommande de ne pas décharger la batterie en dessous d'un certain niveau. La capacité utilisable est la capacité nominale multipliée par cette profondeur de décharge recommandée, qui dépend de la technologie et du modèle.",
+          "Le rendement : l'énergie récupérée est inférieure à l'énergie injectée, à cause des pertes de la batterie, du chargeur et de l'onduleur.",
+          "Le courant de décharge : sur certaines technologies, notamment le plomb, la capacité disponible diminue lorsque le courant demandé est élevé (c'est l'effet Peukert).",
+          "La température : une batterie froide délivre moins ; une batterie chauffée vieillit plus vite.",
+          "Le vieillissement : avec les cycles et les années, la capacité maximale diminue progressivement.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "En pratique, retenez qu'une batterie de 5 kWh nominaux ne vous donnera jamais 5 kWh disponibles à la prise. Le fabricant fournit la capacité utilisable et la profondeur de décharge recommandée : c'est cette valeur, et non la capacité nominale, qui doit entrer dans vos calculs.",
+      },
+      {
+        type: 'h2',
+        text: "Calculer l'autonomie : la formule et deux exemples",
+      },
+      {
+        type: 'p',
+        text: "L'autonomie, c'est-à-dire la durée pendant laquelle la batterie peut alimenter une charge, se calcule ainsi : durée (h) = capacité utilisable (Wh) × rendement ÷ puissance de la charge (W).",
+      },
+      {
+        type: 'p',
+        text: "Exemple hypothétique : une batterie de 4,8 kWh nominaux, avec une profondeur de décharge recommandée de 80 %, donne 4,8 × 0,8 = 3,84 kWh utilisables. Avec un rendement de l'onduleur de 0,9, l'énergie réellement disponible pour les appareils est de 3,84 × 0,9 ≈ 3,46 kWh. Pour une charge de 500 W, la durée est de 3 456 ÷ 500 ≈ 6,9 heures. Pour une charge de 1 000 W, par exemple un climatiseur moyen, la durée tombe à environ 3,5 heures. Ces chiffres illustrent la méthode ; les valeurs réelles dépendent du produit et de ses conditions d'usage.",
+      },
+      {
+        type: 'p',
+        text: "La même formule montre pourquoi la puissance de la charge domine l'autonomie : doubler la puissance divise la durée par deux. Réduire la consommation, par exemple en supprimant les veilles inutiles ou en choisissant des appareils plus efficaces, augmente autant l'autonomie qu'une batterie plus grosse, souvent à moindre coût.",
+      },
+      {
+        type: 'h2',
+        text: "La puissance de la batterie elle-même",
+      },
+      {
+        type: 'p',
+        text: "Une batterie a aussi une limite de puissance : le courant maximal qu'elle peut délivrer en continu et en pointe. Une batterie de grande capacité mais de faible courant maximal ne pourra pas alimenter un gros appareil, même si son énergie suffirait en théorie. Vérifiez sur la fiche technique le courant de décharge continu et le courant de pointe, et comparez-les au courant demandé par l'onduleur : courant = puissance ÷ tension, en tenant compte du rendement. Par exemple, un onduleur de 1 000 W alimenté en 12 V demande environ 93 A, alors que le même onduleur alimenté en 24 V ne demande qu'environ 46 A.",
+      },
+      {
+        type: 'h2',
+        text: "Pourquoi la tension (12, 24, 48 V) compte",
+      },
+      {
+        type: 'p',
+        text: "La puissance est le produit de la tension et du courant : P = U × I. À puissance égale, une tension plus élevée signifie un courant plus faible. Or un courant élevé impose des câbles plus gros, des pertes plus importantes et des protections plus coûteuses, et il augmente le risque d'échauffement aux connexions. C'est pourquoi les systèmes de plus forte puissance utilisent des tensions de batterie plus élevées, comme 24 V ou 48 V. Le choix de la tension de la batterie doit toujours correspondre à celle de l'onduleur.",
+      },
+      {
+        type: 'p',
+        text: "On peut associer des batteries pour augmenter la tension ou la capacité. En série, les tensions s'additionnent et la capacité en Ah reste celle d'une batterie. En parallèle, les capacités en Ah s'additionnent et la tension reste la même. Ne mélangez jamais des batteries de types, d'âges ou de capacités différents : la plus faible limite et abîme les autres. Les associations doivent être réalisées par un professionnel.",
+      },
+      {
+        type: 'h2',
+        text: "Plomb ou lithium : ce qui change pour la capacité",
+      },
+      {
+        type: 'p',
+        text: "Deux grandes familles se rencontrent dans les installations : les batteries au plomb (ouvertes, AGM, gel) et les batteries au lithium, dont la variante lithium fer phosphate est répandue dans le stockage solaire. Sans citer de chiffres qui varient d'un produit à l'autre, voici les différences générales :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Profondeur de décharge recommandée : généralement plus élevée pour le lithium, ce qui donne plus de capacité utilisable à capacité nominale égale.",
+          "Rendement : généralement meilleur pour le lithium.",
+          "Entretien : certaines batteries au plomb ouvertes demandent un contrôle du niveau d'eau et une ventilation, car elles dégagent de l'hydrogène à la charge ; le lithium n'a pas ces contraintes, mais exige un système de gestion de batterie (BMS) fiable.",
+          "Prix à l'achat : généralement plus élevé pour le lithium, mais le coût par kWh utilisé sur la durée de vie doit être comparé, et non le seul prix d'achat.",
+          "Chaleur : dans les deux cas, une température élevée accélère le vieillissement. Dans un climat chaud, le lieu d'installation compte beaucoup.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Pour comparer des batteries, demandez le nombre de cycles garanti, en précisant à quelle profondeur de décharge et à quelle température il a été mesuré. Un nombre de cycles annoncé sans ces conditions ne permet aucune comparaison.",
+      },
+      {
+        type: 'h2',
+        text: "Trois exercices pour vérifier que vous avez compris",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Exercice 1 : une batterie de 12 V et 200 Ah, quelle énergie nominale ? Réponse : 12 × 200 = 2 400 Wh, soit 2,4 kWh.",
+          "Exercice 2 : un ordinateur de 60 W fonctionne 6 heures par jour, quelle énergie quotidienne ? Réponse : 60 × 6 = 360 Wh.",
+          "Exercice 3 : avec 2,4 kWh nominaux, 50 % de profondeur de décharge et un rendement de 0,9, combien de temps pour alimenter une charge de 100 W ? Réponse : 2 400 × 0,5 × 0,9 = 1 080 Wh, soit 1 080 ÷ 100 = 10,8 heures.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Lire une fiche technique de batterie",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Tension nominale (V) et capacité nominale (Ah), pour calculer l'énergie en Wh.",
+          "Capacité utilisable ou profondeur de décharge recommandée.",
+          "Courant de décharge continu et courant de pointe.",
+          "Nombre de cycles garantis, avec la profondeur de décharge et la température d'essai.",
+          "Plage de température de fonctionnement.",
+          "Rendement aller-retour, si indiqué.",
+          "Garantie : durée, conditions, et ce qu'elle couvre vraiment.",
+          "Compatibilité avec votre onduleur ou votre régulateur, notamment le protocole de communication du BMS pour le lithium.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Sécurité : les batteries ne se manipulent pas à la légère",
+      },
+      {
+        type: 'p',
+        text: "Une batterie stocke beaucoup d'énergie et peut débiter un courant considérable en cas de court-circuit. Ne posez jamais d'objet métallique sur les bornes, ne perforez ni ne démontez une batterie, respectez les polarités, utilisez des fusibles ou disjoncteurs adaptés au courant continu et protégez les connexions. Les batteries au plomb ouvertes demandent un local ventilé. Les installations de batteries doivent être réalisées par une personne qualifiée, avec un emplacement dégagé, à distance de toute matière inflammable.",
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Comparer des batteries uniquement en Ah, sans tenir compte de la tension.",
+          "Prendre la capacité nominale pour la capacité utilisable.",
+          "Confondre VA et W sur la fiche d'un onduleur.",
+          "Oublier de tenir compte du rendement de l'onduleur dans le calcul d'autonomie.",
+          "Ignorer le courant maximal de décharge de la batterie.",
+          "Choisir une tension de batterie qui ne correspond pas à l'onduleur.",
+          "Mélanger des batteries de types ou d'âges différents.",
+          "Installer des batteries dans un local chaud et non ventilé.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Mesurer sa consommation réelle plutôt que la deviner",
+      },
+      {
+        type: 'p',
+        text: "Les puissances inscrites sur les plaques signalétiques sont des maxima ou des valeurs nominales ; la consommation réelle d'un appareil varie avec son usage. Un wattmètre de prise, vendu dans le commerce, indique la puissance instantanée et l'énergie cumulée d'un appareil branché dessus. Laissez-le quelques jours sur un réfrigérateur, un ordinateur ou un téléviseur : vous obtiendrez une consommation journalière fiable en Wh, bien plus précise qu'un calcul théorique. Pour l'ensemble d'un logement ou d'un commerce, les relevés de votre compteur et vos factures donnent la consommation globale en kWh par période, à diviser par le nombre de jours pour avoir une moyenne quotidienne.",
+      },
+      {
+        type: 'p',
+        text: "Cette mesure est précieuse pour trois raisons. Elle révèle les consommateurs cachés, comme les veilles permanentes ou un vieux congélateur gourmand. Elle évite de surdimensionner par prudence excessive. Et elle donne à l'installateur des données solides, ce qui limite les mauvaises surprises après la mise en service.",
+      },
+      {
+        type: 'h2',
+        text: "Un cas pratique : la batterie d'un petit commerce (hypothétique)",
+      },
+      {
+        type: 'p',
+        text: "Une boutique souhaite maintenir en service un réfrigérateur et l'éclairage pendant une nuit de coupure, soit 10 heures. Supposons que le réfrigérateur consomme en moyenne 60 W sur la durée et que l'éclairage et la caisse représentent 90 W, soit 150 W au total. L'énergie nécessaire est de 150 × 10 = 1 500 Wh. Avec un rendement de 0,9 pour l'onduleur, il faut fournir 1 500 ÷ 0,9 ≈ 1 667 Wh à la sortie de la batterie. Si la profondeur de décharge recommandée est de 80 %, la capacité nominale requise est de 1 667 ÷ 0,8 ≈ 2 083 Wh. Avec une batterie de 24 V, cela correspond à environ 87 Ah. On retiendrait en pratique une capacité du palier supérieur disponible, pour garder une marge face au vieillissement et aux journées chaudes.",
+      },
+      {
+        type: 'p',
+        text: "Ce raisonnement fonctionne dans l'autre sens : si vous disposez déjà d'une batterie, calculez son énergie utilisable, divisez-la par la consommation moyenne de vos charges essentielles et vous obtenez l'autonomie réelle. C'est la meilleure façon de vérifier la promesse d'un vendeur.",
+      },
+      {
+        type: 'h2',
+        text: "Idées reçues à écarter",
+      },
+      {
+        type: 'ul',
+        items: [
+          "« Plus il y a d'Ah, plus la batterie est puissante. » Faux : les Ah mesurent une quantité de charge, pas une puissance, et ne sont comparables qu'à tension égale.",
+          "« Un onduleur plus gros protège mieux mes appareils. » Faux : la puissance de l'onduleur ne dit rien sur la qualité de l'onde ni sur les protections.",
+          "« Ma batterie de 5 kWh me donne 5 kWh. » Faux : seule une partie de la capacité nominale est utilisable, et des pertes s'ajoutent.",
+          "« Brancher deux batteries double l'autonomie. » Cela dépend du montage : en série, la tension double mais pas la capacité en Ah ; en parallèle, la capacité double à tension égale. Dans les deux cas, l'énergie totale double, mais les montages doivent être réalisés par un professionnel.",
+          "« Les kWh de ma facture sont la même chose que les kW de mon onduleur. » Faux : le premier mesure une énergie, le second une puissance.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Un kWh, c'est quoi concrètement ? C'est l'énergie consommée par un appareil de 1 000 W qui fonctionne pendant une heure, ou par un appareil de 100 W qui fonctionne pendant dix heures.",
+      },
+      {
+        type: 'p',
+        text: "Comment convertir des Ah en kWh ? Multipliez les Ah par la tension en volts pour obtenir des Wh, puis divisez par 1 000 pour obtenir des kWh. Exemple : 100 Ah × 48 V = 4 800 Wh = 4,8 kWh.",
+      },
+      {
+        type: 'p',
+        text: "Pourquoi ma batterie se vide plus vite que prévu ? Les causes habituelles sont une consommation réelle supérieure à celle estimée, la capacité utilisable plus faible que la capacité nominale, les pertes de l'onduleur, la chaleur ou le vieillissement de la batterie.",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur plus puissant consomme-t-il plus ? Pas par lui-même : il ne délivre que la puissance demandée par vos appareils. Mais sa consommation à vide, c'est-à-dire sans charge, peut être non négligeable sur une journée complète.",
+      },
+      {
+        type: 'p',
+        text: "Quelle est la différence entre une batterie et un onduleur ? La batterie stocke l'énergie en courant continu. L'onduleur convertit ce courant en courant alternatif pour alimenter les appareils domestiques. Les deux doivent être compatibles en tension et en courant.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Retenez trois idées : la puissance, en watts, est un rythme ; l'énergie, en wattheures, est une quantité, égale à la puissance multipliée par le temps ; la capacité d'une batterie, en ampères-heures, n'a de sens qu'avec sa tension, et sa part utilisable est inférieure à sa capacité nominale. Avec ces repères, vous pouvez estimer vous-même l'autonomie d'une installation et vérifier les affirmations d'un devis. Pour faire étudier votre besoin énergétique, vous pouvez contacter KONFORTECH BÉNIN via la page de contact du site ; les exemples de cet article sont pédagogiques et ne constituent pas un devis.",
+      },
+    ],
+  },
+  {
+    slug: "erreurs-choisir-onduleur-solaire-secours",
+    title: "Choisir un onduleur : 10 erreurs à éviter (secours, hybride, solaire)",
+    seoTitle: "Choisir un onduleur : les erreurs à éviter (puissance, sinus pur, batterie)",
+    seoDescription:
+      "Puissance, appel de courant, sinus pur, tension de batterie, protections : les erreurs à éviter pour bien choisir un onduleur de secours ou solaire.",
+    excerpt:
+      "Un onduleur mal choisi s'arrête, chauffe ou abîme vos appareils. Les dix erreurs les plus courantes et la méthode pour les éviter.",
+    category: "Énergie solaire & électricité",
+    tags: ["onduleur", "solaire", "secours énergétique", "sinus pur", "batterie"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 14,
+    relatedServices: ["maintenance-industrielle"],
+    content: [
+      {
+        type: 'p',
+        text: "L'onduleur est le cerveau d'une installation de secours ou solaire : c'est lui qui transforme le courant continu de la batterie ou des panneaux en courant alternatif pour vos appareils. Un mauvais choix se paie vite : coupures au moment où l'on a le plus besoin d'électricité, appareils abîmés, échauffement, batterie qui vieillit trop tôt. Ce guide passe en revue les dix erreurs les plus fréquentes, explique pourquoi elles arrivent et propose une méthode de choix en plusieurs étapes. Il ne remplace pas la notice du fabricant ni l'avis d'un installateur qualifié, car le raccordement d'un onduleur à une batterie implique des courants élevés.",
+      },
+      {
+        type: 'h2',
+        text: "D'abord, de quel type d'onduleur parle-t-on ?",
+      },
+      {
+        type: 'p',
+        text: "Le mot « onduleur » recouvre plusieurs familles qu'il faut distinguer avant de comparer des prix.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "L'onduleur de secours, ou onduleur de type alimentation sans interruption, branché sur le réseau. Il charge une batterie et prend le relais quand le courant disparaît. Il est courant pour les ordinateurs et les équipements réseau.",
+          "L'onduleur-chargeur, utilisé avec des batteries de plus grande capacité pour alimenter une maison ou un commerce pendant les coupures. Il charge les batteries depuis le réseau ou un groupe électrogène.",
+          "L'onduleur solaire raccordé au réseau, sans batterie, qui injecte la production des panneaux. Il s'arrête lors d'une coupure du réseau, par sécurité.",
+          "L'onduleur hybride, qui combine la gestion des panneaux, de la batterie et du réseau dans un seul appareil.",
+          "L'onduleur autonome, pour les sites non raccordés, souvent associé à un régulateur de charge et à des batteries.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Ces appareils ne sont pas interchangeables. Un onduleur de secours pour ordinateur n'est pas conçu pour alimenter un réfrigérateur pendant des heures, et un onduleur solaire sans batterie ne fournira rien pendant une coupure. Définissez d'abord votre besoin.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 1 : confondre watts et voltampères",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur affiche souvent une puissance en VA. Or la puissance qu'il peut vraiment fournir à vos appareils s'exprime en watts, et elle est égale aux VA multipliés par le facteur de puissance de l'onduleur. Un appareil de 1 000 VA qui a un facteur de puissance de 0,8 délivre 800 W. Comparer un onduleur de « 1 000 VA » à un besoin de 1 000 W conduit donc à un modèle trop petit. Repérez toujours la puissance en watts sur la fiche technique, et demandez-la au vendeur si elle n'est pas indiquée.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 2 : oublier les appels de courant au démarrage",
+      },
+      {
+        type: 'p',
+        text: "Les appareils à moteur ou à compresseur, comme les réfrigérateurs, congélateurs, pompes, climatiseurs, perceuses ou compresseurs, consomment beaucoup plus que leur puissance nominale pendant une fraction de seconde au démarrage. Ce courant d'appel peut atteindre plusieurs fois la puissance nominale. L'onduleur possède une puissance de crête, indiquée sur la fiche, qu'il peut tenir pendant une durée brève. Si elle est insuffisante, l'onduleur se met en défaut dès que le compresseur démarre, même si la somme des puissances nominales semble raisonnable.",
+      },
+      {
+        type: 'p',
+        text: "Pour un réfrigérateur ou un congélateur, vérifiez le courant de démarrage dans la fiche de l'appareil ou demandez-le au fabricant. Pour un climatiseur, un modèle à vitesse variable, qui démarre progressivement, est généralement beaucoup moins exigeant qu'un modèle à vitesse fixe. Notre guide sur le choix entre inverter et non-inverter détaille cette différence.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 3 : choisir un onduleur à sinus modifié pour des charges sensibles",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur produit une onde électrique de forme plus ou moins proche de celle du réseau. Les modèles à sinus pur délivrent une onde de bonne qualité, adaptée à tous les appareils. Les modèles à sinus modifié, ou à onde approximative, sont moins chers mais peuvent provoquer bruit, échauffement et dysfonctionnement sur certains équipements : moteurs, compresseurs, électronique sensible, appareils audio, imprimantes laser, certains chargeurs. Pour alimenter un réfrigérateur, des ordinateurs ou des équipements professionnels, un onduleur à sinus pur est le choix le plus prudent. Vérifiez la forme d'onde annoncée dans la fiche technique.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 4 : se tromper de tension de batterie",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur est conçu pour une tension de batterie précise : 12 V, 24 V ou 48 V, par exemple. Elle doit correspondre exactement à celle de votre banc de batteries. Mais le choix de la tension a aussi une conséquence sur le courant : à puissance égale, plus la tension est basse, plus le courant est élevé. Un onduleur de 1 000 W alimenté en 12 V demande environ 93 A, contre environ 46 A en 24 V. Un courant de cette ampleur impose des câbles plus gros et des connexions parfaites. Pour des puissances importantes, préférez une tension plus élevée.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 5 : ignorer le rendement et la consommation à vide",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur consomme de l'énergie même quand il ne débite rien : c'est sa consommation à vide. Sur une installation qui fonctionne 24 heures sur 24, cette consommation s'additionne et peut vider une batterie pendant la nuit, surtout si les charges réelles sont faibles. Son rendement varie aussi avec la charge : il est souvent moins bon à très faible charge. Comparez ces données sur les fiches techniques, notamment si votre installation alimente surtout de petites charges, comme l'éclairage et les ordinateurs, pendant de longues périodes.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 6 : négliger la chaleur, la poussière et l'emplacement",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur dissipe de la chaleur. Posé dans un local fermé et chaud, au soleil, ou recouvert de poussière, il réduit sa puissance disponible ou s'arrête par protection thermique. Beaucoup de fiches indiquent une puissance maximale à une température donnée, et une réduction au-delà. Dans un climat chaud et humide, choisissez un emplacement ventilé, à l'ombre, à l'abri de la pluie et de l'humidité, éloigné de tout produit inflammable, et dont l'accès permet l'entretien. Protégez-le contre l'entrée d'insectes et de petits animaux, qui provoquent de nombreuses pannes.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 7 : acheter sur le prix seul, sans regarder protections et garantie",
+      },
+      {
+        type: 'p',
+        text: "Deux onduleurs de même puissance affichée peuvent être très différents par leur qualité de fabrication. Vérifiez la présence des protections essentielles : contre la surcharge, le court-circuit, la surchauffe, la sous-tension et la surtension de la batterie, l'inversion de polarité. Regardez la durée et les conditions de la garantie, ainsi que l'existence d'un service après-vente et d'un technicien dans votre ville. Un onduleur bon marché sans possibilité de réparation locale peut coûter plus cher à long terme qu'un modèle plus onéreux dont le dépannage est assuré.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 8 : sous-estimer les câbles et les protections côté courant continu",
+      },
+      {
+        type: 'p',
+        text: "Entre la batterie et l'onduleur circulent des courants élevés. Des câbles trop fins chauffent, provoquent des chutes de tension et peuvent s'enflammer. Il faut une section adaptée au courant et à la longueur, des cosses serties correctement, des connexions serrées, un fusible ou un disjoncteur conçu pour le courant continu, placé au plus près de la batterie, et un moyen de sectionnement. Une mise à la terre correcte et, selon le site, une protection contre les surtensions complètent l'ensemble. Ce travail est réservé à un professionnel : un arc électrique en courant continu est difficile à éteindre.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 9 : négliger la compatibilité avec la batterie et les panneaux",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur doit être compatible avec la technologie de batterie choisie. Les profils de charge du plomb et du lithium diffèrent, et certaines batteries au lithium communiquent avec l'onduleur par un protocole dédié. Un réglage incorrect peut réduire la durée de vie de la batterie, voire la rendre dangereuse. Si l'onduleur intègre un régulateur solaire, vérifiez aussi la tension maximale d'entrée, le courant maximal et la plage de fonctionnement du suivi du point de puissance maximale (MPPT) par rapport à votre champ de panneaux : un champ dont la tension dépasse la limite d'entrée peut détruire l'appareil. Faites valider l'ensemble par l'installateur à partir des fiches techniques.",
+      },
+      {
+        type: 'h2',
+        text: "Erreur 10 : ne pas penser à l'évolution du besoin et à l'entretien",
+      },
+      {
+        type: 'p',
+        text: "Un système sous-dimensionné dès le départ devient vite insuffisant : on ajoute un appareil, puis un autre. Demandez si l'onduleur peut être mis en parallèle avec un autre, si la batterie peut être étendue et si le champ solaire peut être agrandi. Pensez aussi à l'entretien : nettoyage des ventilateurs, contrôle des connexions, mise à jour du micrologiciel si elle est prévue, surveillance des alarmes. Un onduleur dont l'interface affiche l'état de la batterie et les défauts facilite le suivi et le dépannage.",
+      },
+      {
+        type: 'h2',
+        text: "Une méthode de choix en six étapes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Étape 1 — Listez les appareils à alimenter pendant une coupure ou en autonomie, en séparant essentiels et confort.",
+          "Étape 2 — Calculez la puissance simultanée maximale en watts, puis ajoutez une marge. Une marge de l'ordre de 20 à 30 % est un repère professionnel courant, à adapter à l'usage.",
+          "Étape 3 — Identifiez les appareils à moteur et leurs courants de démarrage, et vérifiez la puissance de crête de l'onduleur.",
+          "Étape 4 — Déterminez l'autonomie souhaitée, puis calculez l'énergie à stocker et la capacité de batterie correspondante.",
+          "Étape 5 — Choisissez la tension de batterie en fonction de la puissance, en préférant une tension plus élevée pour les puissances importantes.",
+          "Étape 6 — Vérifiez le type d'onde, les protections, la compatibilité batterie et panneaux, la garantie et le service après-vente, puis faites valider l'installation par un professionnel.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Un exemple de choix (hypothétique) : une petite boutique",
+      },
+      {
+        type: 'p',
+        text: "Une boutique veut garder en service, pendant les coupures, un réfrigérateur de 150 W, deux ventilateurs de 60 W, six lampes LED de 10 W, un ordinateur de 80 W et un téléviseur de 100 W. Puissance simultanée : 150 + 120 + 60 + 80 + 100 = 510 W. Avec une marge de 25 %, on retient environ 640 W de puissance continue. Supposons, pour l'exemple, que le réfrigérateur appelle trois fois sa puissance nominale au démarrage, soit 450 W : la pointe est alors d'environ 360 + 450 = 810 W, que l'onduleur doit pouvoir tenir quelques secondes.",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur à sinus pur d'environ 1 000 W continus, avec une puissance de crête supérieure, répondrait à ce besoin. Sa tension d'entrée est un choix important : en 12 V, il demanderait environ 93 A à pleine puissance, contre environ 46 A en 24 V. Le 24 V paraît donc plus raisonnable pour les câbles et les protections. Ces valeurs sont des hypothèses pédagogiques ; la décision finale doit s'appuyer sur les fiches techniques réelles des appareils et de l'onduleur.",
+      },
+      {
+        type: 'h2',
+        text: "Et la climatisation sur onduleur ?",
+      },
+      {
+        type: 'p',
+        text: "Un climatiseur est une charge importante. Pour l'alimenter sur batterie, il faut estimer sa consommation réelle, son courant de démarrage et la durée d'autonomie voulue. Un modèle à vitesse variable est en général plus facile à alimenter par un onduleur qu'un modèle à vitesse fixe. Même avec ce type d'appareil, la batterie nécessaire est vite très volumineuse, car l'énergie consommée sur plusieurs heures est importante. Ne branchez jamais un climatiseur sur un petit onduleur sans avoir vérifié sa compatibilité dans la notice ; l'avis d'un installateur est recommandé.",
+      },
+      {
+        type: 'h2',
+        text: "Sécurité et bonnes pratiques d'installation",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Respecter les indications de la notice pour la tension, la polarité et le serrage des connexions.",
+          "Utiliser des protections dimensionnées pour le courant continu, au plus près de la batterie.",
+          "Installer l'appareil sur un support stable, ventilé, à l'abri de l'eau, loin de matières inflammables.",
+          "Ne jamais ouvrir l'onduleur sous tension ni intervenir sur les condensateurs internes, qui peuvent rester chargés.",
+          "Couper l'alimentation et isoler la batterie avant toute intervention.",
+          "Faire contrôler régulièrement les connexions et l'état des câbles.",
+          "Pour une alimentation médicale ou toute fonction vitale, demander un avis spécialisé : un onduleur domestique n'offre pas forcément le niveau de fiabilité requis.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Onduleur de secours pour ordinateurs et équipements réseau",
+      },
+      {
+        type: 'p',
+        text: "Pour un poste de travail, un serveur, une box ou un routeur, le critère principal n'est pas toujours la longue autonomie : c'est la continuité sans coupure et la possibilité d'éteindre proprement. Les onduleurs de secours de type interactif ou en ligne basculent sur la batterie en un temps très court, ce qui évite le redémarrage des ordinateurs. Certains modèles d'entrée de gamme ont un temps de transfert plus long, que la fiche technique doit préciser. Pour du matériel sensible, privilégiez un modèle à sinus pur ou à onde de bonne qualité, avec protection contre les surtensions, et dimensionnez la puissance en tenant compte de la puissance réelle de l'alimentation de chaque équipement, pas seulement de la valeur maximale indiquée.",
+      },
+      {
+        type: 'p',
+        text: "Pour un serveur ou un équipement critique, une autonomie de quelques minutes suffit souvent pour une extinction automatique via un logiciel ou un câble de communication, à condition que ce dispositif soit configuré. Si l'activité doit continuer pendant une longue coupure, il faut une batterie plus importante ou un groupe électrogène en complément, avec une étude spécifique.",
+      },
+      {
+        type: 'h2',
+        text: "Entretien et signes d'usure d'un onduleur",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur bien choisi doit aussi être entretenu. Quelques gestes simples, accessibles à l'utilisateur, prolongent sa durée de vie : dépoussiérer les grilles d'aération à l'extérieur de l'appareil, vérifier que rien n'obstrue la ventilation, observer les voyants et les alarmes, noter les codes de défaut affichés. Les contrôles internes (serrage des connexions, état des câbles, inspection des condensateurs) relèvent d'un professionnel et doivent se faire appareil hors tension et batterie isolée.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Ventilateur bruyant, ou qui s'emballe : poussière, roulement fatigué ou température trop élevée.",
+          "Coupures répétées en charge : surcharge, batterie fatiguée, connexion lâche ou pic de démarrage trop élevé.",
+          "Batterie qui se vide plus vite qu'avant : vieillissement de la batterie, consommation en hausse ou réglages incorrects.",
+          "Odeur de brûlé ou de plastique chauffé : coupez immédiatement et faites contrôler l'installation.",
+          "Alarmes de surchauffe fréquentes : emplacement trop chaud, ventilation insuffisante ou charge continue trop proche de la limite.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Idées reçues à écarter",
+      },
+      {
+        type: 'ul',
+        items: [
+          "« Un onduleur de grande puissance consomme toujours plus. » Il ne délivre que ce que demandent les appareils, mais sa consommation à vide peut être plus élevée sur un grand modèle ; elle doit être comparée.",
+          "« Le sinus modifié, c'est la même chose pour moins cher. » Pas pour tous les appareils : certains moteurs, compresseurs et électroniques le supportent mal.",
+          "« Je peux brancher n'importe quelle batterie. » Non : la tension, la technologie et le courant de décharge doivent correspondre à l'onduleur.",
+          "« L'onduleur règle tous mes problèmes de réseau instable. » Il protège contre les coupures et peut filtrer certaines perturbations, mais ne remplace ni une installation électrique correcte ni une bonne mise à la terre.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur de 1 000 VA peut-il alimenter un appareil de 1 000 W ? Pas forcément : selon le facteur de puissance, la puissance réelle est inférieure en watts. Lisez la puissance en watts sur la fiche technique.",
+      },
+      {
+        type: 'p',
+        text: "Sinus pur ou sinus modifié, que choisir ? Le sinus pur convient à tous les appareils et reste le choix prudent pour les moteurs, compresseurs et électroniques sensibles. Le sinus modifié peut suffire pour des charges simples, comme des lampes ou des chargeurs, mais il est à éviter dans le doute.",
+      },
+      {
+        type: 'p',
+        text: "Un onduleur peut-il alimenter un réfrigérateur ? Oui, à condition que sa puissance de crête supporte le courant de démarrage du compresseur et que la batterie fournisse l'énergie nécessaire pendant la durée voulue.",
+      },
+      {
+        type: 'p',
+        text: "Peut-on brancher un onduleur sur un groupe électrogène ? Un onduleur-chargeur peut charger ses batteries depuis un groupe, mais les conditions de compatibilité (puissance, qualité de la tension, démarrage) sont précisées par les fabricants. Suivez leurs notices et demandez conseil à un installateur.",
+      },
+      {
+        type: 'p',
+        text: "Pourquoi mon onduleur chauffe-t-il et fait-il du bruit ? Une certaine chaleur est normale, mais un échauffement excessif peut venir d'une charge trop forte, d'un manque de ventilation, d'une poussière accumulée ou d'un ventilateur défaillant. Vérifiez l'emplacement et demandez un contrôle si le problème persiste.",
+      },
+      {
+        type: 'p',
+        text: "Quelle est la durée de vie d'un onduleur ? Elle dépend de la qualité de l'appareil, de la température, de la charge moyenne et de l'entretien. Reportez-vous à la garantie et aux indications du fabricant.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Bien choisir un onduleur revient à répondre à quelques questions simples : quelle puissance en watts, quelle crête au démarrage, quelle forme d'onde, quelle tension de batterie, quelle autonomie, quelle chaleur et quelle garantie. Les erreurs courantes viennent presque toujours d'un calcul omis, d'une fiche technique mal lue ou d'une installation trop vite faite. Pour faire étudier votre besoin avant d'acheter, vous pouvez contacter KONFORTECH BÉNIN via la page de contact du site. Les exemples de cet article sont pédagogiques et ne constituent pas un devis.",
+      },
+    ],
+  },
 ];
 
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
