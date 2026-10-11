@@ -4,10 +4,6 @@
  *   /blog/[slug], le JSON-LD BlogPosting, le SEO et le sitemap sont automatiques.
  *
  * Le champ `content` accepte un tableau de blocs : { type: 'h2' | 'p' | 'ul' }.
- *
- * Champs optionnels ajoutés (lot 1) :
- *  - imageAlt : texte alternatif de l'image d'illustration
- *  - favicon  : favicon propre à l'article (SVG), utilisé dans <head> de /blog/[slug]
  */
 
 export type ContentBlock =
@@ -26,9 +22,7 @@ export type Article = {
   author: string;
   datePublished: string; // ISO YYYY-MM-DD
   readingMinutes: number;
-  //image?: string;
-  //imageAlt?: string;
-  //favicon?: string;
+  image?: string;
   content: ContentBlock[];
   relatedServices: string[];
 };
@@ -47,9 +41,6 @@ export const articles: Article[] = [
     author: 'KONFORTECH BÉNIN',
     datePublished: '2026-08-09',
     readingMinutes: 11,
-    //image: '/gallerie/blog/entretenir-climatiseur-saison-chaude.webp',
-    //imageAlt: "Technicien nettoyant le filtre d'une unité intérieure de climatisation murale",
-    //favicon: '/gallerie/og/entretenir-climatiseur-saison-chaude.svg',
     relatedServices: ['froid-climatisation', 'maintenance-industrielle'],
     content: [
       {
@@ -322,10 +313,6 @@ export const articles: Article[] = [
     author: 'KONFORTECH BÉNIN',
     datePublished: '2026-10-11',
     readingMinutes: 12,
-    imageAlt:
-      "Technicien en tenue de travail mesurant une pièce avec un télémètre laser avant de dimensionner un climatiseur",
-    //image: '/gallerie/blog/choisir-puissance-climatiseur-btu.webp',
-    //favicon: '/gallerie/og/choisir-puissance-climatiseur-btu.svg',
     relatedServices: ['froid-climatisation'],
     content: [
       {
@@ -546,10 +533,6 @@ export const articles: Article[] = [
     author: 'KONFORTECH BÉNIN',
     datePublished: '2026-10-11',
     readingMinutes: 9,
-    imageAlt:
-      "Deux unités extérieures de climatisation côte à côte sur un mur, comparées par un technicien avec une tablette",
-    //image: '/gallerie/blog/climatiseur-inverter-ou-non-inverter.webp',
-    //favicon: '/gallerie/og/climatiseur-inverter-ou-non-inverter.svg',
     relatedServices: ['froid-climatisation'],
     content: [
       {
@@ -736,10 +719,6 @@ export const articles: Article[] = [
     author: 'KONFORTECH BÉNIN',
     datePublished: '2026-10-11',
     readingMinutes: 9,
-    imageAlt:
-      "Technicien frigoriste contrôlant la pression d'une unité extérieure de climatisation avec un manomètre",
-    //image: '/gallerie/blog/climatiseur-refroidit-mal-causes-solutions.webp',
-    //favicon: '/gallerie/og/climatiseur-refroidit-mal-causes-solutions.svg',
     relatedServices: ['froid-climatisation', 'maintenance-industrielle'],
     content: [
       {
