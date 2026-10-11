@@ -1754,6 +1754,943 @@ export const articles: Article[] = [
       },
     ],
   },
+
+  /* ───────── LOT 3 · DÉVELOPPEMENT WEB, SEO & VISIBILITÉ ───────── */
+
+  {
+    slug: "creer-site-internet-professionnel-benin",
+    title: "Créer un site internet professionnel au Bénin : étapes, choix techniques et pièges à éviter",
+    seoTitle: "Créer un site internet professionnel au Bénin : guide complet en étapes",
+    seoDescription:
+      "Objectifs, type de site, domaine, hébergement, technologie, contenu, sécurité, lancement : le guide complet pour créer un site internet professionnel au Bénin.",
+    excerpt:
+      "Un site professionnel se prépare avant de se coder. Les étapes, les choix techniques et les erreurs qui coûtent cher aux entreprises.",
+    category: "Développement web",
+    tags: ["site web", "création de site", "développement web", "Bénin", "PME"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 16,
+    relatedServices: [],
+    content: [
+      {
+        type: 'p',
+        text: "Posséder un site internet n'est plus un signe de modernité : c'est, pour beaucoup de clients, le premier endroit où l'on vérifie qu'une entreprise existe, ce qu'elle fait et comment la joindre. Mais un site mal conçu peut être pire que pas de site du tout : informations périmées, pages qui mettent une éternité à s'afficher sur un téléphone, formulaire qui n'envoie rien, impossibilité de trouver l'entreprise sur Google. Ce guide décrit la démarche complète pour créer un site professionnel au Bénin, de la définition des objectifs au lancement, en expliquant les choix techniques et les pièges qui coûtent cher. Il s'adresse aux dirigeants de PME, aux responsables de commerces, d'hôtels, de cabinets et d'institutions, ainsi qu'à toute personne qui doit piloter un projet web sans être développeur.",
+      },
+      {
+        type: 'p',
+        text: "Nous ne donnons volontairement aucun prix : ils varient trop selon la taille du projet, les fonctionnalités et le prestataire, et nous n'avons pas de relevé fiable à citer. En revanche, nous expliquons comment les comparer et quoi demander dans un devis.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 1 : définir l'objectif avant de parler de technique",
+      },
+      {
+        type: 'p',
+        text: "La première question n'est pas « quel site ? » mais « pour quoi faire ? ». Un site peut servir à présenter l'entreprise et rassurer, à générer des demandes de devis, à vendre en ligne, à réserver, à diffuser de l'information, à gérer des clients ou des stocks. Chaque objectif conduit à une conception différente. Posez-vous les questions suivantes et écrivez les réponses :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Qui sont mes visiteurs : particuliers, entreprises, administrations, partenaires, candidats ?",
+          "Que doivent-ils pouvoir faire sur le site : m'appeler, demander un devis, acheter, télécharger, réserver ?",
+          "Comment saurai-je que le site fonctionne : nombre de demandes, appels, ventes, visites qualifiées ?",
+          "Quelles informations dois-je absolument y trouver pour inspirer confiance ?",
+          "Qui mettra le site à jour, et à quelle fréquence ?",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Un objectif précis, comme « recevoir des demandes de devis pour l'installation de climatiseurs dans ma ville », guide tout le reste : le contenu, les pages, l'emplacement du bouton de contact. Un objectif flou, comme « avoir un beau site », produit un site décoratif qui ne sert à personne.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 2 : choisir le bon type de site",
+      },
+      {
+        type: 'p',
+        text: "Les besoins se répartissent en quelques grandes familles, dont les différences de complexité et de coût sont importantes :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Site vitrine : quelques pages qui présentent l'entreprise, ses services, ses références et ses coordonnées. C'est le point de départ pour la majorité des PME, des artisans et des cabinets.",
+          "Site avec blog ou espace de contenus : un site vitrine enrichi d'articles qui répondent aux questions des clients et attirent des visiteurs depuis les moteurs de recherche.",
+          "Site e-commerce : un catalogue de produits, un panier, un paiement en ligne, la gestion des commandes et de la livraison. Il implique des contraintes de sécurité, de logistique et de service client.",
+          "Application web : un outil interactif en ligne, comme un espace client, un système de réservation, un tableau de bord de gestion ou une application métier. Elle demande un cahier des charges précis et un développement sur mesure.",
+          "Portail ou plateforme : un site qui met en relation plusieurs catégories d'utilisateurs, avec comptes, rôles et échanges. C'est le projet le plus complexe.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Un conseil de bon sens : commencez par le type le plus simple qui répond à votre objectif, puis faites-le évoluer. Un site vitrine bien fait et bien référencé rapporte plus qu'une plateforme ambitieuse jamais terminée.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 3 : rédiger un cahier des charges, même court",
+      },
+      {
+        type: 'p',
+        text: "Un cahier des charges est le document qui décrit ce que le site doit faire. Il protège autant le client que le prestataire : il évite les malentendus sur ce qui est inclus, sur les délais et sur le prix. Même une page ou deux suffisent pour une petite entreprise. Il devrait contenir :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Le contexte et l'objectif du site.",
+          "La liste des pages et des fonctionnalités attendues, avec leur priorité.",
+          "Les contenus fournis par l'entreprise (textes, photos, logo) et ceux que le prestataire doit produire.",
+          "Les contraintes techniques : langues, compatibilité avec les téléphones, paiement en ligne éventuel, intégration d'outils existants.",
+          "Le calendrier souhaité et les étapes de validation.",
+          "Les conditions de maintenance, d'hébergement et de propriété du code et des contenus après livraison.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 4 : le nom de domaine, votre adresse sur Internet",
+      },
+      {
+        type: 'p',
+        text: "Le nom de domaine est l'adresse de votre site, par exemple le nom de votre entreprise suivi d'une extension. Choisissez-le court, facile à épeler à l'oral, proche du nom de l'entreprise et sans tirets ni chiffres inutiles. Vérifiez qu'il n'évoque pas une marque existante, pour éviter tout litige.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Extensions : le .bj est l'extension nationale du Bénin, et les extensions internationales comme .com restent largement utilisées. Les conditions d'enregistrement du .bj sont à vérifier auprès du registre ou du revendeur agréé compétent ; ne présumez pas de leurs règles.",
+          "Propriété : le nom de domaine doit être enregistré au nom de l'entreprise, avec une adresse e-mail de contact que vous contrôlez. Un domaine enregistré au nom du prestataire vous met en situation de dépendance.",
+          "Renouvellement : notez la date d'expiration et activez le renouvellement automatique. Un domaine oublié qui expire fait disparaître le site et les adresses e-mail associées.",
+          "Adresses e-mail professionnelles : utiliser une adresse au nom de domaine de l'entreprise inspire plus confiance qu'une adresse gratuite générique.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 5 : l'hébergement, ce qui fait « tourner » le site",
+      },
+      {
+        type: 'p',
+        text: "L'hébergement est le serveur qui stocke votre site et le sert aux visiteurs. Sa qualité conditionne la disponibilité, la vitesse et la sécurité. Voici les critères à comparer, sans vous fier à la seule étiquette de prix :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Disponibilité : l'hébergeur s'engage-t-il sur une disponibilité, et que se passe-t-il en cas de panne ?",
+          "Sauvegardes : sont-elles automatiques, à quelle fréquence, et comment restaure-t-on ?",
+          "Certificat de sécurité HTTPS : il doit être inclus et renouvelé automatiquement.",
+          "Performance : un serveur situé loin de vos visiteurs ajoute de la latence. Demandez où sont les serveurs et comment le site est servi aux visiteurs.",
+          "Type d'offre : l'hébergement mutualisé convient à un site vitrine simple ; un serveur dédié, virtuel ou une offre cloud devient pertinent pour des sites plus lourds ou critiques.",
+          "Support : un service joignable dans votre langue et à des horaires qui vous conviennent.",
+          "Accès : vous devez disposer des identifiants de votre hébergement, ou à défaut d'un accès administrateur documenté.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 6 : choisir la technologie : CMS, sur mesure ou constructeur",
+      },
+      {
+        type: 'p',
+        text: "C'est une décision structurante, qu'il faut prendre en connaissance de cause. Il y a trois grandes approches :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Les constructeurs en ligne : on assemble un site à partir de modèles. C'est rapide et peu coûteux pour un site très simple, mais on est dépendant de la plateforme, les possibilités de personnalisation sont limitées et le référencement comme les performances dépendent de ce que la plateforme permet.",
+          "Les systèmes de gestion de contenu (CMS), comme WordPress : on part d'un outil éprouvé, avec un grand nombre de thèmes et d'extensions, et le client peut modifier lui-même les contenus. Ils conviennent très bien aux sites vitrines, aux blogs et aux petits catalogues, à condition d'être maintenus à jour et protégés, car les extensions mal choisies sont une source fréquente de failles.",
+          "Le développement sur mesure, avec des technologies web modernes : on construit exactement ce dont le projet a besoin, avec un meilleur contrôle de la performance, de la sécurité et de l'expérience utilisateur. C'est l'option adaptée aux applications métier, aux plateformes et aux projets aux besoins spécifiques, mais elle demande un budget et un savoir-faire plus importants.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Pour choisir, comparez sur la durée plutôt que sur le prix de départ : qui maintiendra le site dans trois ans, qui possède le code, combien coûteront les évolutions, dans quelle mesure le site pourra-t-il grandir ? Un site sur mesure sans documentation ni accès au code vous rend dépendant d'un seul prestataire ; un CMS sans mises à jour devient vulnérable.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 7 : concevoir pour les téléphones et pour une connexion variable",
+      },
+      {
+        type: 'p',
+        text: "Une part souvent majoritaire des visiteurs consulte les sites depuis un téléphone ; vérifiez-le avec vos propres statistiques une fois le site en ligne. Concevez donc d'abord pour l'écran du téléphone, puis adaptez aux grands écrans. Et tenez compte du fait que la qualité de la connexion varie : un site léger se charge vite partout, un site lourd décourage les visiteurs.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Limitez le poids des pages : images compressées, formats modernes comme WebP, pas de vidéo lancée automatiquement.",
+          "Évitez les polices, scripts et widgets inutiles, qui ralentissent le chargement.",
+          "Prévoyez des boutons larges et des textes lisibles sur petit écran.",
+          "Placez les informations clés (téléphone, WhatsApp ou formulaire, adresse, horaires) en haut de page, avec un bouton d'appel direct sur mobile.",
+          "Testez le site sur de vrais téléphones, y compris d'entrée de gamme, et sur une connexion ordinaire.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 8 : préparer les contenus, c'est le vrai travail",
+      },
+      {
+        type: 'p',
+        text: "Un site beau mais vide ne convainc personne. Les contenus doivent répondre aux questions que se pose un client avant de vous contacter : qui êtes-vous, que faites-vous précisément, dans quelle zone intervenez-vous, comment travaillez-vous, comment vous joindre. Les pages essentielles d'un site professionnel sont :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Accueil : la promesse claire de l'entreprise et le chemin vers le contact.",
+          "Services ou produits : une page par service important, avec des informations concrètes plutôt que des généralités.",
+          "À propos : qui est derrière l'entreprise, son expérience, ses valeurs. Ne prétendez que ce qui est documentable : pas de certification, de partenariat ou de réalisation inventés.",
+          "Références ou réalisations : seulement celles que vous pouvez montrer et dont vous avez l'accord. Pas de faux témoignages.",
+          "Blog ou ressources : des articles utiles qui répondent aux questions de vos clients.",
+          "Contact : téléphone, e-mail, adresse, horaires, plan d'accès, formulaire testé.",
+          "Pages légales : mentions légales, politique de confidentialité et, selon le cas, conditions générales de vente.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Utilisez des photos réelles de votre équipe, de vos réalisations et de vos locaux plutôt que des images génériques : elles inspirent davantage confiance. Rédigez dans un français clair, avec des phrases courtes, en expliquant les termes techniques.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 9 : inspirer confiance et respecter vos obligations",
+      },
+      {
+        type: 'ul',
+        items: [
+          "HTTPS partout, pour que la connexion soit chiffrée et que le navigateur n'affiche pas d'avertissement.",
+          "Coordonnées complètes et cohérentes avec celles de vos autres supports.",
+          "Mentions légales identifiant clairement l'entreprise.",
+          "Politique de confidentialité si vous collectez des données personnelles, par exemple via un formulaire : renseignez-vous sur les obligations applicables au Bénin en matière de protection des données personnelles et faites-vous conseiller ; nous ne les détaillons pas ici faute de source vérifiée.",
+          "Aucun faux avis, aucun faux client, aucune fausse certification : ils se découvrent et détruisent la crédibilité.",
+          "Un formulaire de contact qui fonctionne réellement : testez-le, et prévoyez une confirmation d'envoi ainsi qu'une adresse de réception surveillée.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Cas du e-commerce et du paiement en ligne",
+      },
+      {
+        type: 'p',
+        text: "Vendre en ligne ajoute des exigences : fiches produits précises, gestion des stocks, modalités de livraison et de retour, service client réactif et surtout un paiement sécurisé. Au Bénin, les solutions de paiement mobile et les prestataires de paiement en ligne évoluent régulièrement : renseignez-vous sur les offres actuellement disponibles et sur leurs conditions avant de concevoir le parcours d'achat, plutôt que de supposer qu'une solution précise sera disponible. Dans tous les cas, ne stockez jamais de numéros de carte bancaire sur votre propre serveur : passez par un prestataire de paiement qui gère cette sécurité.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 10 : préparer le référencement dès la conception",
+      },
+      {
+        type: 'p',
+        text: "Le référencement naturel ne s'ajoute pas à la fin : il dépend de la structure du site, de ses titres, de ses URLs, de sa vitesse et de la qualité de ses contenus, c'est-à-dire de décisions prises dès le début. Prévoyez dès la conception une structure claire en pages de services, des titres uniques par page, des descriptions rédigées à la main, des URLs lisibles, un plan de site et un fichier robots correctement configuré. Après la mise en ligne, enregistrez le site dans Google Search Console, qui permet de suivre l'indexation et les performances de recherche. Notre guide sur le fonctionnement de Google détaille ces étapes.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 11 : sécurité et maintenance",
+      },
+      {
+        type: 'p',
+        text: "Un site en ligne est exposé en permanence à des tentatives d'intrusion automatisées. Quelques règles simples réduisent fortement le risque :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Mettre à jour régulièrement le CMS, les thèmes et les extensions, et supprimer ceux qui ne servent plus.",
+          "Utiliser des mots de passe longs et uniques, un gestionnaire de mots de passe et, quand c'est possible, une authentification à deux facteurs.",
+          "Limiter les comptes administrateurs au strict nécessaire et supprimer ceux des anciens collaborateurs ou prestataires.",
+          "Effectuer des sauvegardes automatiques, stockées en dehors du serveur, et tester la restauration au moins une fois.",
+          "Surveiller la disponibilité du site pour être prévenu en cas de panne.",
+          "Souscrire un contrat de maintenance si vous n'avez pas de compétence interne.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Une checklist avant la mise en ligne",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Tous les liens et boutons fonctionnent, sur ordinateur et sur téléphone.",
+          "Le formulaire de contact envoie bien les messages à la bonne adresse.",
+          "Les numéros de téléphone sont cliquables sur mobile et corrects.",
+          "Chaque page a un titre et une description uniques et pertinents.",
+          "Les images sont compressées et ont un texte alternatif.",
+          "Le site charge rapidement sur une connexion ordinaire.",
+          "Le certificat HTTPS est actif et il n'y a pas de contenu mixte.",
+          "Les pages légales sont publiées.",
+          "Aucune balise « noindex » héritée de la phase de test n'est restée, ce qui empêcherait le référencement.",
+          "Un plan de site est en place et le site est ajouté à Google Search Console.",
+          "Les sauvegardes sont programmées.",
+          "Vous avez les accès et la propriété du domaine, de l'hébergement et du code.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Après le lancement : un site se vit",
+      },
+      {
+        type: 'p',
+        text: "La mise en ligne n'est pas la fin du projet, c'en est le début. Un site qui ne bouge jamais perd en visibilité et en crédibilité. Prévoyez la mise à jour des informations (horaires, services, coordonnées), la publication régulière de contenus utiles, le suivi des statistiques (visites, pages les plus consultées, demandes reçues) et l'amélioration progressive à partir de ces observations. Fixez-vous un rendez-vous régulier, par exemple une fois par mois, pour examiner les chiffres et décider de deux ou trois améliorations.",
+      },
+      {
+        type: 'h2',
+        text: "Combien ça coûte : comment raisonner sans promettre de chiffre",
+      },
+      {
+        type: 'p',
+        text: "Le coût d'un site se compose de postes distincts : la conception et le développement, la rédaction et la production des contenus, le nom de domaine, l'hébergement, la maintenance, et les éventuels outils payants (extensions, services de paiement, outils de messagerie). Certains sont ponctuels, d'autres récurrents. Demandez un devis détaillé par poste, avec ce qui est inclus et exclu, le nombre de retouches prévues, les délais, la propriété des livrables et les coûts annuels. Méfiez-vous des offres très bon marché qui n'incluent ni contenus, ni référencement de base, ni maintenance : le coût réel apparaît ensuite. Une estimation n'est pas un devis ferme, et un prix global sans détail ne permet aucune comparaison.",
+      },
+      {
+        type: 'h2',
+        text: "Choisir un prestataire : questions à poser et signaux d'alerte",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Montrez-moi des réalisations réelles, avec des liens que je peux visiter.",
+          "Qui sera mon interlocuteur, et quel est le processus de validation ?",
+          "Qui possède le code et les contenus à la livraison ? Aurai-je les accès à l'hébergement et au domaine ?",
+          "Comment gérez-vous la sécurité, les sauvegardes et la maintenance après la livraison ?",
+          "Que comprend le référencement de base : structure, balises, plan de site, vitesse, mobile ?",
+          "Quels sont les délais, et que se passe-t-il en cas de retard ou de modification de périmètre ?",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Soyez prudent face à un prestataire qui promet une première place sur Google, refuse de vous donner vos accès, impose un contrat sans détail des livrables, ne montre aucune réalisation vérifiable ou exige un paiement intégral à l'avance sans étapes de validation. Aucun professionnel sérieux ne peut garantir un classement précis dans un moteur de recherche.",
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Lancer le projet sans objectif ni cahier des charges.",
+          "Choisir un prestataire sur le seul critère du prix.",
+          "Enregistrer le nom de domaine au nom du prestataire.",
+          "Négliger la version mobile et la vitesse de chargement.",
+          "Publier des contenus génériques copiés ailleurs, sans valeur propre.",
+          "Oublier de tester le formulaire de contact et les numéros affichés.",
+          "Laisser en place la balise qui bloque l'indexation après la phase de test.",
+          "Ne jamais mettre à jour le site ni les extensions.",
+          "Utiliser de fausses références ou de faux avis pour paraître plus crédible.",
+          "Considérer le lancement comme la fin du projet.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Combien de temps faut-il pour créer un site ? Cela dépend de la taille, de la clarté du projet et de la rapidité avec laquelle vous fournissez les contenus. Un site vitrine simple et bien préparé se réalise plus vite qu'un site complexe, mais le principal facteur de retard est presque toujours la préparation des textes et des images.",
+      },
+      {
+        type: 'p',
+        text: "Puis-je créer mon site moi-même ? Oui, avec un constructeur ou un CMS, si votre besoin est simple et si vous êtes prêt à y consacrer du temps. Pour un site qui doit servir de véritable outil commercial, ou pour toute fonctionnalité spécifique, l'accompagnement d'un professionnel évite des erreurs coûteuses.",
+      },
+      {
+        type: 'p',
+        text: "Un site web est-il indispensable si j'ai déjà une page sur les réseaux sociaux ? Les réseaux sont utiles, mais vous ne contrôlez ni leurs règles ni leur visibilité. Un site vous appartient, se référence dans les moteurs de recherche et centralise vos informations. Les deux se complètent.",
+      },
+      {
+        type: 'p',
+        text: "Mon site apparaîtra-t-il tout de suite sur Google ? Pas forcément. Google doit d'abord découvrir, explorer puis indexer les pages, et le classement dépend ensuite de nombreux facteurs. Il n'existe pas de délai garanti. Voir notre guide sur le fonctionnement de Google.",
+      },
+      {
+        type: 'p',
+        text: "Faut-il un site en plusieurs langues ? Cela dépend de votre public. Le français suffit souvent pour un public local, mais une version en anglais peut être utile pour des partenaires ou clients étrangers. Une traduction doit être faite avec soin : une mauvaise traduction nuit à la crédibilité.",
+      },
+      {
+        type: 'p',
+        text: "Qui doit mettre à jour le site ? Idéalement, une personne identifiée dans l'entreprise, formée à l'outil d'administration, avec l'appui du prestataire pour la maintenance technique. Un site que personne ne met à jour finit par donner une mauvaise image.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Créer un site professionnel, c'est avant tout un projet de cadrage : un objectif clair, le bon type de site, un nom de domaine et un hébergement que vous maîtrisez, une technologie adaptée à votre besoin, des contenus solides, une base de référencement et de sécurité, puis un suivi régulier. La technique vient au service du projet, pas l'inverse. Si vous souhaitez discuter d'un projet numérique, KONFORTECH BÉNIN peut vous accompagner : vous pouvez nous contacter via la page de contact du site pour cadrer votre besoin.",
+      },
+    ],
+  },
+  {
+    slug: "fonctionnement-google-site-invisible-delai-referencement",
+    title: "Comment fonctionne Google, et pourquoi votre site n’apparaît pas (encore) dans les résultats",
+    seoTitle: "Comment fonctionne Google : exploration, indexation, classement et délais",
+    seoDescription:
+      "Exploration, indexation, classement : comprenez comment fonctionne Google, pourquoi un site récent met du temps à apparaître et comment diagnostiquer un site invisible.",
+    excerpt:
+      "Un site neuf n'est pas automatiquement visible. Les trois étapes de Google, les causes d'invisibilité et une méthode de diagnostic pas à pas.",
+    category: "SEO & visibilité",
+    tags: ["SEO", "Google", "indexation", "Search Console", "référencement naturel"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 13,
+    relatedServices: [],
+    content: [
+      {
+        type: 'p',
+        text: "« J'ai mis mon site en ligne il y a deux semaines et je ne le trouve pas sur Google. » C'est l'une des plaintes les plus fréquentes des propriétaires de sites. La bonne nouvelle, c'est que dans la plupart des cas il n'y a rien de mystérieux : Google fonctionne en étapes, et chaque étape peut bloquer ou retarder l'apparition d'un site. Comprendre ces étapes permet de savoir où chercher quand une page n'apparaît pas, ce qu'on peut accélérer légitimement et ce qui relève simplement du temps. Cet article s'appuie sur la documentation officielle de Google Search Central et propose une méthode de diagnostic que vous pouvez appliquer vous-même.",
+      },
+      {
+        type: 'h2',
+        text: "Les trois étapes : explorer, indexer, afficher",
+      },
+      {
+        type: 'p',
+        text: "La documentation de Google Search Central décrit trois étapes, que toutes les pages ne franchissent pas : l'exploration, l'indexation et l'affichage des résultats (source : Google Search Central, « Comment fonctionne la recherche Google », developers.google.com/search/docs/fundamentals/how-search-works).",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Exploration (crawling) : des programmes automatiques, appelés robots d'exploration, ou Googlebot, parcourent le web et téléchargent le texte, les images et les vidéos des pages qu'ils découvrent.",
+          "Indexation : Google analyse le contenu de la page, tente de comprendre de quoi elle parle, et stocke ces informations dans une immense base de données appelée index.",
+          "Affichage des résultats : quand quelqu'un fait une recherche, Google sélectionne et classe les pages de l'index qui répondent le mieux à la requête.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Pour qu'une page apparaisse dans les résultats, elle doit réussir ces trois étapes. Un blocage à n'importe quel niveau suffit à la rendre invisible. C'est pourquoi le diagnostic consiste toujours à demander : Google peut-il accéder à la page ? A-t-il décidé de l'indexer ? Et, si oui, pourquoi n'est-elle pas bien classée ?",
+      },
+      {
+        type: 'h2',
+        text: "Étape 1 : l'exploration, comment Google découvre vos pages",
+      },
+      {
+        type: 'p',
+        text: "Google découvre les pages principalement en suivant des liens d'une page à l'autre, et aussi grâce aux plans de site (sitemaps) que les propriétaires de sites lui soumettent. Un site neuf, que personne ne mentionne et qui n'est lié à aucune autre page, peut donc être découvert lentement. Le robot récupère ensuite la page, l'affiche comme le ferait un navigateur récent et exécute le JavaScript qu'elle contient.",
+      },
+      {
+        type: 'p',
+        text: "L'exploration peut échouer pour plusieurs raisons que la documentation de Google mentionne : des problèmes de serveur, des problèmes de réseau, ou des règles dans le fichier robots.txt qui interdisent l'accès au robot. D'autres pages ne sont tout simplement pas accessibles sans connexion. Un hébergement instable ou très lent peut aussi limiter la fréquence d'exploration.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Votre serveur répond-il correctement et rapidement lorsque le robot se présente ?",
+          "Le fichier robots.txt autorise-t-il l'accès aux pages importantes ?",
+          "Les pages sont-elles liées entre elles, depuis le menu et depuis d'autres pages ?",
+          "Un plan de site a-t-il été soumis ?",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 2 : l'indexation, la décision de garder la page",
+      },
+      {
+        type: 'p',
+        text: "Après l'exploration, Google analyse la page et décide s'il la stocke. La documentation est claire : l'indexation n'est pas garantie, et toutes les pages que Google traite ne sont pas indexées. Plusieurs facteurs interviennent. Google détermine d'abord si la page est un doublon d'une autre page du web ; parmi des pages identiques, il retient une page canonique, la seule susceptible d'apparaître dans les résultats. Il tient aussi compte de la qualité et de l'utilité du contenu, et de ses métadonnées.",
+      },
+      {
+        type: 'p',
+        text: "Parmi les causes d'exclusion fréquentes figurent les règles de type « noindex », qui interdisent explicitement l'indexation, un contenu quasi vide ou dupliqué, et une conception du site qui rend l'analyse difficile. La distinction est importante : le fichier robots.txt empêche d'explorer une page, tandis que la balise « noindex » empêche de l'afficher dans les résultats. Confondre les deux produit des résultats inattendus.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 3 : le classement, pourquoi telle page passe avant telle autre",
+      },
+      {
+        type: 'p',
+        text: "Une fois la page indexée, il reste à savoir à quelle place elle s'affichera. Google s'efforce de présenter les résultats les plus pertinents pour la requête, en tenant compte d'un grand nombre de facteurs : la correspondance entre le contenu et ce que cherche l'internaute, la qualité et la fiabilité de la page, la facilité d'usage sur téléphone, la vitesse, et le contexte de l'utilisateur, comme son emplacement. Google ne publie pas le détail de son algorithme et le fait évoluer régulièrement.",
+      },
+      {
+        type: 'p',
+        text: "Deux conséquences pratiques. D'abord, personne ne peut garantir une position : un prestataire qui promet la première place ment ou ne comprend pas le fonctionnement du moteur. Ensuite, le classement est relatif : votre page est comparée à celles des concurrents sur la même requête, ce qui explique qu'une requête très disputée soit plus difficile qu'une requête précise et peu concurrencée.",
+      },
+      {
+        type: 'h2',
+        text: "Pourquoi un site récent met du temps à apparaître",
+      },
+      {
+        type: 'p',
+        text: "Il n'existe pas de délai officiel : cela peut aller de quelques jours à plusieurs semaines pour qu'un site soit indexé, et souvent davantage pour qu'il soit bien positionné sur des recherches concurrentielles. Plusieurs raisons expliquent cette lenteur :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Découverte : un site sans aucun lien entrant et sans plan de site soumis est découvert plus lentement.",
+          "Confiance : un site neuf n'a pas d'historique ; Google n'a pas encore de signaux sur sa fiabilité.",
+          "Contenu : peu de pages, peu de profondeur, ou des pages proches de celles des concurrents donnent peu de raisons de vous classer devant eux.",
+          "Concurrence : sur des requêtes générales comme « climatisation » ou « création de site », des sites établis occupent les premières places depuis longtemps.",
+          "Technique : une erreur de configuration, comme une balise noindex oubliée, bloque tout.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "La stratégie réaliste consiste à viser d'abord des requêtes précises et locales, par exemple un service associé à une ville, plutôt que des mots très généraux, à publier du contenu réellement utile et à construire progressivement la notoriété du site.",
+      },
+      {
+        type: 'h2',
+        text: "Diagnostiquer un site invisible : la méthode en huit étapes",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Étape 1 — Testez la présence du site dans l'index en saisissant dans Google « site: » suivi de votre nom de domaine, sans espace. Si aucun résultat n'apparaît, le site n'est probablement pas indexé. Ce test est indicatif et ne remplace pas la Search Console.",
+          "Étape 2 — Ouvrez Google Search Console, vérifiez que vous êtes propriétaire du site et examinez le rapport sur les pages indexées et non indexées : il indique les raisons de l'exclusion.",
+          "Étape 3 — Utilisez l'outil d'inspection d'URL sur votre page d'accueil : il indique si la page est connue de Google, si elle est indexable et comment elle s'affiche.",
+          "Étape 4 — Consultez votre fichier robots.txt (en ajoutant /robots.txt à l'adresse du site) et vérifiez qu'il n'interdit pas tout le site par une règle de blocage général.",
+          "Étape 5 — Cherchez une balise « noindex » dans le code des pages ou dans l'en-tête de réponse du serveur. Elle est souvent laissée par erreur après la phase de test.",
+          "Étape 6 — Vérifiez que le plan de site existe, qu'il liste les bonnes URLs et qu'il est soumis dans la Search Console.",
+          "Étape 7 — Contrôlez que les pages sont accessibles : pas d'erreur serveur, pas de redirection en boucle, HTTPS fonctionnel, temps de réponse correct.",
+          "Étape 8 — Examinez le contenu : est-il original, utile, suffisamment développé, et distinct des autres pages de votre site ?",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs qui rendent un site invisible",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Une balise « noindex » ou une règle « Disallow » générale laissée par le développeur après la phase de test.",
+          "Un contenu entièrement chargé par un script qui ne s'exécute pas correctement, de sorte que la page paraît vide au robot.",
+          "Des pages quasi identiques, avec les mêmes titres et descriptions, qui se concurrencent entre elles.",
+          "Un contenu mince, générique ou copié d'autres sites.",
+          "Des pages orphelines : aucune autre page du site ne renvoie vers elles.",
+          "Un site très lent ou régulièrement indisponible.",
+          "Des redirections cassées ou mal configurées après une refonte.",
+          "Des informations importantes présentes uniquement dans des images, sans texte.",
+          "Aucun lien entrant et aucune mention du site ailleurs sur le web.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Google Search Console : l'outil gratuit à installer dès le premier jour",
+      },
+      {
+        type: 'p',
+        text: "Google Search Console est un service gratuit de Google qui montre comment votre site est vu par le moteur : pages indexées, erreurs d'exploration, requêtes qui amènent des visiteurs, nombre d'impressions et de clics. Pour l'utiliser, vous devez prouver que vous êtes propriétaire du site, par une méthode proposée dans l'outil (ajout d'un fichier, d'une balise ou d'un enregistrement de domaine). Une fois connecté :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Soumettez votre plan de site pour aider Google à découvrir vos pages.",
+          "Utilisez l'inspection d'URL pour vérifier une page précise et demander son indexation après une modification importante.",
+          "Surveillez le rapport sur les pages indexées pour repérer les exclusions.",
+          "Consultez le rapport de performance : requêtes, pages, clics, impressions, taux de clic et position moyenne.",
+          "Regardez les éventuelles alertes sur l'ergonomie mobile ou la sécurité.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Demander l'indexation ne garantit pas qu'elle sera accordée : cela signale simplement la page à Google. Évitez de multiplier les demandes pour la même URL.",
+      },
+      {
+        type: 'h2',
+        text: "Ce qui aide vraiment, et ce qui ne marche pas",
+      },
+      {
+        type: 'p',
+        text: "Ce qui aide, de manière légitime : un site techniquement sain, des pages utiles qui répondent à de vraies questions, des titres et descriptions soignés, un maillage interne logique, des mentions et des liens de sites fiables et pertinents, un profil d'entreprise Google correctement renseigné pour la recherche locale, et de la régularité dans la publication.",
+      },
+      {
+        type: 'p',
+        text: "Ce qui ne marche pas, ou qui nuit : l'achat massif de liens, qui va à l'encontre des règles de Google, le bourrage de mots-clés, la copie de contenus, les pages créées uniquement pour attirer du trafic sans valeur réelle, et les promesses de résultat garanti. Précisons aussi que, pour la recherche locale, Google indique qu'il n'est pas possible de demander ou de payer pour obtenir un meilleur classement (source : Aide Google Business Profile, support.google.com/business/answer/7091).",
+      },
+      {
+        type: 'h2',
+        text: "Un plan d'action raisonnable sur les premiers mois",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Dès la mise en ligne : vérifier l'absence de noindex et de blocage, installer HTTPS, créer le plan de site, déclarer le site dans la Search Console.",
+          "Première période : s'assurer que les pages importantes sont indexées, corriger les erreurs signalées, optimiser les titres et descriptions de chaque page.",
+          "Ensuite, en continu : publier des contenus utiles ciblant des requêtes précises, renforcer le maillage interne, obtenir des mentions légitimes, améliorer la vitesse.",
+          "Régulièrement : analyser les requêtes et les pages dans la Search Console et en tirer deux ou trois actions d'amélioration.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Ce plan décrit une démarche, pas une promesse de résultat : le délai et le niveau de visibilité atteints dépendent de la concurrence, de la qualité du site et du temps.",
+      },
+      {
+        type: 'h2',
+        text: "Cas pratique : un site vitrine en ligne depuis un mois, introuvable (hypothétique)",
+      },
+      {
+        type: 'p',
+        text: "Prenons une entreprise de services dont le site a été mis en ligne il y a un mois. Une recherche sur le nom de l'entreprise ne renvoie que sa page sur un réseau social. Le propriétaire soupçonne un problème grave. Appliquons la méthode de diagnostic. La recherche « site: » avec le nom de domaine ne renvoie qu'une seule page : l'accueil. Dans la Search Console, le rapport d'indexation montre que cinq pages de services sont « découvertes mais pas encore indexées » et que deux pages sont exclues parce qu'une balise noindex y figure encore, héritée du modèle utilisé pendant la conception.",
+      },
+      {
+        type: 'p',
+        text: "Le plan d'action découle de ce constat : retirer la balise noindex des deux pages concernées, vérifier qu'elles sont présentes dans le plan de site, ajouter des liens internes depuis la page d'accueil vers chaque page de service, enrichir les pages les plus courtes avec des informations utiles, puis demander l'indexation des pages principales via l'inspection d'URL. Quelques semaines plus tard, on observera si les pages sont indexées et à quelles requêtes elles répondent. Rien de tout cela ne garantit une position précise, mais chaque cause d'invisibilité identifiée est levée. Cet exemple est hypothétique et sert à illustrer la démarche.",
+      },
+      {
+        type: 'h2',
+        text: "Le cas des sites très dynamiques et des applications web",
+      },
+      {
+        type: 'p',
+        text: "Les sites construits comme des applications, où le contenu s'affiche grâce à du JavaScript, demandent une vigilance particulière. La documentation de Google indique que le robot affiche la page et exécute le JavaScript qu'il rencontre, mais un script lent, défaillant ou dépendant d'une action de l'utilisateur (un clic, un défilement) peut empêcher le contenu de s'afficher pour le robot. Pour vérifier ce que voit Google, utilisez l'inspection d'URL de la Search Console, qui montre la page telle qu'elle est rendue. Pour les sites dont le référencement est important, préférez une approche qui livre le contenu principal dans le code initial de la page, ou le génère côté serveur, et donnez à chaque contenu une adresse propre et stable.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Chaque page importante doit avoir sa propre URL, qui se charge directement.",
+          "Les liens de navigation doivent être de véritables liens, que le robot peut suivre.",
+          "Les titres et descriptions doivent être présents dans le code livré à chaque page, pas ajoutés tardivement.",
+          "Le contenu essentiel ne doit pas dépendre d'une interaction de l'utilisateur pour apparaître.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les indicateurs à suivre pour mesurer les progrès",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Le nombre de pages indexées par rapport au nombre de pages publiées.",
+          "Le nombre d'impressions : combien de fois vos pages apparaissent dans les résultats.",
+          "Le nombre de clics et le taux de clic : l'attractivité de vos titres et descriptions.",
+          "La position moyenne sur vos requêtes clés, à interpréter avec prudence car elle varie selon l'utilisateur et le lieu.",
+          "Les actions concrètes générées : appels, formulaires envoyés, demandes de devis, ventes.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Le plus important n'est pas la position, mais le résultat commercial : un site qui reçoit peu de visites très qualifiées peut rapporter plus qu'un site très visité mais non pertinent.",
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Combien de temps pour apparaître sur Google ? Il n'existe pas de délai garanti. L'indexation peut prendre de quelques jours à plusieurs semaines selon la découverte du site, sa qualité et sa configuration, et le classement sur des requêtes concurrentielles prend en général plus de temps.",
+      },
+      {
+        type: 'p',
+        text: "Faut-il soumettre son site à Google ? Ce n'est pas obligatoire, mais c'est recommandé : déclarer le site dans la Search Console et soumettre un plan de site facilite la découverte et fournit des informations de diagnostic utiles.",
+      },
+      {
+        type: 'p',
+        text: "Pourquoi certaines pages sont-elles exclues de l'index ? Les causes courantes sont une balise noindex, un doublon d'une autre page, un contenu jugé insuffisant, une erreur de serveur ou une redirection incorrecte. Le rapport d'indexation de la Search Console indique la raison pour chaque page.",
+      },
+      {
+        type: 'p',
+        text: "Le référencement payant fait-il monter dans les résultats naturels ? Non. La publicité est un canal distinct, affiché comme tel. Elle peut apporter des visites, mais ne modifie pas votre position dans les résultats naturels.",
+      },
+      {
+        type: 'p',
+        text: "Un site rapide est-il mieux classé ? La vitesse et la facilité d'usage font partie de l'expérience de la page et comptent, mais elles ne remplacent pas un contenu pertinent. Un site lent perd d'abord des visiteurs, avant même la question du classement.",
+      },
+      {
+        type: 'p',
+        text: "Puis-je faire mon SEO moi-même ? Oui, pour les bases : un site sain, des titres soignés, des contenus utiles, la Search Console. Un accompagnement devient utile pour les sites complexes, les migrations, les marchés très concurrentiels ou l'analyse technique approfondie.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Google explore, indexe puis classe, et un site peut rester invisible s'il échoue à l'une de ces étapes. La plupart des cas d'invisibilité s'expliquent par des causes simples à vérifier : une balise noindex oubliée, un blocage dans le fichier robots, un contenu trop faible ou un site trop récent pour avoir gagné la confiance du moteur. Avec la Search Console, un diagnostic méthodique et de la régularité dans les contenus, la visibilité se construit progressivement, sans aucune garantie de position. Pour faire examiner votre site, KONFORTECH BÉNIN peut vous aider : contactez-nous via la page de contact du site.",
+      },
+    ],
+  },
+  {
+    slug: "referencement-local-entreprise-benin-google",
+    title: "SEO local : comment une entreprise béninoise peut améliorer sa visibilité sur Google",
+    seoTitle: "SEO local au Bénin : profil Google, avis, mots-clés et contenus locaux",
+    seoDescription:
+      "Profil d'établissement Google, avis, titres et descriptions, mots-clés locaux, pages de services : la méthode pour améliorer la visibilité locale d'une entreprise au Bénin.",
+    excerpt:
+      "Quand un client cherche « dépannage climatisation » depuis son téléphone, votre entreprise apparaît-elle ? Les leviers concrets du référencement local.",
+    category: "SEO & visibilité",
+    tags: ["SEO local", "Google Business Profile", "référencement", "avis clients", "visibilité locale"],
+    author: 'KONFORTECH BÉNIN',
+    datePublished: '2026-10-11',
+    readingMinutes: 14,
+    relatedServices: [],
+    content: [
+      {
+        type: 'p',
+        text: "Un client dont le climatiseur vient de tomber en panne ne cherche pas « maintenance frigorifique : état de l'art ». Il tape quelques mots sur son téléphone, par exemple « dépannage climatisation » suivi du nom de sa ville, et il appelle l'une des premières entreprises qui apparaissent. C'est la recherche locale : des internautes qui cherchent un service ou un commerce près d'eux, avec une intention d'agir rapidement. Pour un artisan, un technicien, un hôtel, un restaurant, un cabinet ou une PME de proximité, c'est souvent la source de clients la plus rentable. Ce guide explique comment fonctionne le classement local de Google et décrit, étape par étape, les actions qui améliorent concrètement la visibilité d'une entreprise béninoise, sans promesse de résultat et sans technique douteuse.",
+      },
+      {
+        type: 'h2',
+        text: "Comment Google classe les résultats locaux",
+      },
+      {
+        type: 'p',
+        text: "Selon l'aide officielle de Google Business Profile, les résultats locaux reposent principalement sur trois critères : la pertinence, la distance et la notoriété (source : Aide Google Business Profile, « Améliorer votre classement local sur Google », support.google.com/business/answer/7091).",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Pertinence : dans quelle mesure votre fiche d'établissement correspond à ce que recherche l'internaute. Une fiche complète et précise est plus pertinente.",
+          "Distance : la proximité entre l'établissement et le lieu indiqué dans la recherche ; si l'utilisateur ne précise pas de lieu, Google se base sur ce qu'il sait de sa position.",
+          "Notoriété : à quel point l'entreprise est connue. Elle s'appuie sur des informations provenant de tout le web, comme des liens, des articles et des annuaires, ainsi que sur le nombre et la note des avis Google.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Google précise aussi qu'il n'existe aucun moyen de demander ou de payer pour un meilleur classement local. Vous ne pouvez pas changer la distance entre vous et le client, mais vous pouvez améliorer la pertinence et la notoriété, ce qui est l'objet des sections suivantes.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 1 : revendiquer et compléter votre profil d'établissement Google",
+      },
+      {
+        type: 'p',
+        text: "Le profil d'établissement, anciennement appelé fiche Google My Business, est la fiche qui s'affiche dans Google Maps et dans les résultats locaux. C'est le levier le plus important du référencement local et il est gratuit. L'aide de Google indique que les établissements dont les informations sont complètes et exactes ont plus de chances d'apparaître dans les résultats locaux, et que vérifier l'établissement confirme que vous êtes autorisé à le représenter.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Revendiquez la fiche et suivez la procédure de vérification proposée par Google.",
+          "Choisissez avec soin la catégorie principale, qui doit décrire votre activité réelle, puis ajoutez des catégories secondaires pertinentes.",
+          "Renseignez les coordonnées exactes : nom de l'entreprise tel qu'il est utilisé dans la vie réelle, adresse précise, téléphone, site web, horaires d'ouverture.",
+          "Si vous vous déplacez chez vos clients, indiquez vos zones d'intervention plutôt qu'une adresse que vous n'avez pas.",
+          "Rédigez une description claire de votre activité, de vos services et de votre zone, sans bourrage de mots-clés.",
+          "Ajoutez des photos réelles : devanture, équipe, véhicule, réalisations, avant et après.",
+          "Listez vos services ou produits avec des descriptions utiles.",
+          "Utilisez les publications pour annoncer une information utile, comme une période d'entretien ou un nouveau service.",
+          "Répondez aux questions des internautes et mettez à jour les informations dès qu'elles changent, par exemple en cas de changement d'horaires.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Quelques interdits importants. N'ajoutez pas de mots-clés au nom de l'établissement, n'utilisez pas d'adresse fictive ou de boîte postale présentée comme un local, ne créez pas de fiches en double pour la même activité. Ces pratiques contreviennent aux règles de Google et peuvent entraîner la suspension de la fiche.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 2 : la cohérence des informations sur tout le web",
+      },
+      {
+        type: 'p',
+        text: "La notoriété d'une entreprise se nourrit aussi des mentions de son nom, de son adresse et de son téléphone sur d'autres sites : annuaires professionnels, réseaux sociaux, sites de partenaires, presse locale. Ce qui compte, c'est la cohérence : le nom, l'adresse et le numéro doivent être identiques partout. Une adresse qui change d'un annuaire à l'autre brouille le signal envoyé à Google et perd aussi les clients. Dressez la liste des endroits où votre entreprise est mentionnée, corrigez les erreurs, supprimez les doublons et mettez à jour les informations obsolètes. Privilégiez les annuaires sérieux et pertinents pour votre secteur et pour le Bénin, plutôt que l'inscription en masse sur des sites sans valeur.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 3 : les avis clients, un levier puissant à utiliser honnêtement",
+      },
+      {
+        type: 'p',
+        text: "Google indique que le nombre d'avis et leur note interviennent dans le classement local, et des avis de qualité peuvent augmenter la probabilité qu'un client vous choisisse. Ils sont aussi, pour un internaute qui hésite, un critère de confiance déterminant. Mais cette arme se retourne contre vous dès qu'elle est mal utilisée.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Demandez un avis aux clients satisfaits, juste après une prestation réussie, par un message poli avec un lien direct vers votre fiche.",
+          "N'achetez jamais d'avis et n'en publiez jamais de faux, vous-même ou par des proches : ils sont repérés, contraires aux règles et destructeurs pour la crédibilité.",
+          "Ne conditionnez pas une remise ou un service à un avis positif.",
+          "Répondez à tous les avis, y compris les négatifs, de manière factuelle, calme et courtoise, en proposant de résoudre le problème.",
+          "Utilisez les critiques pour améliorer réellement vos pratiques : un avis négatif bien traité renforce parfois la confiance.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 4 : adapter votre site au référencement local",
+      },
+      {
+        type: 'p',
+        text: "Le site web renforce à la fois la pertinence et la notoriété. Pour une entreprise locale, il doit faire apparaître clairement ce que vous faites, où vous le faites et comment vous joindre.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Une page par service important, avec un contenu réel : description, méthode, cas d'usage, informations pratiques, questions fréquentes.",
+          "Une page de contact avec l'adresse complète, le téléphone, les horaires, une carte et un formulaire testé.",
+          "Les mêmes coordonnées que celles de votre profil Google, écrites à l'identique.",
+          "Des zones d'intervention indiquées clairement, sur une page dédiée si elles sont nombreuses.",
+          "Des titres et descriptions de pages qui mentionnent le service et, quand c'est pertinent, la ville.",
+          "Des informations structurées de type entreprise locale, si vous maîtrisez la technique, avec des données fidèles à la réalité et sans balisage trompeur.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Une pratique à éviter : multiplier des pages quasi identiques en ne changeant que le nom de la ville. Ces pages n'apportent aucune valeur et risquent d'être ignorées par Google. Créez une page locale seulement si vous pouvez y apporter une information réellement spécifique à ce lieu, par exemple des conditions d'intervention, des contraintes locales ou des questions propres aux habitants.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 5 : trouver les bons mots-clés locaux",
+      },
+      {
+        type: 'p',
+        text: "Un mot-clé est l'expression que tape l'internaute. Les bonnes expressions locales combinent un service et, souvent, un lieu ou une intention : installation de climatiseur, dépannage de climatisation, entretien de chambre froide, installation solaire, création de site web pour entreprise. Pour les trouver sans outil payant :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Observez les suggestions qui apparaissent quand vous saisissez un début de requête dans Google.",
+          "Regardez les questions fréquentes affichées sous les résultats et les recherches associées.",
+          "Examinez les pages des concurrents locaux pour comprendre le vocabulaire utilisé.",
+          "Écoutez vos clients : les mots qu'ils emploient au téléphone sont ceux qu'ils tapent dans Google.",
+          "Une fois le site en ligne, étudiez dans la Search Console les requêtes qui vous amènent réellement des visiteurs.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Pensez aux variantes : « clim », « climatiseur » et « climatisation » ne désignent pas exactement la même chose pour tous les internautes. Nous ne donnons pas de volume de recherche chiffré, car nous n'avons pas accès à des données fiables sur ce point ; un outil de planification de mots-clés peut vous fournir des ordres de grandeur, à interpréter avec prudence.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 6 : soigner les titres et les descriptions",
+      },
+      {
+        type: 'p',
+        text: "Le titre de la page est le texte cliquable affiché dans les résultats ; la description est le texte qui le sous-tend. Ils ne garantissent pas un meilleur classement à eux seuls, mais ils déterminent si l'internaute clique. Quelques règles :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Un titre unique pour chaque page, qui annonce clairement le contenu et place le sujet principal en premier.",
+          "Une longueur raisonnable : un repère courant est de rester sous une soixantaine de caractères pour éviter la troncature, mais Google ajuste l'affichage et peut réécrire les titres.",
+          "Une description rédigée à la main, utile et engageante, qui résume le bénéfice pour le lecteur.",
+          "Pas de bourrage de mots-clés ni de promesses exagérées ou fausses.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Exemple de titre faible : « Accueil ». Exemple de titre plus utile : « Installation et entretien de climatiseurs — KONFORTECH BÉNIN ». Le second dit ce que l'entreprise fait et la nomme ; on y ajoutera la ville si le service s'adresse à un lieu précis.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 7 : publier des contenus locaux réellement utiles",
+      },
+      {
+        type: 'p',
+        text: "Un blog n'est pas un exercice de remplissage. Chaque article doit répondre à une question réelle d'un client : comment choisir la puissance d'un climatiseur, que faire quand une installation refroidit mal, comment dimensionner une installation solaire, quelles erreurs éviter pour un site web. Ces contenus attirent des visiteurs qualifiés, prouvent votre compétence et donnent des raisons à d'autres sites de vous citer. Adaptez-les au contexte local : chaleur, humidité, qualité du réseau électrique, disponibilité des techniciens, besoins des PME.",
+      },
+      {
+        type: 'ul',
+        items: [
+          "N'inventez ni statistique locale, ni projet réalisé, ni témoignage.",
+          "Présentez uniquement des références que vous pouvez documenter et dont vous avez l'accord.",
+          "Précisez clairement ce qui est un fait vérifiable, une recommandation professionnelle ou un exemple hypothétique.",
+          "Mettez à jour les articles quand les informations changent.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Étape 8 : optimiser les images",
+      },
+      {
+        type: 'p',
+        text: "Les images alourdissent vite un site, ce qui pénalise les visiteurs sur une connexion moyenne. Redimensionnez-les à la taille d'affichage, compressez-les et utilisez des formats modernes comme WebP. Donnez à chaque fichier un nom descriptif en minuscules, par exemple entretien-climatiseur-split.webp plutôt que IMG_4821.jpg, et ajoutez un texte alternatif qui décrit réellement l'image, pour les personnes qui utilisent un lecteur d'écran et pour les moteurs. Préférez vos propres photos aux images génériques, et ne reprenez pas d'images soumises à des droits sans autorisation.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 9 : un maillage interne logique",
+      },
+      {
+        type: 'p',
+        text: "Les liens entre vos pages aident les visiteurs et les robots à comprendre la structure du site et les sujets importants. Reliez les articles à la page de service correspondante, et les pages de service à des articles qui les approfondissent. Utilisez des ancres descriptives, comme « notre guide sur le choix de la puissance d'un climatiseur », plutôt que « cliquez ici ». Ne créez que des liens vers des pages qui existent réellement et vérifiez-les régulièrement.",
+      },
+      {
+        type: 'h2',
+        text: "Étape 10 : mesurer ce qui compte",
+      },
+      {
+        type: 'p',
+        text: "Un bon suivi se concentre sur les résultats commerciaux autant que sur les positions. Combinez plusieurs sources :",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Les statistiques du profil Google : appels, demandes d'itinéraire, visites du site depuis la fiche.",
+          "La Search Console : requêtes, impressions, clics et pages les plus vues.",
+          "Les demandes reçues : appels, messages, formulaires, avec une question systématique « comment nous avez-vous connus ? ».",
+          "Les avis : leur nombre, leur note et le contenu des commentaires.",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Faites un point mensuel, relevez deux ou trois enseignements, puis décidez de quelques actions. La régularité vaut mieux qu'un grand chantier ponctuel.",
+      },
+      {
+        type: 'h2',
+        text: "Un plan d'action sur 90 jours",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Mois 1 — Fondations : revendiquer et compléter le profil Google, corriger les coordonnées sur les principaux annuaires, vérifier le site (balises, vitesse, mobile) et installer la Search Console.",
+          "Mois 2 — Contenu et confiance : optimiser les pages de services, rédiger les titres et descriptions, demander des avis aux clients satisfaits, publier les premiers articles utiles.",
+          "Mois 3 — Consolidation : analyser les requêtes réelles, améliorer les pages qui reçoivent des impressions sans clics, renforcer le maillage interne, rechercher des mentions légitimes (partenaires, associations professionnelles, presse locale).",
+        ],
+      },
+      {
+        type: 'p',
+        text: "Ce plan est une trame d'actions et non une garantie de résultat : l'effet dépend de la concurrence locale, de la qualité de vos services et du temps.",
+      },
+      {
+        type: 'h2',
+        text: "Exemple : bâtir la présence locale d'une entreprise de froid et de climatisation (illustratif)",
+      },
+      {
+        type: 'p',
+        text: "Prenons une entreprise fictive qui installe et entretient des climatiseurs et des chambres froides dans une ville du Bénin. Son profil d'établissement choisit comme catégorie principale celle qui correspond à son cœur de métier, ajoute les catégories secondaires qui décrivent ses autres activités, et liste ses services : installation, entretien, dépannage, étude pour chambres froides. Elle indique ses zones d'intervention et ses horaires réels, y compris la manière de la joindre en urgence.",
+      },
+      {
+        type: 'p',
+        text: "Son site comporte une page par service, avec une explication concrète : les étapes de l'intervention, ce que le client doit préparer, les éléments qui font varier le délai, les questions fréquentes. Chaque page a un titre qui nomme le service et la ville. Un blog publie des guides utiles, comme choisir la puissance d'un climatiseur ou comprendre pourquoi une installation refroidit mal. L'entreprise demande un avis aux clients après chaque intervention réussie et répond à tous les commentaires. Aucun témoignage n'est inventé ; les références publiées le sont avec l'accord des clients. Ce scénario est illustratif : il montre un enchaînement d'actions cohérent, sans prétendre à un résultat chiffré.",
+      },
+      {
+        type: 'h2',
+        text: "Les spécificités du contexte béninois à garder en tête",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Le téléphone est un point de contact central : un numéro cliquable, un bouton d'appel et, si vous l'utilisez avec vos clients, un lien de messagerie instantanée vers votre numéro professionnel doivent être faciles à trouver.",
+          "Les adresses sont parfois décrites par des repères plutôt que par des numéros de rue : indiquez un repère clair, ajoutez un plan et vérifiez que le point sur la carte est exact.",
+          "La connexion varie : un site léger, avec des images compressées, se charge mieux et retient plus de visiteurs.",
+          "Les clients comparent souvent plusieurs entreprises par téléphone : répondre vite et clairement à une demande est aussi un facteur de conversion que le référencement ne remplace pas.",
+          "Les noms d'entreprises, les orthographes de quartiers et les expressions varient : testez plusieurs formulations de vos mots-clés.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Les erreurs fréquentes du SEO local",
+      },
+      {
+        type: 'ul',
+        items: [
+          "Ne pas revendiquer son profil d'établissement, ou le laisser incomplet.",
+          "Utiliser des informations différentes selon les sites et annuaires.",
+          "Acheter ou inventer des avis.",
+          "Créer des dizaines de pages locales quasi identiques.",
+          "Bourrer le nom de l'établissement ou les titres de mots-clés et de noms de villes.",
+          "Négliger la version mobile et la vitesse du site.",
+          "Ne jamais répondre aux avis.",
+          "Se fier à un prestataire qui garantit la première position.",
+          "Oublier de mesurer les résultats réels, comme les appels et les demandes.",
+        ],
+      },
+      {
+        type: 'h2',
+        text: "Questions fréquentes",
+      },
+      {
+        type: 'p',
+        text: "Dois-je avoir un site web pour apparaître dans les résultats locaux ? Un profil d'établissement peut apparaître sans site, mais un site renforce la pertinence et la notoriété, et rassure les clients. Les deux se complètent.",
+      },
+      {
+        type: 'p',
+        text: "Combien de temps pour voir des résultats ? Cela dépend de votre secteur, de la concurrence et de l'état de départ de votre présence en ligne. Il n'existe pas de délai garanti ; des améliorations progressives sont plus réalistes qu'un effet immédiat.",
+      },
+      {
+        type: 'p',
+        text: "Puis-je apparaître dans une ville où je n'ai pas de local ? C'est difficile en recherche locale, car la distance joue. Vous pouvez en revanche indiquer des zones d'intervention si vous vous déplacez, et créer des contenus utiles pour ces zones.",
+      },
+      {
+        type: 'p',
+        text: "Faut-il payer pour être bien classé sur Google Maps ? Non : Google indique qu'on ne peut ni demander ni payer pour un meilleur classement local. La publicité est un canal distinct, signalé comme tel.",
+      },
+      {
+        type: 'p',
+        text: "Les réseaux sociaux aident-ils ? Ils renforcent la notoriété, les contacts et la preuve sociale, et ils sont souvent un canal de relation client. Ils ne remplacent ni le site ni le profil d'établissement.",
+      },
+      {
+        type: 'p',
+        text: "Que faire face à un avis négatif injuste ? Répondez calmement et factuellement, proposez de régler le problème hors ligne, et signalez l'avis à Google s'il enfreint les règles (avis faux, hors sujet, injurieux). Ne répondez jamais de façon agressive.",
+      },
+      {
+        type: 'h2',
+        text: "En résumé",
+      },
+      {
+        type: 'p',
+        text: "Le référencement local repose sur trois piliers que vous maîtrisez en grande partie : une fiche d'établissement Google complète et exacte, des informations cohérentes et des avis authentiques pour construire la notoriété, et un site clair avec des contenus utiles pour la pertinence. Aucune technique n'achète la première place, et la patience reste nécessaire. Si vous souhaitez améliorer la visibilité de votre entreprise, KONFORTECH BÉNIN peut vous conseiller : contactez-nous via la page de contact du site pour en parler.",
+      },
+    ],
+  },
 ];
 
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
