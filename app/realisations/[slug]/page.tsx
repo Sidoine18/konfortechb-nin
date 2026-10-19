@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ExternalLink, Check } from 'lucide-react';
 import { getRealization, realizationSlugs } from '@/data/realizations';
@@ -44,6 +45,22 @@ export default function RealizationPage({ params }: { params: { slug: string } }
           { name: r.title, path: `/realisations/${r.slug}` },
         ]}
       />
+
+      {/* Image de couverture */}
+      {r.image && (
+        <div className="container-page max-w-5xl pt-10 sm:pt-14">
+          <figure className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-fog-200">
+            <Image
+              src={r.image}
+              alt={`Aperçu du site ${r.title}, réalisé par KONFORTECH BÉNIN`}
+              fill
+              priority
+              sizes="(min-width: 1024px) 960px, 100vw"
+              className="object-cover"
+            />
+          </figure>
+        </div>
+      )}
 
       <article className="py-16 sm:py-20">
         <div className="container-page max-w-3xl">
@@ -106,6 +123,33 @@ export default function RealizationPage({ params }: { params: { slug: string } }
           )}
         </div>
       </article>
+
+      {/* Galerie */}
+      {r.gallery && r.gallery.length > 0 && (
+        <section className="pb-16 sm:pb-20" aria-labelledby="galerie-titre">
+          <div className="container-page max-w-5xl">
+            <h2 id="galerie-titre" className="mb-8 text-2xl font-bold">
+              Galerie : {r.title}
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {r.gallery.map((src, i) => (
+                <figure
+                  key={src}
+                  className="relative aspect-[16/10] overflow-hidden rounded-xl bg-fog-200"
+                >
+                  <Image
+                    src={src}
+                    alt={`${r.title} : capture ${i + 1} du site réalisé par KONFORTECH BÉNIN`}
+                    fill
+                    sizes="(min-width: 640px) 480px, 100vw"
+                    className="object-cover"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {linkedServices.length > 0 && (
         <section className="bg-fog-100 py-16 sm:py-20">
