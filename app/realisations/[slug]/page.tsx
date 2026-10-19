@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Gallery } from '@/components/sections/Gallery';
 import { notFound } from 'next/navigation';
 import { ExternalLink, Check } from 'lucide-react';
 import { getRealization, realizationSlugs } from '@/data/realizations';
@@ -131,22 +132,7 @@ export default function RealizationPage({ params }: { params: { slug: string } }
             <h2 id="galerie-titre" className="mb-8 text-2xl font-bold">
               Galerie : {r.title}
             </h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {r.gallery.map((src, i) => (
-                <figure
-                  key={src}
-                  className="relative aspect-[16/10] overflow-hidden rounded-xl bg-fog-200"
-                >
-                  <Image
-                    src={src}
-                    alt={`${r.title} : capture ${i + 1} du site réalisé par KONFORTECH BÉNIN`}
-                    fill
-                    sizes="(min-width: 640px) 480px, 100vw"
-                    className="object-cover"
-                  />
-                </figure>
-              ))}
-            </div>
+            <Gallery images={r.gallery} title={r.title} />
           </div>
         </section>
       )}
