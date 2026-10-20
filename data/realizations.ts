@@ -142,9 +142,9 @@ export const realizations: Realization[] = [
     gallery: [
       '/gallery/realizations/le-sky-bar-restaurant-site-web-presentation-etablissement.jpg',
       '/gallery/realizations/le-sky-bar-restaurant-site-web-menu-carte.jpg',
-      '/gallery/realizations/le-sky-bar-restaurant-site-web-ambiance-bar.jpg',
+      //'/gallery/realizations/le-sky-bar-restaurant-site-web-ambiance-bar.jpg',
       '/gallery/realizations/le-sky-bar-restaurant-site-web-contact-reservation.jpg',
-      '/gallery/realizations/le-sky-bar-restaurant-site-web-version-mobile.jpg',
+      //'/gallery/realizations/le-sky-bar-restaurant-site-web-version-mobile.jpg',
     ],
     featured: false,
     relatedServices: ['developpement-web'],
