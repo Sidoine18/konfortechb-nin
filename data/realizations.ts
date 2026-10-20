@@ -1,15 +1,3 @@
-/**
- * RÉALISATIONS / PROJETS — source unique de vérité.
- *
- * ▶ POUR AJOUTER UNE RÉALISATION : ajoutez un objet ci-dessous, déposez les
- *   images dans public/gallery/realizations/, et la page /realisations/[slug]
- *   ainsi que son SEO et son entrée au sitemap sont générés automatiquement.
- *
- * ⚠️ RÈGLE ABSOLUE : ne jamais inventer de résultat chiffré, de nombre
- *   d'utilisateurs, de chiffre d'affaires ou de témoignage. Le champ
- *   `results` reste vide tant qu'aucune donnée vérifiable n'est fournie.
- */
-
 export type Realization = {
   slug: string;
   title: string;
