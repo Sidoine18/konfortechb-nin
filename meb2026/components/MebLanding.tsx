@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { EVENT, PROGRAMME } from "../data";
 import { MEB_CONFIG } from "../config";
 import { RegistrationForm } from "./RegistrationForm";
-import { MebHeader, MebFooter } from "./MebChrome";
+import { MebHeader } from "./MebChrome";
 
 const OBJECTIFS = [
   { t: "Valoriser les compétences techniques", d: "Montrer que le savoir-faire technique est une base solide pour créer de la valeur et des emplois." },
@@ -144,7 +144,6 @@ export function MebLanding() {
           </div>
         </section>
       </main>
-      <MebFooter />
     </div>
   );
 }
