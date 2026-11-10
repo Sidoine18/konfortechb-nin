@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { EVENT } from "../data";
 import { MEB_CONFIG } from "../config";
-import { MebFooter, MebHeader } from "./MebChrome";
+import { MebHeader } from "./MebChrome";
 
 export function MebConfirmation() {
   const [info, setInfo] = useState<{ id: string; nom: string } | null>(null);
@@ -49,7 +49,6 @@ export function MebConfirmation() {
           )}
         </div>
       </main>
-      <MebFooter />
     </div>
   );
 }
