@@ -1,10 +1,8 @@
 /**
  * Configuration du module MEB 2026.
- * Version Vite/TanStack : variables `VITE_*`.
- * Adapter la lecture des variables pour une intégration dans une autre stack.
  */
 export const MEB_CONFIG = {
-  web3formsKey: (import.meta.env['VITE_WEB3FORMS_ACCESS_KEY'] as string | undefined) ?? "",
-  sheetsWebhookUrl: (import.meta.env['VITE_MEB_SHEETS_WEBHOOK_URL'] as string | undefined) ?? "",
+  web3formsKey: "92cc696b-9f01-4fa6-96af-b7df3b80acd4",
+  sheetsWebhookUrl: "", // Remplace par ton URL si besoin, ou laisse vide
   basePath: "/meb-2026",
 };
