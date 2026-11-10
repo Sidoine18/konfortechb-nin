@@ -1,4 +1,4 @@
-import { MebFooter, MebHeader } from "./MebChrome";
+import { MebHeader } from "./MebChrome";
 import { EVENT } from "../data";
 
 export function MebPrivacy() {
@@ -31,7 +31,6 @@ export function MebPrivacy() {
           <p><a href="/meb-2026#inscription">← Retour à l'inscription</a></p>
         </article>
       </main>
-      <MebFooter />
     </div>
   );
 }
